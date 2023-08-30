@@ -1,0 +1,86 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 256 192)
+	(text "cmp1" (rect 5 0 35 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 112 25 124)(font "Arial" ))
+	(port
+		(pt 56 0)
+		(input)
+		(text "Ai" (rect 0 0 11 14)(font "Arial" (font_size 8)))
+		(text "Ai" (rect 50 17 61 31)(font "Arial" (font_size 8)))
+		(line (pt 56 0)(pt 56 16))
+	)
+	(port
+		(pt 136 0)
+		(input)
+		(text "Bi" (rect 0 0 10 14)(font "Arial" (font_size 8)))
+		(text "Bi" (rect 130 17 140 31)(font "Arial" (font_size 8)))
+		(line (pt 136 0)(pt 136 16))
+	)
+	(port
+		(pt 0 40)
+		(input)
+		(text "Gi" (rect 0 0 11 14)(font "Arial" (font_size 8)))
+		(text "Gi" (rect 21 35 32 49)(font "Arial" (font_size 8)))
+		(line (pt 0 40)(pt 16 40))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "Ei" (rect 0 0 9 14)(font "Arial" (font_size 8)))
+		(text "Ei" (rect 21 59 30 73)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "Li" (rect 0 0 9 14)(font "Arial" (font_size 8)))
+		(text "Li" (rect 21 83 30 97)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 16 88))
+	)
+	(port
+		(pt 56 128)
+		(output)
+		(text "Gi_1" (rect 96 0 121 14)(font "Arial" (font_size 8)))
+		(text "A>B" (rect 48 97 73 111)(font "Arial" (font_size 8)))
+		(line (pt 56 128)(pt 56 112))
+	)
+	(port
+		(pt 96 128)
+		(output)
+		(text "Ei_1" (rect 96 0 119 14)(font "Arial" (font_size 8)))
+		(text "A=B" (rect 88 97 111 111)(font "Arial" (font_size 8)))
+		(line (pt 96 128)(pt 96 112))
+	)
+	(port
+		(pt 136 128)
+		(output)
+		(text "Li_1" (rect 96 0 119 14)(font "Arial" (font_size 8)))
+		(text "A<B" (rect 128 97 151 111)(font "Arial" (font_size 8)))
+		(line (pt 136 128)(pt 136 112))
+	)
+	(drawing
+		(text "CMP1" (rect 52 48 159 85)(font "Arial" (color 0 0 0)(font_size 24)(bold)))
+		(rectangle (rect 16 16 176 112))
+	)
+)

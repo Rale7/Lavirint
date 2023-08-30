@@ -1,0 +1,78 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 160 192)
+	(text "add1" (rect 5 0 33 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 112 25 124)(font "Arial" ))
+	(port
+		(pt 0 48)
+		(input)
+		(text "Ai" (rect 0 0 11 14)(font "Arial" (font_size 8)))
+		(text "Ai" (rect 21 43 32 57)(font "Arial" (font_size 8)))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "Bi" (rect 0 0 10 14)(font "Arial" (font_size 8)))
+		(text "Bi" (rect 21 75 31 89)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 48 0)
+		(input)
+		(text "Ci" (rect 0 0 10 14)(font "Arial" (font_size 8)))
+		(text "Ci" (rect 43 16 53 30)(font "Arial" (font_size 8)))
+		(line (pt 48 0)(pt 48 16))
+	)
+	(port
+		(pt 96 64)
+		(output)
+		(text "Fi" (rect 0 0 9 14)(font "Arial" (font_size 8)))
+		(text "Fi" (rect 66 59 75 73)(font "Arial" (font_size 8)))
+		(line (pt 96 64)(pt 80 64))
+	)
+	(port
+		(pt 96 48)
+		(output)
+		(text "Pi" (rect 0 0 9 14)(font "Arial" (font_size 8)))
+		(text "Pi" (rect 66 43 75 57)(font "Arial" (font_size 8)))
+		(line (pt 96 48)(pt 80 48))
+	)
+	(port
+		(pt 48 128)
+		(output)
+		(text "Ci_1" (rect 0 0 24 14)(font "Arial" (font_size 8)))
+		(text "Ci_1" (rect 37 96 61 110)(font "Arial" (font_size 8)))
+		(line (pt 48 128)(pt 48 112))
+	)
+	(port
+		(pt 96 80)
+		(output)
+		(text "Gi" (rect 0 0 11 14)(font "Arial" (font_size 8)))
+		(text "Gi" (rect 64 75 75 89)(font "Arial" (font_size 8)))
+		(line (pt 96 80)(pt 80 80))
+	)
+	(drawing
+		(rectangle (rect 16 16 80 112))
+	)
+)

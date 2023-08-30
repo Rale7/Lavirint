@@ -29,7 +29,7 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "main")
-  (DATE "08/30/2023 13:59:37")
+  (DATE "08/30/2023 15:42:33")
   (VENDOR "Altera")
   (PROGRAM "Quartus II 64-Bit")
   (VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition")
@@ -1659,7 +1659,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst20\~1\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst20\~1\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (192:192:192) (238:238:238))
@@ -1671,7 +1671,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (232:232:232) (306:306:306))
@@ -1684,7 +1684,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1698,7 +1698,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (232:232:232) (301:301:301))
@@ -1713,7 +1713,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1727,7 +1727,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (547:547:547) (631:631:631))
@@ -1742,7 +1742,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst9\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst9\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1756,7 +1756,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst20\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst20\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (162:162:162) (227:227:227))
@@ -1772,7 +1772,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (235:235:235) (308:308:308))
@@ -1787,7 +1787,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1801,7 +1801,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (542:542:542) (621:621:621))
@@ -1816,7 +1816,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (876:876:876) (881:881:881))
@@ -1830,7 +1830,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst18\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst18\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (153:153:153) (208:208:208))
@@ -1846,7 +1846,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (343:343:343) (406:406:406))
@@ -1859,7 +1859,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst9\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst9\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1873,7 +1873,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst18\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst18\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (235:235:235) (304:304:304))
@@ -1889,7 +1889,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst13\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst13\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (106:106:106) (137:137:137))
@@ -1902,7 +1902,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst6\|inst13\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst6\|inst13\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (875:875:875) (880:880:880))
@@ -1944,7 +1944,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst4\|inst4\|inst20\\)
+    (INSTANCE \\inst\|inst7\|inst4\|inst4\|inst20\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (190:190:190) (237:237:237))
@@ -1960,7 +1960,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (201:201:201) (244:244:244))
@@ -1973,7 +1973,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -1987,7 +1987,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (168:168:168) (229:229:229))
@@ -2002,7 +2002,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -2016,7 +2016,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst18\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst18\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (163:163:163) (222:222:222))
@@ -2030,7 +2030,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (198:198:198) (240:240:240))
@@ -2043,7 +2043,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst9\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst9\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -2057,7 +2057,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst20\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst20\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (162:162:162) (222:222:222))
@@ -2073,7 +2073,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst8\|inst11\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst8\|inst11\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (192:192:192) (238:238:238))
@@ -2089,7 +2089,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst13\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst13\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (292:292:292) (346:346:346))
@@ -2104,7 +2104,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst9375498034\|inst\|inst13\\)
+    (INSTANCE \\inst\|inst7\|inst9375498034\|inst\|inst13\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -2162,7 +2162,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst15\~0\\)
+    (INSTANCE \\inst\|inst7\|inst15\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (167:167:167) (228:228:228))
@@ -2178,7 +2178,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (IOPATH datac combout (190:190:190) (195:195:195))
@@ -2187,7 +2187,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -2203,7 +2203,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (230:230:230) (290:290:290))
@@ -2216,7 +2216,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (884:884:884) (891:891:891))
@@ -2232,7 +2232,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst10\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst10\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datac (343:343:343) (421:421:421))
@@ -2244,7 +2244,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (203:203:203) (248:248:248))
@@ -2259,7 +2259,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst9\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst9\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (880:880:880) (884:884:884))
@@ -2287,7 +2287,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst13\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst13\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (204:204:204) (249:249:249))
@@ -2302,7 +2302,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst13\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst13\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (880:880:880) (884:884:884))
@@ -2332,7 +2332,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (200:200:200) (248:248:248))
@@ -2347,7 +2347,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (884:884:884))
@@ -2361,7 +2361,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (452:452:452) (538:538:538))
@@ -2376,7 +2376,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (884:884:884))
@@ -2390,7 +2390,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst18\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst18\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (161:161:161) (216:216:216))
@@ -2402,7 +2402,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (450:450:450) (536:536:536))
@@ -2417,7 +2417,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst9\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst9\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (884:884:884))
@@ -2431,7 +2431,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst19\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst19\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (161:161:161) (216:216:216))
@@ -2445,7 +2445,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst14\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst14\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (451:451:451) (537:537:537))
@@ -2461,7 +2461,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst13\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst13\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT datad (93:93:93) (111:111:111))
@@ -2472,7 +2472,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst6\|inst13\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst6\|inst13\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (884:884:884))
@@ -2486,7 +2486,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst12\~0\\)
+    (INSTANCE \\inst\|inst7\|inst12\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (475:475:475) (576:576:576))
@@ -2502,7 +2502,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst\|inst20\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst\|inst20\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (450:450:450) (537:537:537))
@@ -2514,7 +2514,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (184:184:184) (223:223:223))
@@ -2529,7 +2529,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (884:884:884))
@@ -2543,7 +2543,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst7\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst7\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (240:240:240) (302:302:302))
@@ -2559,7 +2559,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst7\~1\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst7\~1\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (108:108:108) (143:143:143))
@@ -2575,7 +2575,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst25\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst25\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (147:147:147) (201:201:201))
@@ -2591,7 +2591,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst5\~0\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst5\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (315:315:315) (370:370:370))
@@ -2606,7 +2606,7 @@
   )
   (CELL
     (CELLTYPE "dffeas")
-    (INSTANCE \\inst\|inst2\|inst1\|inst8\|inst5\\)
+    (INSTANCE \\inst\|inst7\|inst1\|inst8\|inst5\\)
     (DELAY
       (ABSOLUTE
         (PORT clk (879:879:879) (883:883:883))
@@ -2650,7 +2650,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst15\~1\\)
+    (INSTANCE \\inst\|inst7\|inst15\~1\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (387:387:387) (453:453:453))
@@ -16714,7 +16714,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9\~0\\)
+    (INSTANCE \\inst\|inst7\|inst9\~0\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (152:152:152) (206:206:206))
@@ -19058,7 +19058,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9\~1\\)
+    (INSTANCE \\inst\|inst7\|inst9\~1\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (159:159:159) (221:221:221))
@@ -19072,7 +19072,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9\~2\\)
+    (INSTANCE \\inst\|inst7\|inst9\~2\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (158:158:158) (221:221:221))
@@ -19088,7 +19088,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst9\~3\\)
+    (INSTANCE \\inst\|inst7\|inst9\~3\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (163:163:163) (227:227:227))
@@ -19104,7 +19104,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst12\~2\\)
+    (INSTANCE \\inst\|inst7\|inst12\~2\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (475:475:475) (575:575:575))
@@ -19120,7 +19120,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst12\~3\\)
+    (INSTANCE \\inst\|inst7\|inst12\~3\\)
     (DELAY
       (ABSOLUTE
         (PORT datab (239:239:239) (298:298:298))
@@ -19134,7 +19134,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst12\~1\\)
+    (INSTANCE \\inst\|inst7\|inst12\~1\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (108:108:108) (143:143:143))
@@ -19150,7 +19150,7 @@
   )
   (CELL
     (CELLTYPE "cycloneiii_lcell_comb")
-    (INSTANCE \\inst\|inst2\|inst12\~4\\)
+    (INSTANCE \\inst\|inst7\|inst12\~4\\)
     (DELAY
       (ABSOLUTE
         (PORT dataa (239:239:239) (300:300:300))

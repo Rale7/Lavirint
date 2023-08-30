@@ -1,0 +1,86 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 320 232)
+	(text "mp16_4-2" (rect 5 0 61 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 152 25 164)(font "Arial" ))
+	(port
+		(pt 256 80)
+		(input)
+		(text "E" (rect 0 0 7 14)(font "Arial" (font_size 8)))
+		(text "E" (rect 224 72 231 86)(font "Arial" (font_size 8)))
+		(line (pt 240 80)(pt 256 80))
+	)
+	(port
+		(pt 56 0)
+		(input)
+		(text "I0[15..0]" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "I0[15..0]" (rect 36 17 80 31)(font "Arial" (font_size 8)))
+		(line (pt 56 0)(pt 56 16)(line_width 3))
+	)
+	(port
+		(pt 104 0)
+		(input)
+		(text "I1[15..0]" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "I1[15..0]" (rect 84 16 128 30)(font "Arial" (font_size 8)))
+		(line (pt 104 0)(pt 104 16)(line_width 3))
+	)
+	(port
+		(pt 152 0)
+		(input)
+		(text "I2[15..0]" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "I2[15..0]" (rect 132 16 176 30)(font "Arial" (font_size 8)))
+		(line (pt 152 0)(pt 152 17)(line_width 3))
+	)
+	(port
+		(pt 200 0)
+		(input)
+		(text "I3[15..0]" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "I3[15..0]" (rect 180 16 224 30)(font "Arial" (font_size 8)))
+		(line (pt 200 0)(pt 200 17)(line_width 3))
+	)
+	(port
+		(pt 0 72)
+		(input)
+		(text "S0" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "S0" (rect 21 67 36 81)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 16 72))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "S1" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "S1" (rect 21 91 36 105)(font "Arial" (font_size 8)))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 128 168)
+		(output)
+		(text "D[15..0]" (rect 112 0 155 14)(font "Arial" (font_size 8)))
+		(text "D[15..0]" (rect 108 136 151 150)(font "Arial" (font_size 8)))
+		(line (pt 128 168)(pt 128 152)(line_width 3))
+	)
+	(drawing
+		(text "MP4/1" (rect 80 64 190 101)(font "Arial" (color 0 0 0)(font_size 24)(bold)))
+		(rectangle (rect 16 16 240 152))
+	)
+)

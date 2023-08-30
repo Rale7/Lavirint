@@ -1,0 +1,79 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 192 216)
+	(text "dcd2-4" (rect 5 0 45 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 136 25 148)(font "Arial" ))
+	(port
+		(pt 64 152)
+		(input)
+		(text "E" (rect 0 0 7 14)(font "Arial" (font_size 8)))
+		(text "E" (rect 61 120 68 134)(font "Arial" (font_size 8)))
+		(line (pt 64 136)(pt 64 152))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "S1" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "S1" (rect 21 59 36 73)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "S0" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "S0" (rect 21 83 36 97)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 16 88))
+	)
+	(port
+		(pt 128 40)
+		(output)
+		(text "D0" (rect 32 0 47 14)(font "Arial" (font_size 8)))
+		(text "D0" (rect 92 35 107 49)(font "Arial" (font_size 8)))
+		(line (pt 128 40)(pt 112 40))
+	)
+	(port
+		(pt 128 64)
+		(output)
+		(text "D1" (rect 32 0 47 14)(font "Arial" (font_size 8)))
+		(text "D1" (rect 92 59 107 73)(font "Arial" (font_size 8)))
+		(line (pt 128 64)(pt 112 64))
+	)
+	(port
+		(pt 128 88)
+		(output)
+		(text "D2" (rect 32 0 47 14)(font "Arial" (font_size 8)))
+		(text "D2" (rect 92 83 107 97)(font "Arial" (font_size 8)))
+		(line (pt 128 88)(pt 112 88))
+	)
+	(port
+		(pt 128 112)
+		(output)
+		(text "D3" (rect 32 0 47 14)(font "Arial" (font_size 8)))
+		(text "D3" (rect 92 107 107 121)(font "Arial" (font_size 8)))
+		(line (pt 128 112)(pt 112 112))
+	)
+	(drawing
+		(text "DC" (rect 40 56 96 93)(font "Arial" (color 0 0 0)(font_size 24)(bold)))
+		(rectangle (rect 16 16 112 136))
+	)
+)

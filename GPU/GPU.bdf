@@ -410,56 +410,6 @@ applicable agreement for further details.
 	(text "VCC" (rect 152 7 172 17)(font "Arial" (font_size 6)))
 )
 (symbol
-	(rect 136 296 312 424)
-	(text "VGA_kontroler" (rect 5 0 89 14)(font "Arial" (font_size 8)))
-	(text "inst2" (rect 8 112 31 124)(font "Arial" ))
-	(port
-		(pt 0 64)
-		(input)
-		(text "CLK" (rect 0 0 23 14)(font "Arial" (font_size 8)))
-		(text "CLK" (rect 21 59 44 73)(font "Arial" (font_size 8)))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 56 128)
-		(output)
-		(text "X[15..0]" (rect 48 0 91 14)(font "Arial" (font_size 8)))
-		(text "X[15..0]" (rect 33 98 76 112)(font "Arial" (font_size 8)))
-		(line (pt 56 128)(pt 56 112)(line_width 3))
-	)
-	(port
-		(pt 120 128)
-		(output)
-		(text "Y[15..0]" (rect 48 0 92 14)(font "Arial" (font_size 8)))
-		(text "Y[15..0]" (rect 96 98 140 112)(font "Arial" (font_size 8)))
-		(line (pt 120 128)(pt 120 112)(line_width 3))
-	)
-	(port
-		(pt 176 40)
-		(output)
-		(text "H_SYNC" (rect 48 0 97 14)(font "Arial" (font_size 8)))
-		(text "H_SYNC" (rect 114 35 163 49)(font "Arial" (font_size 8)))
-		(line (pt 176 40)(pt 160 40))
-	)
-	(port
-		(pt 176 64)
-		(output)
-		(text "V_SYNC" (rect 48 0 98 14)(font "Arial" (font_size 8)))
-		(text "V_SYNC" (rect 112 56 162 70)(font "Arial" (font_size 8)))
-		(line (pt 176 64)(pt 160 64))
-	)
-	(port
-		(pt 176 88)
-		(output)
-		(text "DISP_EN" (rect 48 0 96 14)(font "Arial" (font_size 8)))
-		(text "DISP_EN" (rect 115 79 163 93)(font "Arial" (font_size 8)))
-		(line (pt 176 88)(pt 160 88))
-	)
-	(drawing
-		(rectangle (rect 16 16 160 112))
-	)
-)
-(symbol
 	(rect 1168 392 1232 440)
 	(text "AND2" (rect 1 0 25 10)(font "Arial" (font_size 6)))
 	(text "inst3" (rect 3 37 26 49)(font "Arial" ))
@@ -641,7 +591,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 40 280 72 312)
+	(rect 16 200 48 232)
 	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
 	(text "inst14" (rect 3 21 32 33)(font "Arial" )(invisible))
 	(port
@@ -658,7 +608,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 0 248 32 264)
+	(rect -24 168 8 184)
 	(text "VCC" (rect 7 0 27 10)(font "Arial" (font_size 6)))
 	(text "inst7979" (rect 3 5 44 17)(font "Arial" )(invisible))
 	(port
@@ -1166,6 +1116,56 @@ applicable agreement for further details.
 		(rectangle (rect 16 16 192 176))
 	)
 )
+(symbol
+	(rect 136 296 312 424)
+	(text "VGA_kontroler" (rect 5 0 89 14)(font "Arial" (font_size 8)))
+	(text "inst7" (rect 8 112 31 124)(font "Arial" ))
+	(port
+		(pt 0 64)
+		(input)
+		(text "CLK" (rect 0 0 23 14)(font "Arial" (font_size 8)))
+		(text "CLK" (rect 21 59 44 73)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 56 128)
+		(output)
+		(text "X[15..0]" (rect 40 -8 83 6)(font "Arial" (font_size 8)))
+		(text "X[15..0]" (rect 32 98 75 112)(font "Arial" (font_size 8)))
+		(line (pt 56 128)(pt 56 112)(line_width 3))
+	)
+	(port
+		(pt 120 128)
+		(output)
+		(text "Y[15..0]" (rect 40 -8 84 6)(font "Arial" (font_size 8)))
+		(text "Y[15..0]" (rect 96 98 140 112)(font "Arial" (font_size 8)))
+		(line (pt 120 128)(pt 120 112)(line_width 3))
+	)
+	(port
+		(pt 176 40)
+		(output)
+		(text "H_SYNC" (rect 48 0 97 14)(font "Arial" (font_size 8)))
+		(text "H_SYNC" (rect 106 35 155 49)(font "Arial" (font_size 8)))
+		(line (pt 176 40)(pt 160 40))
+	)
+	(port
+		(pt 176 64)
+		(output)
+		(text "V_SYNC" (rect 48 0 98 14)(font "Arial" (font_size 8)))
+		(text "V_SYNC" (rect 105 59 155 73)(font "Arial" (font_size 8)))
+		(line (pt 176 64)(pt 160 64))
+	)
+	(port
+		(pt 176 88)
+		(output)
+		(text "DISP_EN" (rect 48 0 96 14)(font "Arial" (font_size 8)))
+		(text "DISP_EN" (rect 107 83 155 97)(font "Arial" (font_size 8)))
+		(line (pt 176 88)(pt 160 88))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 112))
+	)
+)
 (connector
 	(pt 808 240)
 	(pt 880 240)
@@ -1463,27 +1463,17 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "0" (rect 39 258 51 263)(font "Arial" )(vertical))
-	(pt 56 280)
-	(pt 56 248)
-)
-(connector
-	(text "1" (rect 0 283 12 288)(font "Arial" )(vertical))
-	(pt 16 264)
-	(pt 16 304)
-)
-(connector
 	(text "CLK" (rect 96 344 117 356)(font "Arial" ))
 	(pt 88 360)
 	(pt 136 360)
 )
 (connector
-	(text "V_SYNC" (rect 272 344 316 356)(font "Arial" ))
+	(text "V_SYNC" (rect 296 344 340 356)(font "Arial" ))
 	(pt 312 360)
 	(pt 336 360)
 )
 (connector
-	(text "H_SYNC" (rect 200 320 246 332)(font "Arial" ))
+	(text "H_SYNC" (rect 296 304 342 316)(font "Arial" ))
 	(pt 312 336)
 	(pt 336 336)
 )
@@ -1829,6 +1819,16 @@ applicable agreement for further details.
 	(text "resetOp" (rect 272 736 310 748)(font "Arial" ))
 	(pt 232 752)
 	(pt 296 752)
+)
+(connector
+	(text "0" (rect 15 178 27 183)(font "Arial" )(vertical))
+	(pt 32 200)
+	(pt 32 168)
+)
+(connector
+	(text "1" (rect -24 203 -12 208)(font "Arial" )(vertical))
+	(pt -8 184)
+	(pt -8 224)
 )
 (junction (pt 592 96))
 (junction (pt 616 112))
