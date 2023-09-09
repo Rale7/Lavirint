@@ -560,9 +560,9 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1144 264 1336 392)
+	(rect 1176 152 1368 280)
 	(text "kodoviOperacija" (rect 5 0 95 14)(font "Arial" (font_size 8)))
-	(text "inst5" (rect 8 112 31 124)(font "Arial" ))
+	(text "inst1" (rect 8 112 31 124)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -580,8 +580,8 @@ applicable agreement for further details.
 	(port
 		(pt 192 48)
 		(output)
-		(text "addrMode[8..0]" (rect 0 0 84 14)(font "Arial" (font_size 8)))
-		(text "addrMode[8..0]" (rect 87 43 171 57)(font "Arial" (font_size 8)))
+		(text "addrMode[7..0]" (rect 0 0 84 14)(font "Arial" (font_size 8)))
+		(text "addrMode[7..0]" (rect 87 43 171 57)(font "Arial" (font_size 8)))
 		(line (pt 192 48)(pt 176 48)(line_width 3))
 	)
 	(port
