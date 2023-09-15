@@ -87,7 +87,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1416 328 1592 344)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "INSTR[44..0]" (rect 90 0 154 12)(font "Arial" ))
+	(text "INSTR[45..0]" (rect 90 0 154 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -1816,11 +1816,6 @@ applicable agreement for further details.
 	(pt 1296 1272)
 )
 (connector
-	(text "gro1" (rect 817 488 838 500)(font "Arial" ))
-	(pt 816 504)
-	(pt 856 504)
-)
-(connector
 	(text "gro0" (rect 384 344 405 356)(font "Arial" ))
 	(pt 376 360)
 	(pt 440 360)
@@ -1864,11 +1859,6 @@ applicable agreement for further details.
 	(text "gro0" (rect 1465 448 1486 460)(font "Arial" ))
 	(pt 1504 464)
 	(pt 1448 464)
-)
-(connector
-	(text "gro1" (rect 1465 464 1486 476)(font "Arial" ))
-	(pt 1504 480)
-	(pt 1448 480)
 )
 (connector
 	(text "gro2" (rect 1465 480 1486 492)(font "Arial" ))
@@ -2021,7 +2011,17 @@ applicable agreement for further details.
 	(pt 872 888)
 )
 (connector
-	(text "BRANCH,JUMP,0ADDR,1ADDR,2ADDR,LDST,SHITI,jmp,call,ret,sret,inte,intd,srand,push,pop,rand,inc,dec,cl,not,compl,add,sub,mul,div,mod,cmp,and,or,xor,tst,mbldi,lb,lw,sb,sw,asl,lsl,rol,rolc,asr,lsr,ror,rorc" (rect 1320 320 2345 332)(font "Arial" ))
+	(text "halt" (rect 817 488 834 500)(font "Arial" ))
+	(pt 816 504)
+	(pt 856 504)
+)
+(connector
+	(text "0" (rect 1465 464 1470 476)(font "Arial" ))
+	(pt 1504 480)
+	(pt 1448 480)
+)
+(connector
+	(text "BRANCH,JUMP,0ADDR,1ADDR,2ADDR,LDST,SHITI,jmp,call,ret,sret,inte,intd,srand,halt,push,pop,rand,inc,dec,cl,not,compl,add,sub,mul,div,mod,cmp,and,or,xor,tst,mvldi,lb,lw,sb,sw,asl,lsl,rol,rolc,asr,lsr,ror,rorc" (rect 1320 320 2367 332)(font "Arial" ))
 	(pt 1320 336)
 	(pt 1416 336)
 	(bus)

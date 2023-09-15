@@ -1,0 +1,65 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 240 208)
+	(text "REG8_LD_INC" (rect 5 0 85 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 128 25 140)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "CLK" (rect 0 0 23 14)(font "Arial" (font_size 8)))
+		(text "CLK" (rect 21 67 44 81)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 16 72))
+	)
+	(port
+		(pt 88 0)
+		(input)
+		(text "I[7..0]" (rect 0 0 30 14)(font "Arial" (font_size 8)))
+		(text "I[7..0]" (rect 76 19 106 33)(font "Arial" (font_size 8)))
+		(line (pt 88 0)(pt 88 17)(line_width 3))
+	)
+	(port
+		(pt 176 96)
+		(input)
+		(text "INC" (rect 0 0 18 14)(font "Arial" (font_size 8)))
+		(text "INC" (rect 133 88 151 102)(font "Arial" (font_size 8)))
+		(line (pt 160 96)(pt 176 96))
+	)
+	(port
+		(pt 176 48)
+		(input)
+		(text "LD" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "LD" (rect 136 40 151 54)(font "Arial" (font_size 8)))
+		(line (pt 160 48)(pt 176 48))
+	)
+	(port
+		(pt 88 144)
+		(output)
+		(text "A[7..0]" (rect 56 0 93 14)(font "Arial" (font_size 8)))
+		(text "A[7..0]" (rect 70 113 107 127)(font "Arial" (font_size 8)))
+		(line (pt 88 144)(pt 88 128)(line_width 3))
+	)
+	(drawing
+		(text "REG8" (rect 48 56 153 93)(font "Arial" (color 0 0 0)(font_size 24)(bold)))
+		(rectangle (rect 16 16 160 128))
+	)
+)
