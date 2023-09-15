@@ -17,7 +17,6 @@
 -- VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
 
 -- DATE "09/08/2023 21:57:33"
-
 -- 
 -- Device: Altera EP3C16F484C6 Package FBGA484
 -- 
