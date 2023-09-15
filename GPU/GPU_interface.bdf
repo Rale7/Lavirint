@@ -2970,6 +2970,37 @@ applicable agreement for further details.
 		(arc (pt 25 35)(pt 49 24)(rect -6 -27 57 36))
 	)
 )
+(symbol
+	(rect 1560 48 1608 80)
+	(text "TRI" (rect 1 0 16 10)(font "Arial" (font_size 6)))
+	(text "inst18" (rect 3 21 32 33)(font "Arial" ))
+	(port
+		(pt 0 16)
+		(input)
+		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
+		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
+		(line (pt 0 16)(pt 14 16))
+	)
+	(port
+		(pt 24 0)
+		(input)
+		(text "OE" (rect 26 0 37 12)(font "Courier New" (bold))(invisible))
+		(text "OE" (rect 26 0 37 12)(font "Courier New" (bold))(invisible))
+		(line (pt 24 12)(pt 24 0))
+	)
+	(port
+		(pt 48 16)
+		(output)
+		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
+		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
+		(line (pt 32 16)(pt 48 16))
+	)
+	(drawing
+		(line (pt 14 25)(pt 14 7))
+		(line (pt 14 25)(pt 32 16))
+		(line (pt 14 7)(pt 32 16))
+	)
+)
 (connector
 	(text "1" (rect 120 -69 132 -64)(font "Arial" )(vertical))
 	(pt 136 -88)
@@ -4076,36 +4107,6 @@ applicable agreement for further details.
 	(pt 952 1720)
 )
 (connector
-	(text "1" (rect 544 1891 556 1896)(font "Arial" )(vertical))
-	(pt 560 1888)
-	(pt 560 1912)
-)
-(connector
-	(text "K0" (rect 632 1760 644 1772)(font "Arial" ))
-	(pt 624 1776)
-	(pt 664 1776)
-)
-(connector
-	(text "K2" (rect 625 1808 637 1820)(font "Arial" ))
-	(pt 624 1824)
-	(pt 664 1824)
-)
-(connector
-	(text "K1" (rect 632 1784 644 1796)(font "Arial" ))
-	(pt 624 1800)
-	(pt 664 1800)
-)
-(connector
-	(text "T[1]" (rect 464 1784 482 1796)(font "Arial" ))
-	(pt 456 1800)
-	(pt 496 1800)
-)
-(connector
-	(text "T[0]" (rect 464 1808 482 1820)(font "Arial" ))
-	(pt 456 1824)
-	(pt 496 1824)
-)
-(connector
 	(text "K2" (rect 921 1872 933 1884)(font "Arial" ))
 	(pt 960 1888)
 	(pt 920 1888)
@@ -4129,11 +4130,6 @@ applicable agreement for further details.
 	(pt 800 1840)
 )
 (connector
-	(text "1" (rect 1528 48 1533 60)(font "Arial" ))
-	(pt 1568 64)
-	(pt 1520 64)
-)
-(connector
 	(text "E0" (rect 320 1533 332 1545)(font "Arial" )(vertical))
 	(pt 336 1504)
 	(pt 336 1560)
@@ -4142,15 +4138,6 @@ applicable agreement for further details.
 	(text "ldREG" (rect 8 336 39 348)(font "Arial" ))
 	(pt 64 352)
 	(pt 0 352)
-)
-(connector
-	(text "eFCBUS" (rect 1576 3 1588 46)(font "Arial" )(vertical))
-	(pt 1592 64)
-	(pt 1592 8)
-)
-(connector
-	(pt 1592 64)
-	(pt 1632 64)
 )
 (connector
 	(text "CS3" (rect 312 -32 333 -20)(font "Arial" ))
@@ -4219,6 +4206,50 @@ applicable agreement for further details.
 	(pt 200 968)
 	(pt 200 832)
 	(bus)
+)
+(connector
+	(text "1" (rect 544 1891 556 1896)(font "Arial" )(vertical))
+	(pt 560 1888)
+	(pt 560 1912)
+)
+(connector
+	(text "K0" (rect 632 1760 644 1772)(font "Arial" ))
+	(pt 624 1776)
+	(pt 664 1776)
+)
+(connector
+	(text "K2" (rect 625 1808 637 1820)(font "Arial" ))
+	(pt 624 1824)
+	(pt 664 1824)
+)
+(connector
+	(text "K1" (rect 632 1784 644 1796)(font "Arial" ))
+	(pt 624 1800)
+	(pt 664 1800)
+)
+(connector
+	(text "T[1]" (rect 464 1784 482 1796)(font "Arial" ))
+	(pt 456 1800)
+	(pt 496 1800)
+)
+(connector
+	(text "T[0]" (rect 464 1808 482 1820)(font "Arial" ))
+	(pt 456 1824)
+	(pt 496 1824)
+)
+(connector
+	(pt 1608 64)
+	(pt 1632 64)
+)
+(connector
+	(text "1" (rect 1528 48 1533 60)(font "Arial" ))
+	(pt 1520 64)
+	(pt 1560 64)
+)
+(connector
+	(text "eFCBUS" (rect 1560 3 1572 46)(font "Arial" )(vertical))
+	(pt 1584 16)
+	(pt 1584 48)
 )
 (junction (pt 1040 576))
 (junction (pt 1368 576))

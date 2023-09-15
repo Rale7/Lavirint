@@ -1,7 +1,7 @@
 ADDRESS_ACLR_A=NONE
 CLOCK_ENABLE_INPUT_A=BYPASS
 CLOCK_ENABLE_OUTPUT_A=BYPASS
-INIT_FILE=../../CLionProjects/untitled/cmake-build-debug/output.mif
+INIT_FILE=../mikroProgramAsembler/mikroProgram/mikroProgram/output.mif
 INTENDED_DEVICE_FAMILY="Cyclone III"
 NUMWORDS_A=256
 OPERATION_MODE=ROM

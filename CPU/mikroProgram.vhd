@@ -61,7 +61,7 @@ BEGIN
 		address_aclr_a => "NONE",
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "../../CLionProjects/untitled/cmake-build-debug/output.mif",
+		init_file => "../mikroProgramAsembler/mikroProgram/mikroProgram/output.mif",
 		intended_device_family => "Cyclone III",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
@@ -103,7 +103,7 @@ END SYN;
 -- Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 -- Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 -- Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
--- Retrieval info: PRIVATE: MIFfilename STRING "../../CLionProjects/untitled/cmake-build-debug/output.mif"
+-- Retrieval info: PRIVATE: MIFfilename STRING "../mikroProgramAsembler/mikroProgram/mikroProgram/output.mif"
 -- Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "256"
 -- Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 -- Retrieval info: PRIVATE: RegAddr NUMERIC "1"
@@ -118,7 +118,7 @@ END SYN;
 -- Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
--- Retrieval info: CONSTANT: INIT_FILE STRING "../../CLionProjects/untitled/cmake-build-debug/output.mif"
+-- Retrieval info: CONSTANT: INIT_FILE STRING "../mikroProgramAsembler/mikroProgram/mikroProgram/output.mif"
 -- Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone III"
 -- Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
@@ -138,6 +138,6 @@ END SYN;
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram.vhd TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram.inc FALSE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram.cmp TRUE
--- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram.bsf TRUE FALSE
+-- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram.bsf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mikroProgram_inst.vhd FALSE
 -- Retrieval info: LIB_FILE: altera_mf

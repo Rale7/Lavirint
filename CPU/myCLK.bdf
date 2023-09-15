@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect 152 200 320 216)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "CLK" (rect 5 0 27 12)(font "Arial" ))
+	(text "CLK" (rect 5 0 26 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -34,12 +34,13 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 96 216 152 232))
 )
 (pin
 	(input)
 	(rect 144 272 312 288)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "br" (rect 5 0 15 12)(font "Arial" ))
+	(text "br" (rect 5 0 14 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -53,7 +54,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 816 280 992 296)
+	(rect 1392 280 1568 296)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "myCLK" (rect 90 0 127 12)(font "Arial" ))
 	(pt 0 8)
@@ -68,7 +69,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 656 224 752 352)
+	(rect 1232 224 1328 352)
 	(text "mp2-1_1" (rect 5 0 54 14)(font "Arial" (font_size 8)))
 	(text "inst" (rect 8 112 25 124)(font "Arial" ))
 	(port
@@ -393,7 +394,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 504 280 568 328)
+	(rect 1064 280 1128 328)
 	(text "OR2" (rect 1 0 19 10)(font "Arial" (font_size 6)))
 	(text "inst8" (rect 3 37 26 49)(font "Arial" ))
 	(port
@@ -436,25 +437,6 @@ applicable agreement for further details.
 	(pt 208 72)
 )
 (connector
-	(text "1" (rect 688 371 700 376)(font "Arial" )(vertical))
-	(pt 704 352)
-	(pt 704 392)
-)
-(connector
-	(text "br" (rect 688 200 700 209)(font "Arial" )(vertical))
-	(pt 704 224)
-	(pt 704 168)
-)
-(connector
-	(text "CLK" (rect 600 256 621 268)(font "Arial" ))
-	(pt 656 272)
-	(pt 592 272)
-)
-(connector
-	(pt 752 288)
-	(pt 816 288)
-)
-(connector
 	(text "CLK" (rect 96 400 117 412)(font "Arial" ))
 	(pt 136 416)
 	(pt 88 416)
@@ -493,15 +475,7 @@ applicable agreement for further details.
 	(pt 216 520)
 )
 (connector
-	(pt 648 544)
-	(pt 792 544)
-)
-(connector
 	(pt 856 544)
-	(pt 912 544)
-)
-(connector
-	(pt 912 640)
 	(pt 912 544)
 )
 (connector
@@ -517,40 +491,67 @@ applicable agreement for further details.
 	(pt 184 544)
 )
 (connector
-	(pt 568 304)
-	(pt 656 304)
+	(text "1" (rect 1264 371 1276 376)(font "Arial" )(vertical))
+	(pt 1280 352)
+	(pt 1280 392)
 )
 (connector
-	(pt 504 312)
-	(pt 488 312)
+	(text "br" (rect 1264 200 1276 209)(font "Arial" )(vertical))
+	(pt 1280 224)
+	(pt 1280 168)
 )
 (connector
-	(pt 488 312)
-	(pt 488 544)
+	(text "CLK" (rect 1176 256 1197 268)(font "Arial" ))
+	(pt 1232 272)
+	(pt 1168 272)
+)
+(connector
+	(pt 1328 288)
+	(pt 1392 288)
+)
+(connector
+	(pt 1128 304)
+	(pt 1232 304)
 )
 (connector
 	(pt 448 544)
-	(pt 488 544)
-)
-(connector
-	(pt 488 544)
 	(pt 584 544)
 )
 (connector
-	(pt 504 296)
 	(pt 304 296)
-)
-(connector
-	(pt 304 544)
-	(pt 304 296)
+	(pt 304 360)
 )
 (connector
 	(pt 248 544)
-	(pt 304 544)
-)
-(connector
-	(pt 304 544)
 	(pt 384 544)
 )
-(junction (pt 488 544))
-(junction (pt 304 544))
+(connector
+	(pt 1064 312)
+	(pt 912 312)
+)
+(connector
+	(pt 912 312)
+	(pt 912 544)
+)
+(connector
+	(pt 912 544)
+	(pt 912 640)
+)
+(connector
+	(pt 1064 296)
+	(pt 704 296)
+)
+(connector
+	(pt 704 296)
+	(pt 704 544)
+)
+(connector
+	(pt 648 544)
+	(pt 704 544)
+)
+(connector
+	(pt 704 544)
+	(pt 792 544)
+)
+(junction (pt 912 544))
+(junction (pt 704 544))

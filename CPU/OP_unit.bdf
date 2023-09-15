@@ -88,7 +88,7 @@ applicable agreement for further details.
 	(input)
 	(rect -360 -640 -184 -624)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
-	(text "SIGNALS[72..0]" (rect 5 0 85 12)(font "Arial" ))
+	(text "SIGNALS[72..0]" (rect 5 0 84 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 92 12)(pt 117 12))
@@ -105,22 +105,6 @@ applicable agreement for further details.
 	(rect 1832 -328 2008 -312)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "ADDR[15..0]" (rect 90 0 153 12)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-)
-(pin
-	(output)
-	(rect 1360 808 1536 824)
-	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "INSTR[43..0]" (rect 90 0 154 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -361,6 +345,22 @@ applicable agreement for further details.
 	(rect 504 2552 680 2568)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "V" (rect 90 0 98 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 1360 808 1536 824)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "INSTR[45..0]" (rect 90 0 154 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -5500,11 +5500,6 @@ applicable agreement for further details.
 	(pt 232 960)
 )
 (connector
-	(text "incGPRAR" (rect 193 888 246 900)(font "Arial" ))
-	(pt 184 904)
-	(pt 232 904)
-)
-(connector
 	(text "IR[23..20]" (rect 32 590 44 639)(font "Arial" )(vertical))
 	(pt 48 648)
 	(pt 48 592)
@@ -6004,21 +5999,6 @@ applicable agreement for further details.
 	(text "PRCOD" (rect 2656 2624 2696 2636)(font "Arial" ))
 	(pt 2696 2640)
 	(pt 2648 2640)
-)
-(connector
-	(text "IRQ1" (rect 2648 2656 2673 2668)(font "Arial" ))
-	(pt 2696 2672)
-	(pt 2640 2672)
-)
-(connector
-	(text "IRQ2" (rect 2648 2688 2673 2700)(font "Arial" ))
-	(pt 2696 2704)
-	(pt 2640 2704)
-)
-(connector
-	(text "IRQ3" (rect 2648 2720 2673 2732)(font "Arial" ))
-	(pt 2696 2736)
-	(pt 2640 2736)
 )
 (connector
 	(text "BR[0]" (rect 2832 2648 2860 2660)(font "Arial" ))
@@ -6532,22 +6512,12 @@ applicable agreement for further details.
 	(pt 144 1840)
 )
 (connector
-	(text "PSWC" (rect 152 1856 185 1868)(font "Arial" ))
-	(pt 184 1872)
-	(pt 144 1872)
-)
-(connector
 	(pt 496 1824)
 	(pt 280 1824)
 )
 (connector
 	(pt 496 1672)
 	(pt 496 1824)
-)
-(connector
-	(text "PSWC" (rect 112 1432 145 1444)(font "Arial" ))
-	(pt 144 1448)
-	(pt 104 1448)
 )
 (connector
 	(text "A[15]" (rect 112 1336 137 1348)(font "Arial" ))
@@ -6629,11 +6599,6 @@ applicable agreement for further details.
 	(text "rstPRINTR1" (rect 1713 2400 1773 2412)(font "Arial" ))
 	(pt 1712 2416)
 	(pt 1784 2416)
-)
-(connector
-	(text "rstPRINR2" (rect 1713 2424 1767 2436)(font "Arial" ))
-	(pt 1712 2440)
-	(pt 1784 2440)
 )
 (connector
 	(text "IR[16]" (rect 160 1278 172 1308)(font "Arial" )(vertical))
@@ -7010,11 +6975,6 @@ applicable agreement for further details.
 	(pt -200 560)
 )
 (connector
-	(text "SINGALS[30]" (rect -376 544 -310 556)(font "Arial" ))
-	(pt -296 560)
-	(pt -384 560)
-)
-(connector
 	(text "srand" (rect -247 576 -220 588)(font "Arial" ))
 	(pt -248 592)
 	(pt -200 592)
@@ -7053,16 +7013,6 @@ applicable agreement for further details.
 	(text "ilA" (rect -240 800 -228 812)(font "Arial" ))
 	(pt -248 816)
 	(pt -200 816)
-)
-(connector
-	(text "SINGALS[31]" (rect -376 576 -310 588)(font "Arial" ))
-	(pt -296 592)
-	(pt -384 592)
-)
-(connector
-	(text "SINGALS[32]" (rect -376 608 -310 620)(font "Arial" ))
-	(pt -296 624)
-	(pt -384 624)
 )
 (connector
 	(text "SIGNALS[33]" (rect -376 640 -310 652)(font "Arial" ))
@@ -7133,11 +7083,6 @@ applicable agreement for further details.
 	(text "SIGNALS[39]" (rect -376 832 -310 844)(font "Arial" ))
 	(pt -296 848)
 	(pt -384 848)
-)
-(connector
-	(text "SINGALS[40]" (rect -376 864 -310 876)(font "Arial" ))
-	(pt -296 880)
-	(pt -384 880)
 )
 (connector
 	(text "SIGNALS[41]" (rect -376 896 -310 908)(font "Arial" ))
@@ -7537,111 +7482,6 @@ applicable agreement for further details.
 	(pt 424 2560)
 )
 (connector
-	(text "L[1..0]" (rect 328 2408 359 2420)(font "Arial" ))
-	(pt 320 2424)
-	(pt 376 2424)
-	(bus)
-)
-(connector
-	(text "PSW[7..0]" (rect 168 2461 180 2511)(font "Arial" )(vertical))
-	(pt 184 2480)
-	(pt 184 2520)
-	(bus)
-)
-(connector
-	(text "MDR[7..0]" (rect 168 2229 180 2279)(font "Arial" )(vertical))
-	(pt 184 2288)
-	(pt 184 2224)
-	(bus)
-)
-(connector
-	(text "CLK" (rect 321 2312 342 2324)(font "Arial" ))
-	(pt 320 2328)
-	(pt 376 2328)
-)
-(connector
-	(text "ldPSW" (rect 8 2312 41 2324)(font "Arial" ))
-	(pt 56 2328)
-	(pt 0 2328)
-)
-(connector
-	(text "ldZ" (rect 8 2328 23 2340)(font "Arial" ))
-	(pt 56 2344)
-	(pt 0 2344)
-)
-(connector
-	(text "ldN" (rect 8 2344 24 2356)(font "Arial" ))
-	(pt 56 2360)
-	(pt 0 2360)
-)
-(connector
-	(text "ldC" (rect 8 2360 24 2372)(font "Arial" ))
-	(pt 56 2376)
-	(pt 0 2376)
-)
-(connector
-	(text "ldV" (rect 8 2376 24 2388)(font "Arial" ))
-	(pt 56 2392)
-	(pt 0 2392)
-)
-(connector
-	(text "ldSTART" (rect 8 2392 50 2404)(font "Arial" ))
-	(pt 56 2408)
-	(pt 0 2408)
-)
-(connector
-	(text "ldI" (rect 0 2408 11 2420)(font "Arial" ))
-	(pt 0 2424)
-	(pt 56 2424)
-)
-(connector
-	(text "ldL" (rect 8 2424 22 2436)(font "Arial" ))
-	(pt 56 2440)
-	(pt 0 2440)
-)
-(connector
-	(text "STARTI" (rect 328 2424 365 2436)(font "Arial" ))
-	(pt 320 2440)
-	(pt 376 2440)
-)
-(connector
-	(text "II" (rect 328 2392 335 2404)(font "Arial" ))
-	(pt 320 2408)
-	(pt 376 2408)
-)
-(connector
-	(pt 320 2344)
-	(pt 472 2344)
-)
-(connector
-	(pt 472 2344)
-	(pt 488 2344)
-)
-(connector
-	(pt 320 2360)
-	(pt 456 2360)
-)
-(connector
-	(pt 456 2360)
-	(pt 488 2360)
-)
-(connector
-	(pt 320 2376)
-	(pt 440 2376)
-)
-(connector
-	(pt 440 2376)
-	(pt 488 2376)
-)
-(connector
-	(pt 320 2392)
-	(pt 424 2392)
-)
-(connector
-	(pt 424 2392)
-	(pt 488 2392)
-)
-(connector
 	(text "A[15..0]" (rect 368 719 380 757)(font "Arial" )(vertical))
 	(pt 384 768)
 	(pt 384 696)
@@ -7769,6 +7609,166 @@ applicable agreement for further details.
 	(text "mxGPR1" (rect -240 1912 -196 1924)(font "Arial" ))
 	(pt -248 1928)
 	(pt -192 1928)
+)
+(connector
+	(text "0" (rect 193 888 198 900)(font "Arial" ))
+	(pt 184 904)
+	(pt 232 904)
+)
+(connector
+	(text "SIGNALS[30]" (rect -376 544 -310 556)(font "Arial" ))
+	(pt -296 560)
+	(pt -384 560)
+)
+(connector
+	(text "SIGNALS[31]" (rect -376 576 -310 588)(font "Arial" ))
+	(pt -296 592)
+	(pt -384 592)
+)
+(connector
+	(text "SIGNALS[32]" (rect -376 608 -310 620)(font "Arial" ))
+	(pt -296 624)
+	(pt -384 624)
+)
+(connector
+	(text "L[1..0]" (rect 328 2408 359 2420)(font "Arial" ))
+	(pt 320 2424)
+	(pt 376 2424)
+	(bus)
+)
+(connector
+	(text "PSW[7..0]" (rect 168 2461 180 2511)(font "Arial" )(vertical))
+	(pt 184 2480)
+	(pt 184 2520)
+	(bus)
+)
+(connector
+	(text "MDR[7..0]" (rect 168 2229 180 2279)(font "Arial" )(vertical))
+	(pt 184 2288)
+	(pt 184 2224)
+	(bus)
+)
+(connector
+	(text "CLK" (rect 321 2312 342 2324)(font "Arial" ))
+	(pt 320 2328)
+	(pt 376 2328)
+)
+(connector
+	(text "ldPSW" (rect 8 2312 41 2324)(font "Arial" ))
+	(pt 56 2328)
+	(pt 0 2328)
+)
+(connector
+	(text "ldZ" (rect 8 2328 23 2340)(font "Arial" ))
+	(pt 56 2344)
+	(pt 0 2344)
+)
+(connector
+	(text "ldN" (rect 8 2344 24 2356)(font "Arial" ))
+	(pt 56 2360)
+	(pt 0 2360)
+)
+(connector
+	(text "ldC" (rect 8 2360 24 2372)(font "Arial" ))
+	(pt 56 2376)
+	(pt 0 2376)
+)
+(connector
+	(text "ldV" (rect 8 2376 24 2388)(font "Arial" ))
+	(pt 56 2392)
+	(pt 0 2392)
+)
+(connector
+	(text "ldSTART" (rect 8 2392 50 2404)(font "Arial" ))
+	(pt 56 2408)
+	(pt 0 2408)
+)
+(connector
+	(text "ldI" (rect 0 2408 11 2420)(font "Arial" ))
+	(pt 0 2424)
+	(pt 56 2424)
+)
+(connector
+	(text "ldL" (rect 8 2424 22 2436)(font "Arial" ))
+	(pt 56 2440)
+	(pt 0 2440)
+)
+(connector
+	(text "STARTI" (rect 328 2424 365 2436)(font "Arial" ))
+	(pt 320 2440)
+	(pt 376 2440)
+)
+(connector
+	(text "II" (rect 328 2392 335 2404)(font "Arial" ))
+	(pt 320 2408)
+	(pt 376 2408)
+)
+(connector
+	(pt 320 2344)
+	(pt 472 2344)
+)
+(connector
+	(pt 472 2344)
+	(pt 488 2344)
+)
+(connector
+	(pt 320 2360)
+	(pt 456 2360)
+)
+(connector
+	(pt 456 2360)
+	(pt 488 2360)
+)
+(connector
+	(pt 320 2376)
+	(pt 440 2376)
+)
+(connector
+	(pt 440 2376)
+	(pt 488 2376)
+)
+(connector
+	(pt 320 2392)
+	(pt 424 2392)
+)
+(connector
+	(pt 424 2392)
+	(pt 488 2392)
+)
+(connector
+	(text "PSW[2]" (rect 152 1856 189 1868)(font "Arial" ))
+	(pt 184 1872)
+	(pt 144 1872)
+)
+(connector
+	(text "PSW[2]" (rect 112 1432 149 1444)(font "Arial" ))
+	(pt 144 1448)
+	(pt 104 1448)
+)
+(connector
+	(text "SIGNALS[40]" (rect -376 864 -310 876)(font "Arial" ))
+	(pt -296 880)
+	(pt -384 880)
+)
+(connector
+	(text "rstPRINTR2" (rect 1713 2424 1773 2436)(font "Arial" ))
+	(pt 1712 2440)
+	(pt 1784 2440)
+)
+(connector
+	(text "IRQ0" (rect 2648 2656 2673 2668)(font "Arial" ))
+	(pt 2696 2672)
+	(pt 2640 2672)
+)
+(connector
+	(text "IRQ1" (rect 2648 2688 2673 2700)(font "Arial" ))
+	(pt 2696 2704)
+	(pt 2640 2704)
+)
+(connector
+	(text "IRQ2" (rect 2648 2720 2673 2732)(font "Arial" ))
+	(pt 2696 2736)
+	(pt 2640 2736)
 )
 (junction (pt 472 2344))
 (junction (pt 456 2360))

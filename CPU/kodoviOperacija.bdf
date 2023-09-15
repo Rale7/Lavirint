@@ -1331,6 +1331,38 @@ applicable agreement for further details.
 		(arc (pt 25 51)(pt 49 40)(rect -6 -11 57 52))
 	)
 )
+(symbol
+	(rect 128 440 160 456)
+	(text "VCC" (rect 7 0 27 10)(font "Arial" (font_size 6)))
+	(text "inst2" (rect 3 5 26 17)(font "Arial" )(invisible))
+	(port
+		(pt 16 16)
+		(output)
+		(text "1" (rect 19 7 24 19)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 19 7 24 19)(font "Courier New" (bold))(invisible))
+		(line (pt 16 16)(pt 16 8))
+	)
+	(drawing
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
+	(rect 176 504 208 536)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "inst3" (rect 3 21 26 33)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
 (connector
 	(text "IR[29]" (rect 184 240 214 252)(font "Arial" ))
 	(pt 232 256)
@@ -2025,4 +2057,14 @@ applicable agreement for further details.
 	(pt 1320 336)
 	(pt 1416 336)
 	(bus)
+)
+(connector
+	(text "1" (rect 128 499 140 504)(font "Arial" )(vertical))
+	(pt 144 456)
+	(pt 144 520)
+)
+(connector
+	(text "0" (rect 176 483 188 488)(font "Arial" )(vertical))
+	(pt 192 504)
+	(pt 192 448)
 )
