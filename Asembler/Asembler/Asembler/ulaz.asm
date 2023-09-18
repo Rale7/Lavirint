@@ -11,7 +11,7 @@
 .define XR E008h
 .define YH E00Ah 
 .define height 9750h
-.define width 9749h
+.define width 974Eh
 .define FIELD_SIZE 4800
 .define USER_STACK 9752h
 .define MAX_HEIGHT 60
@@ -117,7 +117,7 @@ draw_maze_pocetak_unutrasnje:
 	bgrte draw_maze_kraj_spoljne
 	
 	mv rb, r9
-	mul rb, r6
+	mul rb, r5
 	add rb, ra
 	add rb, r0
 	lb rc, (rb)
@@ -303,14 +303,14 @@ push_stack:
 	addi r5, #offset_h
 	asl r6, #1
 	add r5, r6
-	sb r1, (r5) 
+	sw r1, (r5) 
 	
     ;s->w[s->sp] = w;
 	
 	mv r5, r0
 	addi r5, #offset_w
 	add r5, r6
-	sb r2, (r5)
+	sw r2, (r5)
 	
     ;s->sp++;
 	
@@ -419,7 +419,7 @@ init_maze_outter_loop:
 init_maze_inner_loop:
 			mv r9, r1
 			mv ra, r7
-			mul ra, r5
+			mul ra, r6
 			add r9, ra
 			add r9, r8
 			cl rb
@@ -429,7 +429,7 @@ init_maze_inner_loop:
 			
 			mv r9, r0
 			mv ra, r7
-			mul ra, r5
+			mul ra, r6
 			add r9, ra
 			add r9, r8
 			sw rb, (r9)
@@ -479,13 +479,14 @@ generate_maze:
 	lw r6, width
 	subi sp, #4800
 	
+	lw r0, (bp)FFFEh
 	mv r1, bp
 	subi r1, #4824
     ;init_maze(fields, visited);
 	call init_maze
 	
 	push r0
-	mv r0, r1
+	lw r0, (bp)stack_offset
     ;init_stack(s);
 	call init_stack
 	pop r0
@@ -496,6 +497,7 @@ generate_maze:
 	rand r8
 	mod r8, r7
 	inc r8
+	li r8, #5
 	
     ;int starting_width = 1 + (rand() % (width - 2));
 	mv r7, r6
@@ -503,6 +505,7 @@ generate_maze:
 	rand r9
 	mod r9, r7
 	inc r9
+	li r9, #9
 
 	push r0
 	push r1
@@ -516,7 +519,7 @@ generate_maze:
 	pop r1
 	pop r0
 
-    ;while (empty_stack(s)) {
+    ;while (!empty_stack(s)) {
 generate_maze_continue_stack_loop:
 	lw r0, (bp)stack_offset
 	call empty_stack
@@ -540,7 +543,7 @@ generate_maze_continue_stack_loop:
 		mv r9, bp
 		subi r9, #4824
 		mv ra, r7
-		mul ra, r5
+		mul ra, r6
 		add r9, ra
 		add r9, r8
 		li ra, #1
@@ -557,7 +560,7 @@ generate_maze_continue_stack_loop:
 			cmpi r7, #0h
 			bz generate_maze_current_if_1
 			mv rc, r9
-			sub rc, r5
+			sub rc, r6
 			lb rc, (rc)
 			bz generate_maze_next_if_1
 generate_maze_current_if_1:		
@@ -576,7 +579,7 @@ generate_maze_next_if_1:
 			cmp rc, r7
 			beql generate_maze_current_if_2
 			mv rc, r9
-			add rc, r5
+			add rc, r6
 			lb rc, (rc)
 			bz generate_maze_next_if_2
 
@@ -622,7 +625,7 @@ generate_maze_current_if_4:
 			inc ra
 			
             ;f.value = f.value & ~(EAST);
-			li rc, #WEST
+			li rc, #EAST
 			not rc
 			and rb, rc
         ;}
@@ -630,7 +633,7 @@ generate_maze_current_if_4:
 generate_maze_next_if_4:
 			li rc, #4
 			cmp ra, rc
-			bgrte generate_maze_next_if_4
+			bgrte generate_maze_else_grana
 			
             ;int num = rand() % (4 - cnt);
 			sub rc, ra
@@ -656,9 +659,9 @@ generate_maze_continue_loop:
                     ;push_stack(s, h + 1, w);
 					
                     ;fields[h][w].value |= SOUTH;
-					lb r0, (bp)offset_fields
+					lw r0, (bp)offset_fields
 					mv rd, r7
-					mul rd, r5
+					mul rd, r6
 					add r0, rd
 					add r0, r8
 					lb rc, (r0)
@@ -666,7 +669,7 @@ generate_maze_continue_loop:
 					sb rc, (r0)
 					
                     ;fields[h + 1][w].value |= NORTH;
-					add r0, r5
+					add r0, r6
 					lb rc, (r0)
 					ori rc, #NORTH
 					sb rc, (r0)
@@ -690,9 +693,9 @@ generate_maze_next_if_5:
                     ;push_stack(s, h - 1, w);
 					
                     ;fields[h][w].value |= NORTH;
-					lb r0, (bp)offset_fields
+					lw r0, (bp)offset_fields
 					mv rd, r7
-					mul rd, r5
+					mul rd, r6
 					add r0, rd
 					add r0, r8
 					lb rc, (r0)
@@ -700,7 +703,7 @@ generate_maze_next_if_5:
 					sb rc, (r0)
 					
                     ;fields[h - 1][w].value |= SOUTH;
-					add r0, r5
+					sub r0, r6
 					lb rc, (r0)
 					ori rc, #SOUTH
 					sb rc, (r0)
@@ -724,9 +727,9 @@ generate_maze_next_if_6:
                     ;push_stack(s, h, w - 1);
 					
                     ;fields[h][w].value |= WEST;
-					lb r0, (bp)offset_fields
+					lw r0, (bp)offset_fields
 					mv rd, r7
-					mul rd, r5
+					mul rd, r6
 					add r0, rd
 					add r0, r8
 					lb rc, (r0)
@@ -758,9 +761,9 @@ generate_maze_next_if_7:
 					;push_stack(s, h, w + 1);
 					
                     ;fields[h][w].value |= EAST;
-					lb r0, (bp)offset_fields
+					lw r0, (bp)offset_fields
 					mv rd, r7
-					mul rd, r5
+					mul rd, r6
 					add r0, rd
 					add r0, r8
 					lb rc, (r0)
@@ -792,6 +795,8 @@ generate_maze_else_grana:
             ;pop_stack(s);
         ;}
 generate_maze_common:
+		lw r0, (bp)offset_fields
+		call draw_maze
 		jmp generate_maze_continue_stack_loop
     ;}
 generate_maze_end:	
