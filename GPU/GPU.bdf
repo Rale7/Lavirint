@@ -38,7 +38,7 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect -136 760 32 776)
+	(rect -152 760 16 776)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "ADDR[15..0]" (rect 5 0 68 12)(font "Arial" ))
 	(pt 168 8)
@@ -54,7 +54,7 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect -136 792 32 808)
+	(rect -152 792 16 808)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "RDBUS" (rect 5 0 43 12)(font "Arial" ))
 	(pt 168 8)
@@ -70,7 +70,7 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect -136 808 32 824)
+	(rect -152 808 16 824)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "WRBUS" (rect 5 0 46 12)(font "Arial" ))
 	(pt 168 8)
@@ -342,7 +342,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect -136 824 40 840)
+	(rect -152 824 24 840)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
 	(text "IRQ" (rect 5 0 25 12)(font "Arial" ))
 	(pt 176 8)
@@ -359,7 +359,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect -136 840 40 856)
+	(rect -152 840 24 856)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
 	(text "FCBUS" (rect 5 0 42 12)(font "Arial" ))
 	(pt 176 8)
@@ -393,7 +393,7 @@ applicable agreement for further details.
 )
 (pin
 	(bidir)
-	(rect -136 776 40 792)
+	(rect -152 776 24 792)
 	(text "BIDIR" (rect 151 0 175 10)(font "Arial" (font_size 6)))
 	(text "DATA[7..0]" (rect 5 0 59 12)(font "Arial" ))
 	(pt 176 8)
@@ -1754,19 +1754,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 40 784)
-	(pt 24 784)
-	(bus)
-)
-(connector
-	(pt 40 832)
-	(pt 24 832)
-)
-(connector
-	(pt 40 848)
-	(pt 24 848)
-)
-(connector
 	(text "CLK" (rect -32 736 -11 748)(font "Arial" ))
 	(pt -40 752)
 	(pt 24 752)
@@ -1777,7 +1764,7 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "CONTROL[7..0]" (rect 226 856 305 868)(font "Arial" ))
+	(text "CONTROL[7..0]" (rect 226 920 305 932)(font "Arial" ))
 	(pt 232 848)
 	(pt 296 848)
 	(bus)
@@ -1818,17 +1805,17 @@ applicable agreement for further details.
 	(pt -8 224)
 )
 (connector
-	(pt 24 768)
-	(pt 32 768)
-	(bus)
+	(pt 24 816)
+	(pt 16 816)
 )
 (connector
 	(pt 24 800)
-	(pt 32 800)
+	(pt 16 800)
 )
 (connector
-	(pt 24 816)
-	(pt 32 816)
+	(pt 24 768)
+	(pt 16 768)
+	(bus)
 )
 (junction (pt 592 96))
 (junction (pt 616 112))

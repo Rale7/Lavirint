@@ -64,7 +64,7 @@ void IzlazniFile::upisiKomentar(int adresa, std::string kom)
 
 void IzlazniFile::pocetniUpis(std::fstream& izlaz)
 {
-	izlaz << "DEPTH = 8;\n" << "ADDRESS_RADIX = HEX;\n"
+	izlaz << "WIDTH = 8;\n" << "ADDRESS_RADIX = HEX;\n"
 		<< "DATA_RADIX = HEX;\n" << "CONTENT\n" << "BEGIN\n";
 }
 

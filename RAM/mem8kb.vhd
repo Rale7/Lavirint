@@ -155,6 +155,6 @@ END SYN;
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb.vhd TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb.inc FALSE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb.cmp TRUE
--- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb.bsf TRUE
+-- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb.bsf TRUE FALSE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL mem8kb_inst.vhd FALSE
 -- Retrieval info: LIB_FILE: altera_mf

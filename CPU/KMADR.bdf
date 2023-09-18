@@ -674,11 +674,6 @@ applicable agreement for further details.
 	(pt 872 304)
 )
 (connector
-	(text "reginddisp" (rect 854 399 866 448)(font "Arial" )(vertical))
-	(pt 872 440)
-	(pt 872 392)
-)
-(connector
 	(text "memind" (rect 853 486 865 524)(font "Arial" )(vertical))
 	(pt 872 528)
 	(pt 872 480)
@@ -861,6 +856,11 @@ applicable agreement for further details.
 	(pt 848 280)
 	(pt 736 280)
 	(bus)
+)
+(connector
+	(text "reginddisp" (rect 854 383 866 432)(font "Arial" )(vertical))
+	(pt 872 440)
+	(pt 872 376)
 )
 (junction (pt 1024 280))
 (junction (pt 1024 368))

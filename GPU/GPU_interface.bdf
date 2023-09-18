@@ -3474,11 +3474,6 @@ applicable agreement for further details.
 	(pt 776 128)
 )
 (connector
-	(text "CS2" (rect 729 128 750 140)(font "Arial" ))
-	(pt 728 144)
-	(pt 776 144)
-)
-(connector
 	(pt 1000 112)
 	(pt 952 112)
 )
@@ -3490,11 +3485,6 @@ applicable agreement for further details.
 	(text "rdREG" (rect 1072 88 1105 100)(font "Arial" ))
 	(pt 1064 104)
 	(pt 1112 104)
-)
-(connector
-	(text "CS3" (rect 1072 104 1093 116)(font "Arial" ))
-	(pt 1064 120)
-	(pt 1104 120)
 )
 (connector
 	(pt 312 528)
@@ -3510,11 +3500,6 @@ applicable agreement for further details.
 	(pt 424 520)
 )
 (connector
-	(text "CS4" (rect 384 520 405 532)(font "Arial" ))
-	(pt 376 536)
-	(pt 424 536)
-)
-(connector
 	(pt 680 496)
 	(pt 616 496)
 )
@@ -3526,11 +3511,6 @@ applicable agreement for further details.
 	(text "rdREG" (rect 752 472 785 484)(font "Arial" ))
 	(pt 744 488)
 	(pt 784 488)
-)
-(connector
-	(text "CS5" (rect 752 488 773 500)(font "Arial" ))
-	(pt 744 504)
-	(pt 784 504)
 )
 (connector
 	(pt 944 544)
@@ -3561,19 +3541,9 @@ applicable agreement for further details.
 	(pt 1152 496)
 )
 (connector
-	(text "CS6" (rect 1121 496 1142 508)(font "Arial" ))
-	(pt 1120 512)
-	(pt 1160 512)
-)
-(connector
 	(text "rdREG" (rect 1432 480 1465 492)(font "Arial" ))
 	(pt 1424 496)
 	(pt 1456 496)
-)
-(connector
-	(text "CS7" (rect 1432 496 1453 508)(font "Arial" ))
-	(pt 1424 512)
-	(pt 1448 512)
 )
 (connector
 	(pt 1368 576)
@@ -3612,11 +3582,6 @@ applicable agreement for further details.
 	(pt 400 896)
 )
 (connector
-	(text "CS8" (rect 353 896 374 908)(font "Arial" ))
-	(pt 352 912)
-	(pt 400 912)
-)
-(connector
 	(pt 616 968)
 	(pt 616 936)
 	(bus)
@@ -3651,11 +3616,6 @@ applicable agreement for further details.
 	(pt 736 888)
 )
 (connector
-	(text "CS9" (rect 696 888 717 900)(font "Arial" ))
-	(pt 688 904)
-	(pt 736 904)
-)
-(connector
 	(pt 992 968)
 	(pt 992 944)
 	(bus)
@@ -3683,11 +3643,6 @@ applicable agreement for further details.
 	(text "rdREG" (rect 1072 872 1105 884)(font "Arial" ))
 	(pt 1064 888)
 	(pt 1112 888)
-)
-(connector
-	(text "CS10" (rect 1065 888 1092 900)(font "Arial" ))
-	(pt 1064 904)
-	(pt 1112 904)
 )
 (connector
 	(text "ldREG" (rect 1088 712 1119 724)(font "Arial" ))
@@ -3734,11 +3689,6 @@ applicable agreement for further details.
 	(text "rdREG" (rect 1408 864 1441 876)(font "Arial" ))
 	(pt 1400 880)
 	(pt 1448 880)
-)
-(connector
-	(text "CS11" (rect 1401 880 1428 892)(font "Arial" ))
-	(pt 1400 896)
-	(pt 1440 896)
 )
 (connector
 	(pt 1592 -32)
@@ -4238,18 +4188,68 @@ applicable agreement for further details.
 	(pt 496 1824)
 )
 (connector
+	(text "eFCBUS" (rect 1560 3 1572 46)(font "Arial" )(vertical))
+	(pt 1584 16)
+	(pt 1584 48)
+)
+(connector
 	(pt 1608 64)
 	(pt 1632 64)
 )
 (connector
-	(text "1" (rect 1528 48 1533 60)(font "Arial" ))
+	(text "0" (rect 1528 48 1533 60)(font "Arial" ))
 	(pt 1520 64)
 	(pt 1560 64)
 )
 (connector
-	(text "eFCBUS" (rect 1560 3 1572 46)(font "Arial" )(vertical))
-	(pt 1584 16)
-	(pt 1584 48)
+	(text "CS3" (rect 729 128 750 140)(font "Arial" ))
+	(pt 728 144)
+	(pt 776 144)
+)
+(connector
+	(text "CS2" (rect 1072 104 1093 116)(font "Arial" ))
+	(pt 1064 120)
+	(pt 1104 120)
+)
+(connector
+	(text "CS9" (rect 353 896 374 908)(font "Arial" ))
+	(pt 352 912)
+	(pt 400 912)
+)
+(connector
+	(text "CS8" (rect 696 888 717 900)(font "Arial" ))
+	(pt 688 904)
+	(pt 736 904)
+)
+(connector
+	(text "CS11" (rect 1065 888 1092 900)(font "Arial" ))
+	(pt 1064 904)
+	(pt 1112 904)
+)
+(connector
+	(text "CS10" (rect 1401 880 1428 892)(font "Arial" ))
+	(pt 1400 896)
+	(pt 1440 896)
+)
+(connector
+	(text "CS5" (rect 384 520 405 532)(font "Arial" ))
+	(pt 376 536)
+	(pt 424 536)
+)
+(connector
+	(text "CS7" (rect 1121 496 1142 508)(font "Arial" ))
+	(pt 1120 512)
+	(pt 1160 512)
+)
+(connector
+	(text "CS4" (rect 752 488 773 500)(font "Arial" ))
+	(pt 744 504)
+	(pt 784 504)
+)
+(connector
+	(text "CS6" (rect 1432 496 1453 508)(font "Arial" ))
+	(pt 1424 512)
+	(pt 1448 512)
 )
 (junction (pt 1040 576))
 (junction (pt 1368 576))

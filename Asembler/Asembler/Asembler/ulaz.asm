@@ -1,11 +1,275 @@
-
 .define NORTH 01h
 .define SOUTH 02h
 .define EAST 04h
 .define WEST 08h
 .define ALL 0fh
+.define CONTROL_GPU E000h
+.define STATUS_GPU E001h
+.define COLOR E002h
+.define XL E004h
+.define YL E006h
+.define XR E008h
+.define YH E00Ah 
+.define height 9750h
+.define width 9749h
+.define FIELD_SIZE 4800
+.define USER_STACK 9752h
+.define MAX_HEIGHT 60
+.define MAX_WIDTH 80
 
 .org 100h
+main:
+	li r0, #4
+	sb r0, CONTROL_GPU
+	li sp, #9000h
+	mv bp, sp
+	li r0, #15
+	sw r0, height
+	li r0, #20
+	sw r0, width
+	subi sp, #FIELD_SIZE
+	
+	;li r0, #273
+	;muli r0, #15
+	;muli r0, #0
+	;cl r1
+	;cl r2
+	;li r3, #799
+	;li r4, #599
+	;call draw_rectangle
+	
+	;li r5, #f0h
+	;sw r5, 2h
+	;li r6, #2h
+	;lw r0, (r6)
+	;cl r1
+	;li r2, #599
+	;li r3, #799
+	;cl r4
+	;call draw_line
+	
+	;li r0, #f0h
+	;cl r1
+	;cl r2
+	;li r3, #799 
+	;li r4, #599
+	;call draw_line
+	
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;subi sp, #4800
+	;mv r1, bp
+	;subi r1, #9600
+	;call init_maze
+	
+	mv r0, bp
+	subi r0, #FIELD_SIZE
+	li r1, #USER_STACK
+	call generate_maze
+	
+	mv r0, bp
+	subi r0, #FIELD_SIZE
+	call draw_maze
+	
+	halt
+draw_maze:
+	push bp
+	mv bp, sp
+	push r1
+	push r2
+	push r3
+	push r4
+	push r5
+	push r6
+	push r7
+	push r8
+	push r9
+	push ra
+	push rb
+	push rc
+	push rd
+	
+	push r0
+	cl r0
+	cl r1
+	cl r2
+	li r3, #799
+	li r4, #599
+	call draw_rectangle
+	pop r0
+	
+	lw r5, width
+	lw r6, height
+	
+	li r7, #800
+	div r7, r5
+	li r8, #600
+	div r8, r6
+	
+	cl r9
+	cl ra
+	
+draw_maze_pocetak_spoljne:
+	cmp r9, r6
+	bgrte draw_maze_kraj
+draw_maze_pocetak_unutrasnje:
+	cmp ra, r5
+	bgrte draw_maze_kraj_spoljne
+	
+	mv rb, r9
+	mul rb, r6
+	add rb, ra
+	add rb, r0
+	lb rc, (rb)
+	tsti rc, #NORTH
+	bnz draw_maze_next_if1
+	push r0
+	li r0, #00F0h
+	mv r1, r7
+	mul r1, ra
+	mv r2, r8
+	mul r2, r9
+	mv r3, r1
+	add r3, r7
+	mv r4, r2
+	call draw_line
+	pop r0
+draw_maze_next_if1:
+	tsti rc, #SOUTH
+	bnz draw_maze_next_if2
+	push r0
+	li r0, #00F0h
+	mv r1, r7
+	mul r1, ra
+	mv r2, r8
+	mul r2, r9
+	add r2, r8
+	mv r3, r1
+	add r3, r7
+	mv r4, r2
+	call draw_line
+	pop r0
+draw_maze_next_if2:
+	tsti rc, #WEST
+	bnz draw_maze_next_if3
+	push r0
+	li r0, #00F0h
+	mv r1, r7
+	mul r1, ra
+	mv r2, r8
+	mul r2, r9
+	mv r3, r1
+	mv r4, r2
+	add r4, r8
+	call draw_line
+	pop r0
+draw_maze_next_if3:
+	tsti rc, #EAST
+	bnz draw_maze_kraj_unutrasnje
+	push r0
+	li r0, #00F0h
+	mv r1, r7
+	mul r1, ra
+	add r1, r7
+	mv r2, r8
+	mul r2, r9
+	mv r3, r1
+	mv r4, r2
+	add r4, r8
+	call draw_line
+	pop r0
+draw_maze_kraj_unutrasnje:
+	inc ra
+	jmp draw_maze_pocetak_unutrasnje
+draw_maze_kraj_spoljne:
+	inc r9
+	cl ra
+	jmp draw_maze_pocetak_spoljne
+draw_maze_kraj:
+	
+	pop rd
+	pop rc
+	pop rb
+	pop ra
+	pop r9
+	pop r8
+	pop r7
+	pop r6
+	pop r5
+	pop r4
+	pop r3
+	pop r2
+	pop r1
+	pop bp
+	ret
+	
+draw_pixel:
+	push bp
+	mv bp, sp
+	push r5
+	
+draw_pixel_skok:
+	lb r5, STATUS_GPU
+	tsti r5, #1
+	bz draw_pixel_skok
+	
+	sw r0, COLOR
+	sw r1, XL
+	sw r2, YL
+	lb r0, CONTROL_GPU
+	ori r0, #1
+	sb r0, CONTROL_GPU
+	
+	pop r5
+	pop bp
+	ret
+	
+draw_line:
+	push bp
+	mv bp, sp
+	push r5
+	
+draw_line_skok:
+	lb r5, STATUS_GPU
+	tsti r5, #1
+	bz draw_line_skok
+	
+	sw r0, COLOR
+	sw r1, XL
+	sw r2, YL
+	sw r3, XR
+	sw r4, YH
+	lb r0, CONTROL_GPU
+	ori r0, #2
+	sb r0, CONTROL_GPU
+	
+	pop r5
+	pop bp
+	ret
+	
+draw_rectangle:
+	push bp
+	mv bp, sp
+	push r5
+	
+draw_rectangle_skok:
+	lb r5, STATUS_GPU
+	tsti r5, #1
+	bz draw_rectangle_skok
+	
+	sw r0, COLOR
+	sw r1, XL
+	sw r2, YL
+	sw r3, XR
+	sw r4, YH
+	lb r5, CONTROL_GPU
+	ori r5, #3
+	sb r5, CONTROL_GPU
+	
+	pop r5
+	pop bp
+	ret
+	
 ;void init_stack(Stack* s) {
 init_stack:
     push bp
@@ -50,6 +314,7 @@ push_stack:
 	
     ;s->sp++;
 	
+	lw r6, (r0)offset_sp
 	addi r6, #2
 	sw r6, (r0)offset_sp
 	
@@ -83,9 +348,11 @@ empty_stack:
 
     ;return s->sp == 0;
 	lw r0, (r0)offset_sp
-	bz empty_stack_kraj
+	bnz empty_stack_else
 	li r0, #1
-	
+	jmp empty_stack_kraj
+empty_stack_else:
+	cl r0
 ;}
 empty_stack_kraj:
 	pop bp
@@ -100,12 +367,11 @@ get_stack_height:
 
     ;return s->h[s->sp - 1];
 	lw r5, (r0)offset_sp
-	lw r0, (r0)offset_h
 	dec r5
 	asl r5, #1
+	addi r0, #offset_h
 	add r0, r5
 	lw r0, (r0)
-	
 ;}
 	pop r5
 	pop bp
@@ -119,19 +385,16 @@ get_stack_width:
 
     ;return s->w[s->sp - 1];
 	lw r5, (r0)offset_sp
-	lw r0, (r0)offset_w
 	dec r5
 	asl r5, #1
+	addi r0, #offset_w
 	add r0, r5
-	lb r0, (r0)
+	lw r0, (r0)
 
 ;}
 	pop r5
 	pop bp
 	ret
-	
-.define height DFFEh
-.define width DFFCh
 ;void init_maze(Field fields[height][width], bool visited[height][width]) {
 init_maze:
 	push bp
@@ -154,7 +417,7 @@ init_maze_outter_loop:
 	
         ;for (int j = 0; j < width; j++) {
 init_maze_inner_loop:
-			mv r9, r0
+			mv r9, r1
 			mv ra, r7
 			mul ra, r5
 			add r9, ra
@@ -164,7 +427,7 @@ init_maze_inner_loop:
 			
             ;visited[i][j] = false;
 			
-			mv r9, r1
+			mv r9, r0
 			mv ra, r7
 			mul ra, r5
 			add r9, ra
@@ -173,7 +436,7 @@ init_maze_inner_loop:
             ;fields[i][j].value = 0;
         ;}
 		inc r8
-		cmp r8, r5
+		cmp r8, r6
 		blss init_maze_inner_loop
     ;}
 	
@@ -182,6 +445,7 @@ init_maze_inner_loop:
 	blss init_maze_outter_loop
 
 ;}
+	pop rb
 	pop ra
 	pop r9
 	pop r8
@@ -192,6 +456,7 @@ init_maze_inner_loop:
 	ret
 
 ;void generate_maze(Field fields[height][width], Stack* s) {
+generate_maze:
 	push bp
 	mv bp, sp
 	push r0
@@ -212,23 +477,18 @@ init_maze_inner_loop:
 	srand
 	lw r5, height
 	lw r6, width
-	cl r7
-	add r7, r5
-	mul r7, r6
-	add sp, r7
+	subi sp, #4800
 	
-	.define visited_offset 26
 	mv r1, bp
-	addi r1, #visited_offset
+	subi r1, #4824
     ;init_maze(fields, visited);
 	call init_maze
-	pop r1
 	
 	push r0
 	mv r0, r1
     ;init_stack(s);
 	call init_stack
-	pop r1
+	pop r0
 
     ;int starting_height = 1 + (rand() % (height - 2));
 	mv r7, r5
@@ -238,7 +498,7 @@ init_maze_inner_loop:
 	inc r8
 	
     ;int starting_width = 1 + (rand() % (width - 2));
-	mv r7, r5
+	mv r7, r6
 	subi r7, #2
 	rand r9
 	mod r9, r7
@@ -247,24 +507,23 @@ init_maze_inner_loop:
 	push r0
 	push r1
 	push r2
-	mv r0, r1
+	lw r0, (bp)stack_offset
 	mv r1, r8
 	mv r2, r9
-	call push_stack
-    
+	call push_stack    
 	;push_stack(s, starting_height, starting_width);
-	pop r0
-	pop r1
 	pop r2
-	
+	pop r1
+	pop r0
 
     ;while (empty_stack(s)) {
 generate_maze_continue_stack_loop:
-	mv r0, r1
+	lw r0, (bp)stack_offset
 	call empty_stack
-	bz generate_maze_end
+	cmpi r0, #0h
+	bneql generate_maze_end
 	
-		.define stack_offset 4
+		.define stack_offset FFFCh
 		lw r0, (bp)stack_offset
 		call get_stack_height
 		
@@ -278,16 +537,14 @@ generate_maze_continue_stack_loop:
 		mv r8, r0
 		
         ;visited[h][w] = true;
-		lb r9, (bp)visited_offset
-		cl ra
-		add ra, r7
+		mv r9, bp
+		subi r9, #4824
+		mv ra, r7
 		mul ra, r5
 		add r9, ra
 		add r9, r8
-		push ra
 		li ra, #1
 		sb ra, (r9)
-		pop ra
 		
 		cl ra
         ;int cnt = 0;
@@ -297,11 +554,11 @@ generate_maze_continue_stack_loop:
 		li rb, #ALL
 		
         ;if (h == 0 || visited[h - 1][w]) {
-			mv r7, r7
-			bnz generate_maze_current_if_1
+			cmpi r7, #0h
+			bz generate_maze_current_if_1
 			mv rc, r9
-			sub r9, r5
-			lb r9, (r9)
+			sub rc, r5
+			lb rc, (rc)
 			bz generate_maze_next_if_1
 generate_maze_current_if_1:		
             ;cnt++;
@@ -317,10 +574,10 @@ generate_maze_next_if_1:
 			mv rc, r5
 			dec rc
 			cmp rc, r7
-			bneql generate_maze_current_if_2
+			beql generate_maze_current_if_2
 			mv rc, r9
-			add r9, r5
-			lb r9, (r9)
+			add rc, r5
+			lb rc, (rc)
 			bz generate_maze_next_if_2
 
 generate_maze_current_if_2:			
@@ -334,8 +591,8 @@ generate_maze_current_if_2:
         ;}
         ;if (w == 0 || visited[h][w - 1]) {
 generate_maze_next_if_2:
-			mv r8, r8
-			bnz generate_maze_current_if_3
+			cmpi r8, #0h
+			bz generate_maze_current_if_3
 			mv rc, r9
 			dec rc
 			lb rc, (rc)
@@ -353,9 +610,9 @@ generate_maze_current_if_3:
         ;if (w == width - 1 || visited[h][w + 1]) {
 generate_maze_next_if_3:
 			mv rc, r6
-			dec r6
-			cmp r8, r6
-			bneql generate_maze_current_if_4
+			dec rc
+			cmp r8, rc
+			beql generate_maze_current_if_4
 			mv rc, r9
 			inc rc
 			lb rc, (rc)
@@ -373,15 +630,16 @@ generate_maze_current_if_4:
 generate_maze_next_if_4:
 			li rc, #4
 			cmp ra, rc
-			bgrte generate_maze_else_grana
+			bgrte generate_maze_next_if_4
 			
             ;int num = rand() % (4 - cnt);
 			sub rc, ra
+			mv ra, rc
 			rand rc
 			mod rc, ra
 			
             ;while (true) {
-			.define offset_fields 2
+			.define offset_fields FFFEh
 generate_maze_continue_loop:
                 ;if (num == 0 && (f.value & SOUTH)) {
 					li ra, #0
@@ -392,7 +650,7 @@ generate_maze_continue_loop:
 					
 					lw r0, (bp)stack_offset
 					mv r1, r7
-					inc r0
+					inc r1
 					mv r2, r8
 					call push_stack
                     ;push_stack(s, h + 1, w);
@@ -426,7 +684,7 @@ generate_maze_next_if_5:
 					
 					lw r0, (bp)stack_offset
 					mv r1, r7
-					dec r0
+					dec r1
 					mv r2, r8
 					call push_stack
                     ;push_stack(s, h - 1, w);
@@ -488,9 +746,9 @@ generate_maze_next_if_6:
 generate_maze_next_if_7:
 					li ra, #3
 					cmp rc, ra
-					bneql generate_maze_next_if_7
+					bneql generate_maze_else2
 					tsti rb, #EAST
-					bz generate_maze_next_if_7
+					bz generate_maze_else2
 					
 					lw r0, (bp)stack_offset
 					mv r1, r7
@@ -512,13 +770,13 @@ generate_maze_next_if_7:
 					;fields[h][w + 1].value |= WEST;
 					inc r0
 					lb rc, (r0)
-					ori rc, #EAST
+					ori rc, #WEST
 					sb rc, (r0)
 					
                     ;break;
 					jmp generate_maze_end_loop
                 ;}
-				
+generate_maze_else2:
                 ;num = (num + 1) % 4;
 				inc rc
 				modi rc, #4
@@ -536,9 +794,9 @@ generate_maze_else_grana:
 generate_maze_common:
 		jmp generate_maze_continue_stack_loop
     ;}
-	generate_maze_end:	
+generate_maze_end:	
 ;}
-	subi sp, #visited_offset
+	addi sp, #4800
 	pop rd
 	pop rc
 	pop rb
@@ -548,5 +806,8 @@ generate_maze_common:
 	pop r7
 	pop r6
 	pop r5
+	pop r2
+	pop r1
+	pop r0
 	pop bp
 	ret

@@ -26,7 +26,7 @@ inline void LoadStoreInst<kod_operacije>::obradi(std::string s, IzlazniFile& it)
 	if (std::regex_match(op2.c_str(), m, std::regex("\\((r)([0-9a-f]+)\\)$"))) {
 		int reg2 = stoi(m[2], 0, 16);
 		if (reg2 < 0 || reg2 > 16) throw GreskaLoseDefinisanaInstrukcija(s);
-		it.upisiLokaciju(pc++, dohvati_kod_operacije() | 0x02);
+		it.upisiLokaciju(pc++, dohvati_kod_operacije() | 0x03);
 		it.upisiLokaciju(pc++, reg1 << 4 | reg2);
 	}
 	else if (std::regex_match(op2.c_str(), m,
@@ -34,7 +34,7 @@ inline void LoadStoreInst<kod_operacije>::obradi(std::string s, IzlazniFile& it)
 		int reg2 = stoi(m[2], 0, 16);
 		if (reg2 < 0 || reg2 > 16) throw GreskaLoseDefinisanaInstrukcija(s);
 		int pomeraj = dohvati_broj(m[3].str());
-		it.upisiLokaciju(pc++, dohvati_kod_operacije() | 0x03);
+		it.upisiLokaciju(pc++, dohvati_kod_operacije() | 0x02);
 		it.upisiLokaciju(pc++, reg1 << 4 | reg2);
 		it.upisiLokaciju(pc++, pomeraj);
 		it.upisiLokaciju(pc++, pomeraj >> 8);

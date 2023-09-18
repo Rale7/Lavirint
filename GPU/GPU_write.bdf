@@ -1917,6 +1917,12 @@ applicable agreement for further details.
 	(pt 168 312)
 	(bus)
 )
+(connector
+	(text "T[3..0]" (rect 824 208 855 220)(font "Arial" ))
+	(pt 816 224)
+	(pt 848 224)
+	(bus)
+)
 (junction (pt 384 80))
 (junction (pt 408 96))
 (junction (pt 432 112))

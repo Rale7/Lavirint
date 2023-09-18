@@ -281,11 +281,6 @@ applicable agreement for further details.
 	(pt 544 392)
 )
 (connector
-	(text "S1" (rect 560 357 572 369)(font "Arial" )(vertical))
-	(pt 576 360)
-	(pt 576 384)
-)
-(connector
 	(text "E" (rect 544 178 556 185)(font "Arial" )(vertical))
 	(pt 560 200)
 	(pt 560 160)
@@ -318,11 +313,6 @@ applicable agreement for further details.
 	(text "S0" (rect 808 381 820 393)(font "Arial" )(vertical))
 	(pt 824 376)
 	(pt 824 408)
-)
-(connector
-	(text "S1" (rect 840 373 852 385)(font "Arial" )(vertical))
-	(pt 856 376)
-	(pt 856 400)
 )
 (connector
 	(text "E" (rect 824 194 836 201)(font "Arial" )(vertical))
@@ -364,4 +354,14 @@ applicable agreement for further details.
 	(pt 496 304)
 	(pt 432 304)
 	(bus)
+)
+(connector
+	(text "S1" (rect 560 365 572 377)(font "Arial" )(vertical))
+	(pt 576 360)
+	(pt 576 392)
+)
+(connector
+	(text "S1" (rect 840 381 852 393)(font "Arial" )(vertical))
+	(pt 856 376)
+	(pt 856 408)
 )

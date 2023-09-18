@@ -1075,7 +1075,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 736 -24 800 56)
+	(rect 712 144 776 224)
 	(text "OR4" (rect 1 0 19 10)(font "Arial" (font_size 6)))
 	(text "inst42" (rect 3 69 32 81)(font "Arial" ))
 	(port
@@ -1124,7 +1124,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 704 152 768 232)
+	(rect 704 0 768 80)
 	(text "OR4" (rect 1 0 19 10)(font "Arial" (font_size 6)))
 	(text "inst43" (rect 3 69 32 81)(font "Arial" ))
 	(port
@@ -2608,62 +2608,6 @@ applicable agreement for further details.
 	(pt 136 72)
 )
 (connector
-	(text "rorc" (rect 688 -24 706 -12)(font "Arial" ))
-	(pt 736 -8)
-	(pt 680 -8)
-)
-(connector
-	(text "ror" (rect 696 -8 708 4)(font "Arial" ))
-	(pt 736 8)
-	(pt 688 8)
-)
-(connector
-	(text "lsr" (rect 688 8 699 20)(font "Arial" ))
-	(pt 736 24)
-	(pt 680 24)
-)
-(connector
-	(text "asr" (rect 696 24 711 36)(font "Arial" ))
-	(pt 736 40)
-	(pt 688 40)
-)
-(connector
-	(pt 800 16)
-	(pt 816 16)
-)
-(connector
-	(pt 816 16)
-	(pt 816 96)
-)
-(connector
-	(pt 768 192)
-	(pt 816 192)
-)
-(connector
-	(pt 816 192)
-	(pt 816 240)
-)
-(connector
-	(text "rolc" (rect 672 152 689 164)(font "Arial" ))
-	(pt 704 168)
-	(pt 664 168)
-)
-(connector
-	(text "rol" (rect 672 168 683 180)(font "Arial" ))
-	(pt 704 184)
-	(pt 664 184)
-)
-(connector
-	(text "lsl" (rect 672 184 682 196)(font "Arial" ))
-	(pt 672 200)
-	(pt 704 200)
-)
-(connector
-	(text "asl" (rect 680 200 694 212)(font "Arial" ))
-	(pt 704 216)
-	(pt 672 216)
-)
-(connector
 	(pt 840 256)
 	(pt 1080 256)
 	(bus)
@@ -3348,16 +3292,72 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "0,1,0,0,1,1,0,1" (rect 592 1240 663 1252)(font "Arial" ))
+	(text "0,1,0,0,1,1,0,0" (rect 592 1240 663 1252)(font "Arial" ))
 	(pt 792 1256)
 	(pt 584 1256)
 	(bus)
 )
 (connector
-	(text "0,1,0,1,0,0,1,0" (rect 592 1160 663 1172)(font "Arial" ))
+	(text "1,0,0,1,1,1,0,1" (rect 592 1160 663 1172)(font "Arial" ))
 	(pt 792 1176)
 	(pt 584 1176)
 	(bus)
+)
+(connector
+	(text "rorc" (rect 664 144 682 156)(font "Arial" ))
+	(pt 712 160)
+	(pt 656 160)
+)
+(connector
+	(text "ror" (rect 672 160 684 172)(font "Arial" ))
+	(pt 712 176)
+	(pt 664 176)
+)
+(connector
+	(text "lsr" (rect 664 176 675 188)(font "Arial" ))
+	(pt 712 192)
+	(pt 656 192)
+)
+(connector
+	(text "asr" (rect 672 192 687 204)(font "Arial" ))
+	(pt 712 208)
+	(pt 664 208)
+)
+(connector
+	(pt 776 184)
+	(pt 816 184)
+)
+(connector
+	(pt 816 184)
+	(pt 816 240)
+)
+(connector
+	(text "rolc" (rect 672 0 689 12)(font "Arial" ))
+	(pt 704 16)
+	(pt 664 16)
+)
+(connector
+	(text "rol" (rect 672 16 683 28)(font "Arial" ))
+	(pt 704 32)
+	(pt 664 32)
+)
+(connector
+	(text "lsl" (rect 672 32 682 44)(font "Arial" ))
+	(pt 672 48)
+	(pt 704 48)
+)
+(connector
+	(text "asl" (rect 680 48 694 60)(font "Arial" ))
+	(pt 704 64)
+	(pt 672 64)
+)
+(connector
+	(pt 768 40)
+	(pt 816 40)
+)
+(connector
+	(pt 816 40)
+	(pt 816 96)
 )
 (junction (pt 1080 256))
 (junction (pt 1080 352))

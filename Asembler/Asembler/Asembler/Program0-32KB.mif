@@ -1,1152 +1,1853 @@
 DEPTH = 32768;
-DEPTH = 8;
+WIDTH = 8;
 ADDRESS_RADIX = HEX;
 DATA_RADIX = HEX;
 CONTENT
 BEGIN
-%push re%
-100 : 60;
-101 : e0;
+%li r0, #4%
+100 : 9a;
+101 : 0;
+102 : 4;
+103 : 0;
+%sb r0, control_gpu%
+104 : b0;
+105 : 0;
+106 : 0;
+107 : e0;
+%li rf, #9000h%
+108 : 9a;
+109 : f0;
+10a : 0;
+10b : 90;
 %mv re, rf%
-102 : 8a;
-103 : ef;
-%push r5%
-104 : 60;
-105 : 50;
-%cl r5%
-106 : 65;
-107 : 50;
-%sw r5, (r0)%
-108 : ba;
-109 : 50;
-%pop r5%
-10a : 61;
-10b : 50;
-%pop re%
-10c : 61;
-10d : e0;
-%push re%
-10e : 60;
-10f : e0;
-%mv re, rf%
-110 : 8a;
-111 : ef;
-%push r5%
-112 : 60;
-113 : 50;
-%push r6%
-114 : 60;
-115 : 60;
-%mv r5, r0%
-116 : 8a;
-117 : 50;
-%lw r6, (r0)offset_rf%
-118 : ab;
-119 : 60;
-11a : 0;
+10c : 8a;
+10d : ef;
+%li r0, #15%
+10e : 9a;
+10f : 0;
+110 : f;
+111 : 0;
+%sw r0, height%
+112 : b8;
+113 : 0;
+114 : 50;
+115 : 97;
+%li r0, #20%
+116 : 9a;
+117 : 0;
+118 : 14;
+119 : 0;
+%sw r0, width%
+11a : b8;
 11b : 0;
-%addi r5, #offset_h%
-11c : 90;
-11d : 50;
-11e : 2;
-11f : 0;
-%asl r6, #1%
-120 : d0;
-121 : 61;
-%add r5, r6%
-122 : 80;
-123 : 56;
-%sb r1, (r5)%
-124 : b2;
-125 : 15;
-%mv r5, r0%
-126 : 8a;
-127 : 50;
-%addi r5, #offset_w%
-128 : 90;
-129 : 50;
-12a : 82;
-12b : 25;
-%add r5, r6%
-12c : 80;
-12d : 56;
-%sb r2, (r5)%
-12e : b2;
-12f : 25;
-%addi r6, #2%
-130 : 90;
-131 : 60;
-132 : 2;
-133 : 0;
-%sw r6, (r0)offset_rf%
-134 : bb;
-135 : 60;
-136 : 0;
-137 : 0;
-%pop r6%
-138 : 61;
+11c : 49;
+11d : 97;
+%subi rf, #field_size%
+11e : 91;
+11f : f0;
+120 : c0;
+121 : 12;
+%mv r0, re%
+122 : 8a;
+123 : e;
+%subi r0, #field_size%
+124 : 91;
+125 : 0;
+126 : c0;
+127 : 12;
+%li r1, #user_stack%
+128 : 9a;
+129 : 10;
+12a : 52;
+12b : 97;
+%call generate_maze%
+12c : 21;
+12d : de;
+12e : 3;
+%mv r0, re%
+12f : 8a;
+130 : e;
+%subi r0, #field_size%
+131 : 91;
+132 : 0;
+133 : c0;
+134 : 12;
+%call draw_maze%
+135 : 21;
+136 : 39;
+137 : 1;
+%halt%
+138 : 45;
+%push re%
 139 : 60;
-%pop r5%
-13a : 61;
-13b : 50;
-%pop re%
-13c : 61;
-13d : e0;
-%push re%
-13e : 60;
-13f : e0;
+13a : e0;
 %mv re, rf%
-140 : 8a;
-141 : ef;
-%push r5%
-142 : 60;
-143 : 50;
-%lw r5, (r0)offset_rf%
-144 : ab;
-145 : 50;
-146 : 0;
-147 : 0;
-%subi r5, #2%
-148 : 91;
-149 : 50;
-14a : 2;
-14b : 0;
-%sw r5, (r0)offset_rf%
-14c : bb;
-14d : 50;
-14e : 0;
-14f : 0;
-%pop r5%
-150 : 61;
-151 : 50;
-%pop re%
-152 : 61;
-153 : e0;
-%push re%
-154 : 60;
-155 : e0;
-%mv re, rf%
-156 : 8a;
-157 : ef;
-%lw r0, (r0)offset_rf%
-158 : ab;
-159 : 0;
-15a : 0;
-15b : 0;
-%bz empty_stack_kraj%
-15c : 8;
-15d : 4;
-15e : 0;
-%li r0, #1%
-15f : 9a;
-160 : 0;
-161 : 1;
-162 : 0;
-%pop re%
-163 : 61;
-164 : e0;
-%push re%
-165 : 60;
-166 : e0;
-%mv re, rf%
-167 : 8a;
-168 : ef;
-%push r5%
-169 : 60;
-16a : 50;
-%lw r5, (r0)offset_rf%
-16b : ab;
-16c : 50;
-16d : 0;
-16e : 0;
-%lw r0, (r0)offset_h%
-16f : ab;
-170 : 0;
-171 : 2;
-172 : 0;
-%dec r5%
-173 : 64;
-174 : 50;
-%asl r5, #1%
-175 : d0;
-176 : 51;
-%add r0, r5%
-177 : 80;
-178 : 5;
-%lw r0, (r0)%
-179 : aa;
-17a : 0;
-%pop r5%
-17b : 61;
-17c : 50;
-%pop re%
-17d : 61;
-17e : e0;
-%push re%
-17f : 60;
-180 : e0;
-%mv re, rf%
-181 : 8a;
-182 : ef;
-%push r5%
-183 : 60;
-184 : 50;
-%lw r5, (r0)offset_rf%
-185 : ab;
-186 : 50;
-187 : 0;
-188 : 0;
-%lw r0, (r0)offset_w%
-189 : ab;
-18a : 0;
-18b : 82;
-18c : 25;
-%dec r5%
-18d : 64;
-18e : 50;
-%asl r5, #1%
-18f : d0;
-190 : 51;
-%add r0, r5%
-191 : 80;
-192 : 5;
-%lb r0, (r0)%
-193 : a2;
-194 : 0;
-%pop r5%
-195 : 61;
-196 : 50;
-%pop re%
-197 : 61;
-198 : e0;
-%push re%
-199 : 60;
-19a : e0;
-%mv re, rf%
-19b : 8a;
-19c : ef;
-%push r5%
-19d : 60;
-19e : 50;
-%push r6%
-19f : 60;
-1a0 : 60;
-%push r7%
-1a1 : 60;
-1a2 : 70;
-%push r8%
-1a3 : 60;
-1a4 : 80;
-%push r9%
-1a5 : 60;
-1a6 : 90;
-%push ra%
-1a7 : 60;
-1a8 : a0;
-%push rb%
-1a9 : 60;
-1aa : b0;
-%lw r5, height%
-1ab : a8;
-1ac : 50;
-1ad : fe;
-1ae : df;
-%lw r6, width%
-1af : a8;
-1b0 : 60;
-1b1 : fc;
-1b2 : df;
-%cl r7%
-1b3 : 65;
-1b4 : 70;
-%cl r8%
-1b5 : 65;
-1b6 : 80;
-%mv r9, r0%
-1b7 : 8a;
-1b8 : 90;
-%mv ra, r7%
-1b9 : 8a;
-1ba : a7;
-%mul ra, r5%
-1bb : 82;
-1bc : a5;
-%add r9, ra%
-1bd : 80;
-1be : 9a;
-%add r9, r8%
-1bf : 80;
-1c0 : 98;
-%cl rb%
-1c1 : 65;
-1c2 : b0;
-%sw rb, (r9)%
-1c3 : ba;
-1c4 : b9;
-%mv r9, r1%
-1c5 : 8a;
-1c6 : 91;
-%mv ra, r7%
-1c7 : 8a;
-1c8 : a7;
-%mul ra, r5%
-1c9 : 82;
-1ca : a5;
-%add r9, ra%
-1cb : 80;
-1cc : 9a;
-%add r9, r8%
-1cd : 80;
-1ce : 98;
-%sw rb, (r9)%
-1cf : ba;
-1d0 : b9;
-%inc r8%
-1d1 : 63;
-1d2 : 80;
-%cmp r8, r5%
-1d3 : 85;
-1d4 : 85;
-%blss init_maze_inner_loop%
-1d5 : 2;
-1d6 : df;
-1d7 : ff;
-%inc r7%
-1d8 : 63;
-1d9 : 70;
-%cmp r7, r5%
-1da : 85;
-1db : 75;
-%blss init_maze_outter_loop%
-1dc : 2;
-1dd : d6;
-1de : ff;
-%pop ra%
-1df : 61;
-1e0 : a0;
-%pop r9%
-1e1 : 61;
-1e2 : 90;
-%pop r8%
-1e3 : 61;
-1e4 : 80;
-%pop r7%
-1e5 : 61;
-1e6 : 70;
-%pop r6%
-1e7 : 61;
-1e8 : 60;
-%pop r5%
-1e9 : 61;
-1ea : 50;
-%pop re%
-1eb : 61;
-1ec : e0;
-%push re%
-1ed : 60;
-1ee : e0;
-%mv re, rf%
-1ef : 8a;
-1f0 : ef;
-%push r0%
-1f1 : 60;
-1f2 : 0;
+13b : 8a;
+13c : ef;
 %push r1%
-1f3 : 60;
-1f4 : 10;
+13d : 60;
+13e : 10;
 %push r2%
-1f5 : 60;
-1f6 : 20;
+13f : 60;
+140 : 20;
+%push r3%
+141 : 60;
+142 : 30;
+%push r4%
+143 : 60;
+144 : 40;
 %push r5%
-1f7 : 60;
-1f8 : 50;
+145 : 60;
+146 : 50;
 %push r6%
-1f9 : 60;
-1fa : 60;
+147 : 60;
+148 : 60;
 %push r7%
-1fb : 60;
-1fc : 70;
+149 : 60;
+14a : 70;
 %push r8%
-1fd : 60;
-1fe : 80;
+14b : 60;
+14c : 80;
 %push r9%
-1ff : 60;
-200 : 90;
+14d : 60;
+14e : 90;
 %push ra%
-201 : 60;
-202 : a0;
+14f : 60;
+150 : a0;
 %push rb%
-203 : 60;
-204 : b0;
+151 : 60;
+152 : b0;
 %push rc%
-205 : 60;
-206 : c0;
+153 : 60;
+154 : c0;
 %push rd%
-207 : 60;
-208 : d0;
-%lw r5, height%
-209 : a8;
-20a : 50;
-20b : fe;
-20c : df;
-%lw r6, width%
-20d : a8;
-20e : 60;
-20f : fc;
-210 : df;
-%cl r7%
-211 : 65;
-212 : 70;
-%add r7, r5%
-213 : 80;
-214 : 75;
-%mul r7, r6%
-215 : 82;
-216 : 76;
-%add rf, r7%
-217 : 80;
-218 : f7;
-%mv r1, re%
-219 : 8a;
-21a : 1e;
-%addi r1, #visited_offset%
-21b : 90;
-21c : 10;
-21d : 1a;
-21e : 0;
-%call init_maze%
-21f : 21;
-220 : 99;
-221 : 1;
-%pop r1%
-222 : 61;
-223 : 10;
+155 : 60;
+156 : d0;
 %push r0%
-224 : 60;
-225 : 0;
-%mv r0, r1%
-226 : 8a;
-227 : 1;
-%call init_stack%
-228 : 21;
-229 : 0;
-22a : 1;
-%pop r1%
-22b : 61;
-22c : 10;
-%mv r7, r5%
-22d : 8a;
-22e : 75;
-%subi r7, #2%
-22f : 91;
-230 : 70;
-231 : 2;
-232 : 0;
-%rand r8%
-233 : 62;
-234 : 80;
-%mod r8, r7%
-235 : 84;
-236 : 87;
-%inc r8%
-237 : 63;
-238 : 80;
-%mv r7, r5%
-239 : 8a;
-23a : 75;
-%subi r7, #2%
-23b : 91;
-23c : 70;
-23d : 2;
-23e : 0;
-%rand r9%
-23f : 62;
-240 : 90;
-%mod r9, r7%
-241 : 84;
-242 : 97;
-%inc r9%
-243 : 63;
-244 : 90;
-%push r0%
-245 : 60;
-246 : 0;
-%push r1%
-247 : 60;
-248 : 10;
-%push r2%
-249 : 60;
-24a : 20;
-%mv r0, r1%
-24b : 8a;
-24c : 1;
-%mv r1, r8%
-24d : 8a;
-24e : 18;
-%mv r2, r9%
-24f : 8a;
-250 : 29;
-%call push_stack%
-251 : 21;
-252 : e;
-253 : 1;
+157 : 60;
+158 : 0;
+%cl r0%
+159 : 65;
+15a : 0;
+%cl r1%
+15b : 65;
+15c : 10;
+%cl r2%
+15d : 65;
+15e : 20;
+%li r3, #799%
+15f : 9a;
+160 : 30;
+161 : 1f;
+162 : 3;
+%li r4, #599%
+163 : 9a;
+164 : 40;
+165 : 57;
+166 : 2;
+%call draw_rectangle%
+167 : 21;
+168 : a9;
+169 : 2;
 %pop r0%
-254 : 61;
-255 : 0;
-%pop r1%
-256 : 61;
-257 : 10;
-%pop r2%
-258 : 61;
-259 : 20;
-%mv r0, r1%
-25a : 8a;
-25b : 1;
-%call empty_stack%
-25c : 21;
-25d : 54;
-25e : 1;
-%bz generate_maze_end%
-25f : 8;
-260 : b5;
-261 : 1;
-%lw r0, (re)stack_offset%
-262 : ab;
-263 : e;
-264 : 4;
-265 : 0;
-%call get_stack_height%
-266 : 21;
-267 : 65;
-268 : 1;
-%mv r7, r0%
-269 : 8a;
-26a : 70;
-%lw r0, (re)stack_offset%
-26b : ab;
-26c : e;
-26d : 4;
-26e : 0;
-%call get_stack_width%
-26f : 21;
-270 : 7f;
-271 : 1;
-%mv r8, r0%
-272 : 8a;
-273 : 80;
-%lb r9, (re)visited_offset%
-274 : a3;
-275 : 9e;
-276 : 1a;
-277 : 0;
+16a : 61;
+16b : 0;
+%lw r5, width%
+16c : a8;
+16d : 50;
+16e : 49;
+16f : 97;
+%lw r6, height%
+170 : a8;
+171 : 60;
+172 : 50;
+173 : 97;
+%li r7, #800%
+174 : 9a;
+175 : 70;
+176 : 20;
+177 : 3;
+%div r7, r5%
+178 : 83;
+179 : 75;
+%li r8, #600%
+17a : 9a;
+17b : 80;
+17c : 58;
+17d : 2;
+%div r8, r6%
+17e : 83;
+17f : 86;
+%cl r9%
+180 : 65;
+181 : 90;
 %cl ra%
-278 : 65;
-279 : a0;
-%add ra, r7%
-27a : 80;
-27b : a7;
-%mul ra, r5%
-27c : 82;
-27d : a5;
-%add r9, ra%
-27e : 80;
-27f : 9a;
-%add r9, r8%
-280 : 80;
-281 : 98;
-%push ra%
-282 : 60;
-283 : a0;
-%li ra, #1%
-284 : 9a;
-285 : a0;
-286 : 1;
-287 : 0;
-%sb ra, (r9)%
-288 : b2;
-289 : a9;
-%pop ra%
-28a : 61;
-28b : a0;
+182 : 65;
+183 : a0;
+%cmp r9, r6%
+184 : 85;
+185 : 96;
+%bgrte draw_maze_kraj%
+186 : 1;
+187 : 9f;
+188 : 0;
+%cmp ra, r5%
+189 : 85;
+18a : a5;
+%bgrte draw_maze_kraj_rfoljne%
+18b : 1;
+18c : 93;
+18d : 0;
+%mv rb, r9%
+18e : 8a;
+18f : b9;
+%mul rb, r6%
+190 : 82;
+191 : b6;
+%add rb, ra%
+192 : 80;
+193 : ba;
+%add rb, r0%
+194 : 80;
+195 : b0;
+%lb rc, (rb)%
+196 : a3;
+197 : cb;
+%tsti rc, #north%
+198 : 99;
+199 : c0;
+19a : 1;
+19b : 0;
+%bnz draw_maze_next_if1%
+19c : 9;
+19d : 19;
+19e : 0;
+%push r0%
+19f : 60;
+1a0 : 0;
+%li r0, #00f0h%
+1a1 : 9a;
+1a2 : 0;
+1a3 : f0;
+1a4 : 0;
+%mv r1, r7%
+1a5 : 8a;
+1a6 : 17;
+%mul r1, ra%
+1a7 : 82;
+1a8 : 1a;
+%mv r2, r8%
+1a9 : 8a;
+1aa : 28;
+%mul r2, r9%
+1ab : 82;
+1ac : 29;
+%mv r3, r1%
+1ad : 8a;
+1ae : 31;
+%add r3, r7%
+1af : 80;
+1b0 : 37;
+%mv r4, r2%
+1b1 : 8a;
+1b2 : 42;
+%call draw_line%
+1b3 : 21;
+1b4 : 73;
+1b5 : 2;
+%pop r0%
+1b6 : 61;
+1b7 : 0;
+%tsti rc, #south%
+1b8 : 99;
+1b9 : c0;
+1ba : 2;
+1bb : 0;
+%bnz draw_maze_next_if2%
+1bc : 9;
+1bd : 1b;
+1be : 0;
+%push r0%
+1bf : 60;
+1c0 : 0;
+%li r0, #00f0h%
+1c1 : 9a;
+1c2 : 0;
+1c3 : f0;
+1c4 : 0;
+%mv r1, r7%
+1c5 : 8a;
+1c6 : 17;
+%mul r1, ra%
+1c7 : 82;
+1c8 : 1a;
+%mv r2, r8%
+1c9 : 8a;
+1ca : 28;
+%mul r2, r9%
+1cb : 82;
+1cc : 29;
+%add r2, r8%
+1cd : 80;
+1ce : 28;
+%mv r3, r1%
+1cf : 8a;
+1d0 : 31;
+%add r3, r7%
+1d1 : 80;
+1d2 : 37;
+%mv r4, r2%
+1d3 : 8a;
+1d4 : 42;
+%call draw_line%
+1d5 : 21;
+1d6 : 73;
+1d7 : 2;
+%pop r0%
+1d8 : 61;
+1d9 : 0;
+%tsti rc, #west%
+1da : 99;
+1db : c0;
+1dc : 8;
+1dd : 0;
+%bnz draw_maze_next_if3%
+1de : 9;
+1df : 19;
+1e0 : 0;
+%push r0%
+1e1 : 60;
+1e2 : 0;
+%li r0, #00f0h%
+1e3 : 9a;
+1e4 : 0;
+1e5 : f0;
+1e6 : 0;
+%mv r1, r7%
+1e7 : 8a;
+1e8 : 17;
+%mul r1, ra%
+1e9 : 82;
+1ea : 1a;
+%mv r2, r8%
+1eb : 8a;
+1ec : 28;
+%mul r2, r9%
+1ed : 82;
+1ee : 29;
+%mv r3, r1%
+1ef : 8a;
+1f0 : 31;
+%mv r4, r2%
+1f1 : 8a;
+1f2 : 42;
+%add r4, r8%
+1f3 : 80;
+1f4 : 48;
+%call draw_line%
+1f5 : 21;
+1f6 : 73;
+1f7 : 2;
+%pop r0%
+1f8 : 61;
+1f9 : 0;
+%tsti rc, #east%
+1fa : 99;
+1fb : c0;
+1fc : 4;
+1fd : 0;
+%bnz draw_maze_kraj_unutrasnje%
+1fe : 9;
+1ff : 1b;
+200 : 0;
+%push r0%
+201 : 60;
+202 : 0;
+%li r0, #00f0h%
+203 : 9a;
+204 : 0;
+205 : f0;
+206 : 0;
+%mv r1, r7%
+207 : 8a;
+208 : 17;
+%mul r1, ra%
+209 : 82;
+20a : 1a;
+%add r1, r7%
+20b : 80;
+20c : 17;
+%mv r2, r8%
+20d : 8a;
+20e : 28;
+%mul r2, r9%
+20f : 82;
+210 : 29;
+%mv r3, r1%
+211 : 8a;
+212 : 31;
+%mv r4, r2%
+213 : 8a;
+214 : 42;
+%add r4, r8%
+215 : 80;
+216 : 48;
+%call draw_line%
+217 : 21;
+218 : 73;
+219 : 2;
+%pop r0%
+21a : 61;
+21b : 0;
+%inc ra%
+21c : 63;
+21d : a0;
+%jmp draw_maze_pocetak_unutrasnje%
+21e : 20;
+21f : 89;
+220 : 1;
+%inc r9%
+221 : 63;
+222 : 90;
 %cl ra%
-28c : 65;
-28d : a0;
-%li rb, #all%
-28e : 9a;
-28f : b0;
-290 : f;
-291 : 0;
-%mv r7, r7%
-292 : 8a;
-293 : 77;
-%bnz generate_maze_current_if_1%
-294 : 9;
-295 : 9;
-296 : 0;
-%mv rc, r9%
-297 : 8a;
-298 : c9;
-%sub r9, r5%
-299 : 81;
-29a : 95;
-%lb r9, (r9)%
-29b : a2;
-29c : 99;
-%bz generate_maze_next_if_1%
-29d : 8;
-29e : a;
-29f : 0;
-%inc ra%
-2a0 : 63;
-2a1 : a0;
-%li rc, #north%
-2a2 : 9a;
-2a3 : c0;
-2a4 : 1;
-2a5 : 0;
-%not rc%
-2a6 : 66;
-2a7 : c0;
-%and rb, rc%
-2a8 : 86;
-2a9 : bc;
-%mv rc, r5%
-2aa : 8a;
-2ab : c5;
-%dec rc%
-2ac : 64;
-2ad : c0;
-%cmp rc, r7%
-2ae : 85;
-2af : c7;
-%bneql generate_maze_current_if_2%
-2b0 : 9;
-2b1 : 9;
-2b2 : 0;
-%mv rc, r9%
-2b3 : 8a;
-2b4 : c9;
-%add r9, r5%
-2b5 : 80;
-2b6 : 95;
-%lb r9, (r9)%
-2b7 : a2;
-2b8 : 99;
-%bz generate_maze_next_if_2%
-2b9 : 8;
-2ba : a;
-2bb : 0;
-%inc ra%
-2bc : 63;
-2bd : a0;
-%li rc, #south%
-2be : 9a;
-2bf : c0;
-2c0 : 2;
-2c1 : 0;
-%not rc%
-2c2 : 66;
-2c3 : c0;
-%and rb, rc%
-2c4 : 86;
-2c5 : bc;
-%mv r8, r8%
-2c6 : 8a;
-2c7 : 88;
-%bnz generate_maze_current_if_3%
-2c8 : 9;
-2c9 : 9;
-2ca : 0;
-%mv rc, r9%
-2cb : 8a;
-2cc : c9;
-%dec rc%
-2cd : 64;
-2ce : c0;
-%lb rc, (rc)%
-2cf : a2;
-2d0 : cc;
-%bz generate_maze_next_if_3%
-2d1 : 8;
-2d2 : a;
-2d3 : 0;
-%inc ra%
-2d4 : 63;
-2d5 : a0;
-%li rc, #west%
-2d6 : 9a;
-2d7 : c0;
-2d8 : 8;
-2d9 : 0;
-%not rc%
-2da : 66;
-2db : c0;
-%and rb, rc%
-2dc : 86;
-2dd : bc;
-%mv rc, r6%
-2de : 8a;
-2df : c6;
-%dec r6%
-2e0 : 64;
-2e1 : 60;
-%cmp r8, r6%
-2e2 : 85;
-2e3 : 86;
-%bneql generate_maze_current_if_4%
-2e4 : 9;
-2e5 : 9;
-2e6 : 0;
-%mv rc, r9%
-2e7 : 8a;
-2e8 : c9;
-%inc rc%
-2e9 : 63;
-2ea : c0;
-%lb rc, (rc)%
-2eb : a2;
-2ec : cc;
-%bz generate_maze_next_if_4%
-2ed : 8;
-2ee : a;
-2ef : 0;
-%inc ra%
-2f0 : 63;
-2f1 : a0;
-%li rc, #west%
-2f2 : 9a;
-2f3 : c0;
-2f4 : 8;
-2f5 : 0;
-%not rc%
-2f6 : 66;
-2f7 : c0;
-%and rb, rc%
-2f8 : 86;
-2f9 : bc;
-%li rc, #4%
-2fa : 9a;
-2fb : c0;
-2fc : 4;
-2fd : 0;
-%cmp ra, rc%
-2fe : 85;
-2ff : ac;
-%bgrte generate_maze_else_grana%
-300 : 1;
-301 : a;
-302 : 1;
-%sub rc, ra%
-303 : 81;
-304 : ca;
-%rand rc%
-305 : 62;
-306 : c0;
-%mod rc, ra%
-307 : 84;
-308 : ca;
-%li ra, #0%
-309 : 9a;
-30a : a0;
-30b : 0;
-30c : 0;
-%cmp rc, ra%
-30d : 85;
-30e : ca;
-%bneql generate_maze_next_if_5%
-30f : 9;
-310 : 35;
-311 : 0;
-%tsti rb, #south%
-312 : 99;
-313 : b0;
-314 : 2;
-315 : 0;
-%bz generate_maze_next_if_5%
-316 : 8;
-317 : 2e;
-318 : 0;
-%lw r0, (re)stack_offset%
-319 : ab;
-31a : e;
-31b : 4;
-31c : 0;
-%mv r1, r7%
-31d : 8a;
-31e : 17;
-%inc r0%
-31f : 63;
-320 : 0;
-%mv r2, r8%
-321 : 8a;
-322 : 28;
-%call push_stack%
-323 : 21;
-324 : e;
-325 : 1;
-%lb r0, (re)offset_fields%
-326 : a3;
-327 : e;
-328 : 2;
-329 : 0;
-%mv rd, r7%
-32a : 8a;
-32b : d7;
-%mul rd, r5%
-32c : 82;
-32d : d5;
-%add r0, rd%
-32e : 80;
-32f : d;
-%add r0, r8%
-330 : 80;
-331 : 8;
-%lb rc, (r0)%
-332 : a2;
-333 : c0;
-%ori rc, #south%
-334 : 97;
-335 : c0;
-336 : 2;
-337 : 0;
-%sb rc, (r0)%
-338 : b2;
-339 : c0;
-%add r0, r5%
-33a : 80;
-33b : 5;
-%lb rc, (r0)%
-33c : a2;
-33d : c0;
-%ori rc, #north%
-33e : 97;
-33f : c0;
-340 : 1;
-341 : 0;
-%sb rc, (r0)%
-342 : b2;
-343 : c0;
-%jmp generate_maze_end_loop%
-344 : 20;
-345 : a;
-346 : 4;
-%li ra, #1%
-347 : 9a;
-348 : a0;
-349 : 1;
-34a : 0;
-%cmp rc, ra%
-34b : 85;
-34c : ca;
-%bneql generate_maze_next_if_6%
-34d : 9;
-34e : 35;
-34f : 0;
-%tsti rb, #north%
-350 : 99;
-351 : b0;
-352 : 1;
-353 : 0;
-%bz generate_maze_next_if_6%
-354 : 8;
-355 : 2e;
-356 : 0;
-%lw r0, (re)stack_offset%
-357 : ab;
-358 : e;
-359 : 4;
-35a : 0;
-%mv r1, r7%
-35b : 8a;
-35c : 17;
-%dec r0%
-35d : 64;
-35e : 0;
-%mv r2, r8%
-35f : 8a;
-360 : 28;
-%call push_stack%
-361 : 21;
-362 : e;
-363 : 1;
-%lb r0, (re)offset_fields%
-364 : a3;
-365 : e;
-366 : 2;
-367 : 0;
-%mv rd, r7%
-368 : 8a;
-369 : d7;
-%mul rd, r5%
-36a : 82;
-36b : d5;
-%add r0, rd%
-36c : 80;
-36d : d;
-%add r0, r8%
-36e : 80;
-36f : 8;
-%lb rc, (r0)%
-370 : a2;
-371 : c0;
-%ori rc, #north%
-372 : 97;
-373 : c0;
-374 : 1;
-375 : 0;
-%sb rc, (r0)%
-376 : b2;
-377 : c0;
-%add r0, r5%
-378 : 80;
-379 : 5;
-%lb rc, (r0)%
-37a : a2;
-37b : c0;
-%ori rc, #south%
-37c : 97;
-37d : c0;
-37e : 2;
-37f : 0;
-%sb rc, (r0)%
-380 : b2;
-381 : c0;
-%jmp generate_maze_end_loop%
-382 : 20;
-383 : a;
-384 : 4;
-%li ra, #2%
-385 : 9a;
-386 : a0;
-387 : 2;
-388 : 0;
-%cmp rc, ra%
-389 : 85;
-38a : ca;
-%bneql generate_maze_next_if_7%
-38b : 9;
-38c : 35;
-38d : 0;
-%tsti rb, #west%
-38e : 99;
-38f : b0;
-390 : 8;
-391 : 0;
-%bz generate_maze_next_if_7%
-392 : 8;
-393 : 2e;
-394 : 0;
-%lw r0, (re)stack_offset%
-395 : ab;
-396 : e;
-397 : 4;
-398 : 0;
-%mv r1, r7%
-399 : 8a;
-39a : 17;
-%mv r2, r8%
-39b : 8a;
-39c : 28;
-%dec r2%
-39d : 64;
-39e : 20;
-%call push_stack%
-39f : 21;
-3a0 : e;
-3a1 : 1;
-%lb r0, (re)offset_fields%
-3a2 : a3;
-3a3 : e;
-3a4 : 2;
-3a5 : 0;
-%mv rd, r7%
-3a6 : 8a;
-3a7 : d7;
-%mul rd, r5%
-3a8 : 82;
-3a9 : d5;
-%add r0, rd%
-3aa : 80;
-3ab : d;
-%add r0, r8%
-3ac : 80;
-3ad : 8;
-%lb rc, (r0)%
-3ae : a2;
-3af : c0;
-%ori rc, #west%
-3b0 : 97;
-3b1 : c0;
-3b2 : 8;
-3b3 : 0;
-%sb rc, (r0)%
-3b4 : b2;
-3b5 : c0;
-%dec r0%
-3b6 : 64;
-3b7 : 0;
-%lb rc, (r0)%
-3b8 : a2;
-3b9 : c0;
-%ori rc, #east%
-3ba : 97;
-3bb : c0;
-3bc : 4;
-3bd : 0;
-%sb rc, (r0)%
-3be : b2;
-3bf : c0;
-%jmp generate_maze_end_loop%
-3c0 : 20;
-3c1 : a;
-3c2 : 4;
-%li ra, #3%
-3c3 : 9a;
-3c4 : a0;
-3c5 : 3;
-3c6 : 0;
-%cmp rc, ra%
-3c7 : 85;
-3c8 : ca;
-%bneql generate_maze_next_if_7%
-3c9 : 9;
-3ca : f7;
-3cb : ff;
-%tsti rb, #east%
-3cc : 99;
-3cd : b0;
-3ce : 4;
-3cf : 0;
-%bz generate_maze_next_if_7%
-3d0 : 8;
-3d1 : f0;
-3d2 : ff;
-%lw r0, (re)stack_offset%
-3d3 : ab;
-3d4 : e;
-3d5 : 4;
-3d6 : 0;
-%mv r1, r7%
-3d7 : 8a;
-3d8 : 17;
-%mv r2, r8%
-3d9 : 8a;
-3da : 28;
-%inc r2%
-3db : 63;
-3dc : 20;
-%call push_stack%
-3dd : 21;
-3de : e;
-3df : 1;
-%lb r0, (re)offset_fields%
-3e0 : a3;
-3e1 : e;
-3e2 : 2;
-3e3 : 0;
-%mv rd, r7%
-3e4 : 8a;
-3e5 : d7;
-%mul rd, r5%
-3e6 : 82;
-3e7 : d5;
-%add r0, rd%
-3e8 : 80;
-3e9 : d;
-%add r0, r8%
-3ea : 80;
-3eb : 8;
-%lb rc, (r0)%
-3ec : a2;
-3ed : c0;
-%ori rc, #east%
-3ee : 97;
-3ef : c0;
-3f0 : 4;
-3f1 : 0;
-%sb rc, (r0)%
-3f2 : b2;
-3f3 : c0;
-%inc r0%
-3f4 : 63;
-3f5 : 0;
-%lb rc, (r0)%
-3f6 : a2;
-3f7 : c0;
-%ori rc, #east%
-3f8 : 97;
-3f9 : c0;
-3fa : 4;
-3fb : 0;
-%sb rc, (r0)%
-3fc : b2;
-3fd : c0;
-%jmp generate_maze_end_loop%
-3fe : 20;
-3ff : a;
-400 : 4;
-%inc rc%
-401 : 63;
-402 : c0;
-%modi rc, #4%
-403 : 94;
-404 : c0;
-405 : 4;
-406 : 0;
-%jmp generate_maze_continue_loop%
-407 : 20;
-408 : 9;
-409 : 3;
-%jmp generate_maze_common%
-40a : 20;
-40b : 14;
-40c : 4;
-%lw r0, (re)stack_offset%
-40d : ab;
-40e : e;
-40f : 4;
-410 : 0;
-%call pop_stack%
-411 : 21;
-412 : 3e;
-413 : 1;
-%jmp generate_maze_continue_stack_loop%
-414 : 20;
-415 : 5a;
-416 : 2;
-%subi rf, #visited_offset%
-417 : 91;
-418 : f0;
-419 : 1a;
-41a : 0;
+223 : 65;
+224 : a0;
+%jmp draw_maze_pocetak_rfoljne%
+225 : 20;
+226 : 84;
+227 : 1;
 %pop rd%
-41b : 61;
-41c : d0;
+228 : 61;
+229 : d0;
 %pop rc%
-41d : 61;
-41e : c0;
+22a : 61;
+22b : c0;
 %pop rb%
-41f : 61;
-420 : b0;
+22c : 61;
+22d : b0;
 %pop ra%
-421 : 61;
-422 : a0;
+22e : 61;
+22f : a0;
 %pop r9%
-423 : 61;
-424 : 90;
+230 : 61;
+231 : 90;
 %pop r8%
-425 : 61;
-426 : 80;
+232 : 61;
+233 : 80;
 %pop r7%
-427 : 61;
-428 : 70;
+234 : 61;
+235 : 70;
 %pop r6%
-429 : 61;
-42a : 60;
+236 : 61;
+237 : 60;
 %pop r5%
-42b : 61;
-42c : 50;
+238 : 61;
+239 : 50;
+%pop r4%
+23a : 61;
+23b : 40;
+%pop r3%
+23c : 61;
+23d : 30;
+%pop r2%
+23e : 61;
+23f : 20;
+%pop r1%
+240 : 61;
+241 : 10;
 %pop re%
-42d : 61;
-42e : e0;
+242 : 61;
+243 : e0;
+%ret%
+244 : 40;
+%push re%
+245 : 60;
+246 : e0;
+%mv re, rf%
+247 : 8a;
+248 : ef;
+%push r5%
+249 : 60;
+24a : 50;
+%lb r5, status_gpu%
+24b : a0;
+24c : 50;
+24d : 1;
+24e : e0;
+%tsti r5, #1%
+24f : 99;
+250 : 50;
+251 : 1;
+252 : 0;
+%bz draw_pixel_skok%
+253 : 8;
+254 : f5;
+255 : ff;
+%sw r0, color%
+256 : b8;
+257 : 0;
+258 : 2;
+259 : e0;
+%sw r1, xl%
+25a : b8;
+25b : 10;
+25c : 4;
+25d : e0;
+%sw r2, yl%
+25e : b8;
+25f : 20;
+260 : 6;
+261 : e0;
+%lb r0, control_gpu%
+262 : a0;
+263 : 0;
+264 : 0;
+265 : e0;
+%ori r0, #1%
+266 : 97;
+267 : 0;
+268 : 1;
+269 : 0;
+%sb r0, control_gpu%
+26a : b0;
+26b : 0;
+26c : 0;
+26d : e0;
+%pop r5%
+26e : 61;
+26f : 50;
+%pop re%
+270 : 61;
+271 : e0;
+%ret%
+272 : 40;
+%push re%
+273 : 60;
+274 : e0;
+%mv re, rf%
+275 : 8a;
+276 : ef;
+%push r5%
+277 : 60;
+278 : 50;
+%lb r5, status_gpu%
+279 : a0;
+27a : 50;
+27b : 1;
+27c : e0;
+%tsti r5, #1%
+27d : 99;
+27e : 50;
+27f : 1;
+280 : 0;
+%bz draw_line_skok%
+281 : 8;
+282 : f5;
+283 : ff;
+%sw r0, color%
+284 : b8;
+285 : 0;
+286 : 2;
+287 : e0;
+%sw r1, xl%
+288 : b8;
+289 : 10;
+28a : 4;
+28b : e0;
+%sw r2, yl%
+28c : b8;
+28d : 20;
+28e : 6;
+28f : e0;
+%sw r3, xr%
+290 : b8;
+291 : 30;
+292 : 8;
+293 : e0;
+%sw r4, yh%
+294 : b8;
+295 : 40;
+296 : a;
+297 : e0;
+%lb r0, control_gpu%
+298 : a0;
+299 : 0;
+29a : 0;
+29b : e0;
+%ori r0, #2%
+29c : 97;
+29d : 0;
+29e : 2;
+29f : 0;
+%sb r0, control_gpu%
+2a0 : b0;
+2a1 : 0;
+2a2 : 0;
+2a3 : e0;
+%pop r5%
+2a4 : 61;
+2a5 : 50;
+%pop re%
+2a6 : 61;
+2a7 : e0;
+%ret%
+2a8 : 40;
+%push re%
+2a9 : 60;
+2aa : e0;
+%mv re, rf%
+2ab : 8a;
+2ac : ef;
+%push r5%
+2ad : 60;
+2ae : 50;
+%lb r5, status_gpu%
+2af : a0;
+2b0 : 50;
+2b1 : 1;
+2b2 : e0;
+%tsti r5, #1%
+2b3 : 99;
+2b4 : 50;
+2b5 : 1;
+2b6 : 0;
+%bz draw_rectangle_skok%
+2b7 : 8;
+2b8 : f5;
+2b9 : ff;
+%sw r0, color%
+2ba : b8;
+2bb : 0;
+2bc : 2;
+2bd : e0;
+%sw r1, xl%
+2be : b8;
+2bf : 10;
+2c0 : 4;
+2c1 : e0;
+%sw r2, yl%
+2c2 : b8;
+2c3 : 20;
+2c4 : 6;
+2c5 : e0;
+%sw r3, xr%
+2c6 : b8;
+2c7 : 30;
+2c8 : 8;
+2c9 : e0;
+%sw r4, yh%
+2ca : b8;
+2cb : 40;
+2cc : a;
+2cd : e0;
+%lb r5, control_gpu%
+2ce : a0;
+2cf : 50;
+2d0 : 0;
+2d1 : e0;
+%ori r5, #3%
+2d2 : 97;
+2d3 : 50;
+2d4 : 3;
+2d5 : 0;
+%sb r5, control_gpu%
+2d6 : b0;
+2d7 : 50;
+2d8 : 0;
+2d9 : e0;
+%pop r5%
+2da : 61;
+2db : 50;
+%pop re%
+2dc : 61;
+2dd : e0;
+%ret%
+2de : 40;
+%push re%
+2df : 60;
+2e0 : e0;
+%mv re, rf%
+2e1 : 8a;
+2e2 : ef;
+%push r5%
+2e3 : 60;
+2e4 : 50;
+%cl r5%
+2e5 : 65;
+2e6 : 50;
+%sw r5, (r0)%
+2e7 : bb;
+2e8 : 50;
+%pop r5%
+2e9 : 61;
+2ea : 50;
+%pop re%
+2eb : 61;
+2ec : e0;
+%ret%
+2ed : 40;
+%push re%
+2ee : 60;
+2ef : e0;
+%mv re, rf%
+2f0 : 8a;
+2f1 : ef;
+%push r5%
+2f2 : 60;
+2f3 : 50;
+%push r6%
+2f4 : 60;
+2f5 : 60;
+%mv r5, r0%
+2f6 : 8a;
+2f7 : 50;
+%lw r6, (r0)offset_rf%
+2f8 : aa;
+2f9 : 60;
+2fa : 0;
+2fb : 0;
+%addi r5, #offset_h%
+2fc : 90;
+2fd : 50;
+2fe : 2;
+2ff : 0;
+%asl r6, #1%
+300 : d0;
+301 : 61;
+%add r5, r6%
+302 : 80;
+303 : 56;
+%sb r1, (r5)%
+304 : b3;
+305 : 15;
+%mv r5, r0%
+306 : 8a;
+307 : 50;
+%addi r5, #offset_w%
+308 : 90;
+309 : 50;
+30a : 82;
+30b : 25;
+%add r5, r6%
+30c : 80;
+30d : 56;
+%sb r2, (r5)%
+30e : b3;
+30f : 25;
+%lw r6, (r0)offset_rf%
+310 : aa;
+311 : 60;
+312 : 0;
+313 : 0;
+%addi r6, #2%
+314 : 90;
+315 : 60;
+316 : 2;
+317 : 0;
+%sw r6, (r0)offset_rf%
+318 : ba;
+319 : 60;
+31a : 0;
+31b : 0;
+%pop r6%
+31c : 61;
+31d : 60;
+%pop r5%
+31e : 61;
+31f : 50;
+%pop re%
+320 : 61;
+321 : e0;
+%ret%
+322 : 40;
+%push re%
+323 : 60;
+324 : e0;
+%mv re, rf%
+325 : 8a;
+326 : ef;
+%push r5%
+327 : 60;
+328 : 50;
+%lw r5, (r0)offset_rf%
+329 : aa;
+32a : 50;
+32b : 0;
+32c : 0;
+%subi r5, #2%
+32d : 91;
+32e : 50;
+32f : 2;
+330 : 0;
+%sw r5, (r0)offset_rf%
+331 : ba;
+332 : 50;
+333 : 0;
+334 : 0;
+%pop r5%
+335 : 61;
+336 : 50;
+%pop re%
+337 : 61;
+338 : e0;
+%ret%
+339 : 40;
+%push re%
+33a : 60;
+33b : e0;
+%mv re, rf%
+33c : 8a;
+33d : ef;
+%lw r0, (r0)offset_rf%
+33e : aa;
+33f : 0;
+340 : 0;
+341 : 0;
+%bnz empty_stack_else%
+342 : 9;
+343 : 7;
+344 : 0;
+%li r0, #1%
+345 : 9a;
+346 : 0;
+347 : 1;
+348 : 0;
+%jmp empty_stack_kraj%
+349 : 20;
+34a : 4e;
+34b : 3;
+%cl r0%
+34c : 65;
+34d : 0;
+%pop re%
+34e : 61;
+34f : e0;
+%ret%
+350 : 40;
+%push re%
+351 : 60;
+352 : e0;
+%mv re, rf%
+353 : 8a;
+354 : ef;
+%push r5%
+355 : 60;
+356 : 50;
+%lw r5, (r0)offset_rf%
+357 : aa;
+358 : 50;
+359 : 0;
+35a : 0;
+%dec r5%
+35b : 64;
+35c : 50;
+%asl r5, #1%
+35d : d0;
+35e : 51;
+%addi r0, #offset_h%
+35f : 90;
+360 : 0;
+361 : 2;
+362 : 0;
+%add r0, r5%
+363 : 80;
+364 : 5;
+%lw r0, (r0)%
+365 : ab;
+366 : 0;
+%pop r5%
+367 : 61;
+368 : 50;
+%pop re%
+369 : 61;
+36a : e0;
+%ret%
+36b : 40;
+%push re%
+36c : 60;
+36d : e0;
+%mv re, rf%
+36e : 8a;
+36f : ef;
+%push r5%
+370 : 60;
+371 : 50;
+%lw r5, (r0)offset_rf%
+372 : aa;
+373 : 50;
+374 : 0;
+375 : 0;
+%dec r5%
+376 : 64;
+377 : 50;
+%asl r5, #1%
+378 : d0;
+379 : 51;
+%addi r0, #offset_w%
+37a : 90;
+37b : 0;
+37c : 82;
+37d : 25;
+%add r0, r5%
+37e : 80;
+37f : 5;
+%lw r0, (r0)%
+380 : ab;
+381 : 0;
+%pop r5%
+382 : 61;
+383 : 50;
+%pop re%
+384 : 61;
+385 : e0;
+%ret%
+386 : 40;
+%push re%
+387 : 60;
+388 : e0;
+%mv re, rf%
+389 : 8a;
+38a : ef;
+%push r5%
+38b : 60;
+38c : 50;
+%push r6%
+38d : 60;
+38e : 60;
+%push r7%
+38f : 60;
+390 : 70;
+%push r8%
+391 : 60;
+392 : 80;
+%push r9%
+393 : 60;
+394 : 90;
+%push ra%
+395 : 60;
+396 : a0;
+%push rb%
+397 : 60;
+398 : b0;
+%lw r5, height%
+399 : a8;
+39a : 50;
+39b : 50;
+39c : 97;
+%lw r6, width%
+39d : a8;
+39e : 60;
+39f : 49;
+3a0 : 97;
+%cl r7%
+3a1 : 65;
+3a2 : 70;
+%cl r8%
+3a3 : 65;
+3a4 : 80;
+%mv r9, r1%
+3a5 : 8a;
+3a6 : 91;
+%mv ra, r7%
+3a7 : 8a;
+3a8 : a7;
+%mul ra, r5%
+3a9 : 82;
+3aa : a5;
+%add r9, ra%
+3ab : 80;
+3ac : 9a;
+%add r9, r8%
+3ad : 80;
+3ae : 98;
+%cl rb%
+3af : 65;
+3b0 : b0;
+%sw rb, (r9)%
+3b1 : bb;
+3b2 : b9;
+%mv r9, r0%
+3b3 : 8a;
+3b4 : 90;
+%mv ra, r7%
+3b5 : 8a;
+3b6 : a7;
+%mul ra, r5%
+3b7 : 82;
+3b8 : a5;
+%add r9, ra%
+3b9 : 80;
+3ba : 9a;
+%add r9, r8%
+3bb : 80;
+3bc : 98;
+%sw rb, (r9)%
+3bd : bb;
+3be : b9;
+%inc r8%
+3bf : 63;
+3c0 : 80;
+%cmp r8, r6%
+3c1 : 85;
+3c2 : 86;
+%blss init_maze_inner_loop%
+3c3 : 2;
+3c4 : df;
+3c5 : ff;
+%inc r7%
+3c6 : 63;
+3c7 : 70;
+%cmp r7, r5%
+3c8 : 85;
+3c9 : 75;
+%blss init_maze_outter_loop%
+3ca : 2;
+3cb : d6;
+3cc : ff;
+%pop rb%
+3cd : 61;
+3ce : b0;
+%pop ra%
+3cf : 61;
+3d0 : a0;
+%pop r9%
+3d1 : 61;
+3d2 : 90;
+%pop r8%
+3d3 : 61;
+3d4 : 80;
+%pop r7%
+3d5 : 61;
+3d6 : 70;
+%pop r6%
+3d7 : 61;
+3d8 : 60;
+%pop r5%
+3d9 : 61;
+3da : 50;
+%pop re%
+3db : 61;
+3dc : e0;
+%ret%
+3dd : 40;
+%push re%
+3de : 60;
+3df : e0;
+%mv re, rf%
+3e0 : 8a;
+3e1 : ef;
+%push r0%
+3e2 : 60;
+3e3 : 0;
+%push r1%
+3e4 : 60;
+3e5 : 10;
+%push r2%
+3e6 : 60;
+3e7 : 20;
+%push r5%
+3e8 : 60;
+3e9 : 50;
+%push r6%
+3ea : 60;
+3eb : 60;
+%push r7%
+3ec : 60;
+3ed : 70;
+%push r8%
+3ee : 60;
+3ef : 80;
+%push r9%
+3f0 : 60;
+3f1 : 90;
+%push ra%
+3f2 : 60;
+3f3 : a0;
+%push rb%
+3f4 : 60;
+3f5 : b0;
+%push rc%
+3f6 : 60;
+3f7 : c0;
+%push rd%
+3f8 : 60;
+3f9 : d0;
+%srand%
+3fa : 44;
+%lw r5, height%
+3fb : a8;
+3fc : 50;
+3fd : 50;
+3fe : 97;
+%lw r6, width%
+3ff : a8;
+400 : 60;
+401 : 49;
+402 : 97;
+%subi rf, #4800%
+403 : 91;
+404 : f0;
+405 : c0;
+406 : 12;
+%mv r1, re%
+407 : 8a;
+408 : 1e;
+%subi r1, #4824%
+409 : 91;
+40a : 10;
+40b : d8;
+40c : 12;
+%call init_maze%
+40d : 21;
+40e : 87;
+40f : 3;
+%push r0%
+410 : 60;
+411 : 0;
+%mv r0, r1%
+412 : 8a;
+413 : 1;
+%call init_stack%
+414 : 21;
+415 : df;
+416 : 2;
+%pop r0%
+417 : 61;
+418 : 0;
+%mv r7, r5%
+419 : 8a;
+41a : 75;
+%subi r7, #2%
+41b : 91;
+41c : 70;
+41d : 2;
+41e : 0;
+%rand r8%
+41f : 62;
+420 : 80;
+%mod r8, r7%
+421 : 84;
+422 : 87;
+%inc r8%
+423 : 63;
+424 : 80;
+%mv r7, r6%
+425 : 8a;
+426 : 76;
+%subi r7, #2%
+427 : 91;
+428 : 70;
+429 : 2;
+42a : 0;
+%rand r9%
+42b : 62;
+42c : 90;
+%mod r9, r7%
+42d : 84;
+42e : 97;
+%inc r9%
+42f : 63;
+430 : 90;
+%push r0%
+431 : 60;
+432 : 0;
+%push r1%
+433 : 60;
+434 : 10;
+%push r2%
+435 : 60;
+436 : 20;
+%lw r0, (re)stack_offset%
+437 : aa;
+438 : e;
+439 : fc;
+43a : ff;
+%mv r1, r8%
+43b : 8a;
+43c : 18;
+%mv r2, r9%
+43d : 8a;
+43e : 29;
+%call push_stack%
+43f : 21;
+440 : ee;
+441 : 2;
+%pop r2%
+442 : 61;
+443 : 20;
+%pop r1%
+444 : 61;
+445 : 10;
+%pop r0%
+446 : 61;
+447 : 0;
+%lw r0, (re)stack_offset%
+448 : aa;
+449 : e;
+44a : fc;
+44b : ff;
+%call empty_stack%
+44c : 21;
+44d : 3a;
+44e : 3;
+%cmpi r0, #0h%
+44f : 95;
+450 : 0;
+451 : 0;
+452 : 0;
+%bneql generate_maze_end%
+453 : 9;
+454 : b7;
+455 : 1;
+%lw r0, (re)stack_offset%
+456 : aa;
+457 : e;
+458 : fc;
+459 : ff;
+%call get_stack_height%
+45a : 21;
+45b : 51;
+45c : 3;
+%mv r7, r0%
+45d : 8a;
+45e : 70;
+%lw r0, (re)stack_offset%
+45f : aa;
+460 : e;
+461 : fc;
+462 : ff;
+%call get_stack_width%
+463 : 21;
+464 : 6c;
+465 : 3;
+%mv r8, r0%
+466 : 8a;
+467 : 80;
+%mv r9, re%
+468 : 8a;
+469 : 9e;
+%subi r9, #4824%
+46a : 91;
+46b : 90;
+46c : d8;
+46d : 12;
+%mv ra, r7%
+46e : 8a;
+46f : a7;
+%mul ra, r5%
+470 : 82;
+471 : a5;
+%add r9, ra%
+472 : 80;
+473 : 9a;
+%add r9, r8%
+474 : 80;
+475 : 98;
+%li ra, #1%
+476 : 9a;
+477 : a0;
+478 : 1;
+479 : 0;
+%sb ra, (r9)%
+47a : b3;
+47b : a9;
+%cl ra%
+47c : 65;
+47d : a0;
+%li rb, #all%
+47e : 9a;
+47f : b0;
+480 : f;
+481 : 0;
+%cmpi r7, #0h%
+482 : 95;
+483 : 70;
+484 : 0;
+485 : 0;
+%bz generate_maze_current_if_1%
+486 : 8;
+487 : 9;
+488 : 0;
+%mv rc, r9%
+489 : 8a;
+48a : c9;
+%sub rc, r5%
+48b : 81;
+48c : c5;
+%lb rc, (rc)%
+48d : a3;
+48e : cc;
+%bz generate_maze_next_if_1%
+48f : 8;
+490 : a;
+491 : 0;
+%inc ra%
+492 : 63;
+493 : a0;
+%li rc, #north%
+494 : 9a;
+495 : c0;
+496 : 1;
+497 : 0;
+%not rc%
+498 : 66;
+499 : c0;
+%and rb, rc%
+49a : 86;
+49b : bc;
+%mv rc, r5%
+49c : 8a;
+49d : c5;
+%dec rc%
+49e : 64;
+49f : c0;
+%cmp rc, r7%
+4a0 : 85;
+4a1 : c7;
+%beql generate_maze_current_if_2%
+4a2 : 8;
+4a3 : 9;
+4a4 : 0;
+%mv rc, r9%
+4a5 : 8a;
+4a6 : c9;
+%add rc, r5%
+4a7 : 80;
+4a8 : c5;
+%lb rc, (rc)%
+4a9 : a3;
+4aa : cc;
+%bz generate_maze_next_if_2%
+4ab : 8;
+4ac : a;
+4ad : 0;
+%inc ra%
+4ae : 63;
+4af : a0;
+%li rc, #south%
+4b0 : 9a;
+4b1 : c0;
+4b2 : 2;
+4b3 : 0;
+%not rc%
+4b4 : 66;
+4b5 : c0;
+%and rb, rc%
+4b6 : 86;
+4b7 : bc;
+%cmpi r8, #0h%
+4b8 : 95;
+4b9 : 80;
+4ba : 0;
+4bb : 0;
+%bz generate_maze_current_if_3%
+4bc : 8;
+4bd : 9;
+4be : 0;
+%mv rc, r9%
+4bf : 8a;
+4c0 : c9;
+%dec rc%
+4c1 : 64;
+4c2 : c0;
+%lb rc, (rc)%
+4c3 : a3;
+4c4 : cc;
+%bz generate_maze_next_if_3%
+4c5 : 8;
+4c6 : a;
+4c7 : 0;
+%inc ra%
+4c8 : 63;
+4c9 : a0;
+%li rc, #west%
+4ca : 9a;
+4cb : c0;
+4cc : 8;
+4cd : 0;
+%not rc%
+4ce : 66;
+4cf : c0;
+%and rb, rc%
+4d0 : 86;
+4d1 : bc;
+%mv rc, r6%
+4d2 : 8a;
+4d3 : c6;
+%dec rc%
+4d4 : 64;
+4d5 : c0;
+%cmp r8, rc%
+4d6 : 85;
+4d7 : 8c;
+%beql generate_maze_current_if_4%
+4d8 : 8;
+4d9 : 9;
+4da : 0;
+%mv rc, r9%
+4db : 8a;
+4dc : c9;
+%inc rc%
+4dd : 63;
+4de : c0;
+%lb rc, (rc)%
+4df : a3;
+4e0 : cc;
+%bz generate_maze_next_if_4%
+4e1 : 8;
+4e2 : a;
+4e3 : 0;
+%inc ra%
+4e4 : 63;
+4e5 : a0;
+%li rc, #west%
+4e6 : 9a;
+4e7 : c0;
+4e8 : 8;
+4e9 : 0;
+%not rc%
+4ea : 66;
+4eb : c0;
+%and rb, rc%
+4ec : 86;
+4ed : bc;
+%li rc, #4%
+4ee : 9a;
+4ef : c0;
+4f0 : 4;
+4f1 : 0;
+%cmp ra, rc%
+4f2 : 85;
+4f3 : ac;
+%beql generate_maze_end%
+4f4 : 8;
+4f5 : 16;
+4f6 : 1;
+%sub rc, ra%
+4f7 : 81;
+4f8 : ca;
+%mv ra, rc%
+4f9 : 8a;
+4fa : ac;
+%rand rc%
+4fb : 62;
+4fc : c0;
+%mod rc, ra%
+4fd : 84;
+4fe : ca;
+%li ra, #0%
+4ff : 9a;
+500 : a0;
+501 : 0;
+502 : 0;
+%cmp rc, ra%
+503 : 85;
+504 : ca;
+%bneql generate_maze_next_if_5%
+505 : 9;
+506 : 35;
+507 : 0;
+%tsti rb, #south%
+508 : 99;
+509 : b0;
+50a : 2;
+50b : 0;
+%bz generate_maze_next_if_5%
+50c : 8;
+50d : 2e;
+50e : 0;
+%lw r0, (re)stack_offset%
+50f : aa;
+510 : e;
+511 : fc;
+512 : ff;
+%mv r1, r7%
+513 : 8a;
+514 : 17;
+%inc r1%
+515 : 63;
+516 : 10;
+%mv r2, r8%
+517 : 8a;
+518 : 28;
+%call push_stack%
+519 : 21;
+51a : ee;
+51b : 2;
+%lb r0, (re)offset_fields%
+51c : a2;
+51d : e;
+51e : fe;
+51f : ff;
+%mv rd, r7%
+520 : 8a;
+521 : d7;
+%mul rd, r5%
+522 : 82;
+523 : d5;
+%add r0, rd%
+524 : 80;
+525 : d;
+%add r0, r8%
+526 : 80;
+527 : 8;
+%lb rc, (r0)%
+528 : a3;
+529 : c0;
+%ori rc, #south%
+52a : 97;
+52b : c0;
+52c : 2;
+52d : 0;
+%sb rc, (r0)%
+52e : b3;
+52f : c0;
+%add r0, r5%
+530 : 80;
+531 : 5;
+%lb rc, (r0)%
+532 : a3;
+533 : c0;
+%ori rc, #north%
+534 : 97;
+535 : c0;
+536 : 1;
+537 : 0;
+%sb rc, (r0)%
+538 : b3;
+539 : c0;
+%jmp generate_maze_end_loop%
+53a : 20;
+53b : 0;
+53c : 6;
+%li ra, #1%
+53d : 9a;
+53e : a0;
+53f : 1;
+540 : 0;
+%cmp rc, ra%
+541 : 85;
+542 : ca;
+%bneql generate_maze_next_if_6%
+543 : 9;
+544 : 35;
+545 : 0;
+%tsti rb, #north%
+546 : 99;
+547 : b0;
+548 : 1;
+549 : 0;
+%bz generate_maze_next_if_6%
+54a : 8;
+54b : 2e;
+54c : 0;
+%lw r0, (re)stack_offset%
+54d : aa;
+54e : e;
+54f : fc;
+550 : ff;
+%mv r1, r7%
+551 : 8a;
+552 : 17;
+%dec r1%
+553 : 64;
+554 : 10;
+%mv r2, r8%
+555 : 8a;
+556 : 28;
+%call push_stack%
+557 : 21;
+558 : ee;
+559 : 2;
+%lb r0, (re)offset_fields%
+55a : a2;
+55b : e;
+55c : fe;
+55d : ff;
+%mv rd, r7%
+55e : 8a;
+55f : d7;
+%mul rd, r5%
+560 : 82;
+561 : d5;
+%add r0, rd%
+562 : 80;
+563 : d;
+%add r0, r8%
+564 : 80;
+565 : 8;
+%lb rc, (r0)%
+566 : a3;
+567 : c0;
+%ori rc, #north%
+568 : 97;
+569 : c0;
+56a : 1;
+56b : 0;
+%sb rc, (r0)%
+56c : b3;
+56d : c0;
+%add r0, r5%
+56e : 80;
+56f : 5;
+%lb rc, (r0)%
+570 : a3;
+571 : c0;
+%ori rc, #south%
+572 : 97;
+573 : c0;
+574 : 2;
+575 : 0;
+%sb rc, (r0)%
+576 : b3;
+577 : c0;
+%jmp generate_maze_end_loop%
+578 : 20;
+579 : 0;
+57a : 6;
+%li ra, #2%
+57b : 9a;
+57c : a0;
+57d : 2;
+57e : 0;
+%cmp rc, ra%
+57f : 85;
+580 : ca;
+%bneql generate_maze_next_if_7%
+581 : 9;
+582 : 35;
+583 : 0;
+%tsti rb, #west%
+584 : 99;
+585 : b0;
+586 : 8;
+587 : 0;
+%bz generate_maze_next_if_7%
+588 : 8;
+589 : 2e;
+58a : 0;
+%lw r0, (re)stack_offset%
+58b : aa;
+58c : e;
+58d : fc;
+58e : ff;
+%mv r1, r7%
+58f : 8a;
+590 : 17;
+%mv r2, r8%
+591 : 8a;
+592 : 28;
+%dec r2%
+593 : 64;
+594 : 20;
+%call push_stack%
+595 : 21;
+596 : ee;
+597 : 2;
+%lb r0, (re)offset_fields%
+598 : a2;
+599 : e;
+59a : fe;
+59b : ff;
+%mv rd, r7%
+59c : 8a;
+59d : d7;
+%mul rd, r5%
+59e : 82;
+59f : d5;
+%add r0, rd%
+5a0 : 80;
+5a1 : d;
+%add r0, r8%
+5a2 : 80;
+5a3 : 8;
+%lb rc, (r0)%
+5a4 : a3;
+5a5 : c0;
+%ori rc, #west%
+5a6 : 97;
+5a7 : c0;
+5a8 : 8;
+5a9 : 0;
+%sb rc, (r0)%
+5aa : b3;
+5ab : c0;
+%dec r0%
+5ac : 64;
+5ad : 0;
+%lb rc, (r0)%
+5ae : a3;
+5af : c0;
+%ori rc, #east%
+5b0 : 97;
+5b1 : c0;
+5b2 : 4;
+5b3 : 0;
+%sb rc, (r0)%
+5b4 : b3;
+5b5 : c0;
+%jmp generate_maze_end_loop%
+5b6 : 20;
+5b7 : 0;
+5b8 : 6;
+%li ra, #3%
+5b9 : 9a;
+5ba : a0;
+5bb : 3;
+5bc : 0;
+%cmp rc, ra%
+5bd : 85;
+5be : ca;
+%bneql generate_maze_else2%
+5bf : 9;
+5c0 : 35;
+5c1 : 0;
+%tsti rb, #east%
+5c2 : 99;
+5c3 : b0;
+5c4 : 4;
+5c5 : 0;
+%bz generate_maze_else2%
+5c6 : 8;
+5c7 : 2e;
+5c8 : 0;
+%lw r0, (re)stack_offset%
+5c9 : aa;
+5ca : e;
+5cb : fc;
+5cc : ff;
+%mv r1, r7%
+5cd : 8a;
+5ce : 17;
+%mv r2, r8%
+5cf : 8a;
+5d0 : 28;
+%inc r2%
+5d1 : 63;
+5d2 : 20;
+%call push_stack%
+5d3 : 21;
+5d4 : ee;
+5d5 : 2;
+%lb r0, (re)offset_fields%
+5d6 : a2;
+5d7 : e;
+5d8 : fe;
+5d9 : ff;
+%mv rd, r7%
+5da : 8a;
+5db : d7;
+%mul rd, r5%
+5dc : 82;
+5dd : d5;
+%add r0, rd%
+5de : 80;
+5df : d;
+%add r0, r8%
+5e0 : 80;
+5e1 : 8;
+%lb rc, (r0)%
+5e2 : a3;
+5e3 : c0;
+%ori rc, #east%
+5e4 : 97;
+5e5 : c0;
+5e6 : 4;
+5e7 : 0;
+%sb rc, (r0)%
+5e8 : b3;
+5e9 : c0;
+%inc r0%
+5ea : 63;
+5eb : 0;
+%lb rc, (r0)%
+5ec : a3;
+5ed : c0;
+%ori rc, #west%
+5ee : 97;
+5ef : c0;
+5f0 : 8;
+5f1 : 0;
+%sb rc, (r0)%
+5f2 : b3;
+5f3 : c0;
+%jmp generate_maze_end_loop%
+5f4 : 20;
+5f5 : 0;
+5f6 : 6;
+%inc rc%
+5f7 : 63;
+5f8 : c0;
+%modi rc, #4%
+5f9 : 94;
+5fa : c0;
+5fb : 4;
+5fc : 0;
+%jmp generate_maze_continue_loop%
+5fd : 20;
+5fe : ff;
+5ff : 4;
+%jmp generate_maze_common%
+600 : 20;
+601 : a;
+602 : 6;
+%lw r0, (re)stack_offset%
+603 : aa;
+604 : e;
+605 : fc;
+606 : ff;
+%call pop_stack%
+607 : 21;
+608 : 23;
+609 : 3;
+%jmp generate_maze_continue_stack_loop%
+60a : 20;
+60b : 48;
+60c : 4;
+%addi rf, #4800%
+60d : 90;
+60e : f0;
+60f : c0;
+610 : 12;
+%pop rd%
+611 : 61;
+612 : d0;
+%pop rc%
+613 : 61;
+614 : c0;
+%pop rb%
+615 : 61;
+616 : b0;
+%pop ra%
+617 : 61;
+618 : a0;
+%pop r9%
+619 : 61;
+61a : 90;
+%pop r8%
+61b : 61;
+61c : 80;
+%pop r7%
+61d : 61;
+61e : 70;
+%pop r6%
+61f : 61;
+620 : 60;
+%pop r5%
+621 : 61;
+622 : 50;
+%pop r2%
+623 : 61;
+624 : 20;
+%pop r1%
+625 : 61;
+626 : 10;
+%pop r0%
+627 : 61;
+628 : 0;
+%pop re%
+629 : 61;
+62a : e0;
+%ret%
+62b : 40;
 END;

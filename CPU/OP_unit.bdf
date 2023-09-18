@@ -5627,12 +5627,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "TEMP[15..0]" (rect 744 1253 756 1313)(font "Arial" )(vertical))
-	(pt 760 1272)
-	(pt 760 1320)
-	(bus)
-)
-(connector
 	(text "CLK" (rect 608 1152 629 1164)(font "Arial" ))
 	(pt 648 1168)
 	(pt 600 1168)
@@ -5736,11 +5730,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 984 1872)
-	(pt 984 1848)
-	(bus)
-)
-(connector
 	(text "CLK" (rect 1544 1576 1565 1588)(font "Arial" ))
 	(pt 1592 1592)
 	(pt 1536 1592)
@@ -5811,17 +5800,6 @@ applicable agreement for further details.
 	(text "slB" (rect 1400 1624 1415 1636)(font "Arial" ))
 	(pt 1392 1640)
 	(pt 1464 1640)
-)
-(connector
-	(pt 1280 1848)
-	(pt 1280 1760)
-	(bus)
-)
-(connector
-	(text "B[15..0]" (rect 1094 1832 1132 1844)(font "Arial" ))
-	(pt 984 1848)
-	(pt 1280 1848)
-	(bus)
 )
 (connector
 	(text "1" (rect 1977 2426 1989 2431)(font "Arial" )(vertical))
@@ -7340,68 +7318,6 @@ applicable agreement for further details.
 	(pt -384 1776)
 )
 (connector
-	(text "addALU" (rect 768 2304 806 2316)(font "Arial" ))
-	(pt 760 2320)
-	(pt 808 2320)
-)
-(connector
-	(text "incALU" (rect 768 2320 803 2332)(font "Arial" ))
-	(pt 760 2336)
-	(pt 808 2336)
-)
-(connector
-	(text "subALU" (rect 768 2336 806 2348)(font "Arial" ))
-	(pt 760 2352)
-	(pt 808 2352)
-)
-(connector
-	(text "decALU" (rect 761 2352 799 2364)(font "Arial" ))
-	(pt 760 2368)
-	(pt 808 2368)
-)
-(connector
-	(pt 840 2104)
-	(pt 840 2384)
-)
-(connector
-	(pt 840 2384)
-	(pt 760 2384)
-)
-(connector
-	(text "slA" (rect 768 2384 784 2396)(font "Arial" ))
-	(pt 760 2400)
-	(pt 840 2400)
-)
-(connector
-	(text "srA" (rect 768 2400 785 2412)(font "Arial" ))
-	(pt 760 2416)
-	(pt 840 2416)
-)
-(connector
-	(text "GPRIN[15..0]" (rect 536 2207 548 2274)(font "Arial" )(vertical))
-	(pt 552 2280)
-	(pt 552 2208)
-	(bus)
-)
-(connector
-	(text "ALU[15..0]" (rect 584 2219 596 2272)(font "Arial" )(vertical))
-	(pt 600 2280)
-	(pt 600 2208)
-	(bus)
-)
-(connector
-	(text "A[15..0]" (rect 632 2231 644 2269)(font "Arial" )(vertical))
-	(pt 648 2280)
-	(pt 648 2208)
-	(bus)
-)
-(connector
-	(text "B[15..0]" (rect 680 2231 692 2269)(font "Arial" )(vertical))
-	(pt 696 2280)
-	(pt 696 2208)
-	(bus)
-)
-(connector
 	(text "TEMP[8]" (rect 2000 1120 2041 1132)(font "Arial" ))
 	(pt 2048 1136)
 	(pt 1992 1136)
@@ -7492,36 +7408,6 @@ applicable agreement for further details.
 	(pt 336 768)
 	(pt 336 696)
 	(bus)
-)
-(connector
-	(text "PSW[1]" (rect 328 2672 365 2684)(font "Arial" ))
-	(pt 376 2688)
-	(pt 320 2688)
-)
-(connector
-	(text "PSW[0]" (rect 341 2688 378 2700)(font "Arial" ))
-	(pt 376 2704)
-	(pt 320 2704)
-)
-(connector
-	(text "PSW[2]" (rect 320 2704 357 2716)(font "Arial" ))
-	(pt 376 2720)
-	(pt 312 2720)
-)
-(connector
-	(text "PSW[3]" (rect 328 2720 365 2732)(font "Arial" ))
-	(pt 376 2736)
-	(pt 320 2736)
-)
-(connector
-	(text "IR[27..24]" (rect 312 2736 361 2748)(font "Arial" ))
-	(pt 376 2752)
-	(pt 304 2752)
-	(bus)
-)
-(connector
-	(pt 544 2688)
-	(pt 520 2688)
 )
 (connector
 	(text "TEMP[15]" (rect 256 1624 303 1636)(font "Arial" ))
@@ -7631,15 +7517,54 @@ applicable agreement for further details.
 	(pt -384 624)
 )
 (connector
-	(text "L[1..0]" (rect 328 2408 359 2420)(font "Arial" ))
-	(pt 320 2424)
-	(pt 376 2424)
+	(text "PSW[2]" (rect 152 1856 189 1868)(font "Arial" ))
+	(pt 184 1872)
+	(pt 144 1872)
+)
+(connector
+	(text "PSW[2]" (rect 112 1432 149 1444)(font "Arial" ))
+	(pt 144 1448)
+	(pt 104 1448)
+)
+(connector
+	(text "SIGNALS[40]" (rect -376 864 -310 876)(font "Arial" ))
+	(pt -296 880)
+	(pt -384 880)
+)
+(connector
+	(text "rstPRINTR2" (rect 1713 2424 1773 2436)(font "Arial" ))
+	(pt 1712 2440)
+	(pt 1784 2440)
+)
+(connector
+	(text "IRQ0" (rect 2648 2656 2673 2668)(font "Arial" ))
+	(pt 2696 2672)
+	(pt 2640 2672)
+)
+(connector
+	(text "IRQ1" (rect 2648 2688 2673 2700)(font "Arial" ))
+	(pt 2696 2704)
+	(pt 2640 2704)
+)
+(connector
+	(text "IRQ2" (rect 2648 2720 2673 2732)(font "Arial" ))
+	(pt 2696 2736)
+	(pt 2640 2736)
+)
+(connector
+	(pt 984 1872)
+	(pt 984 1840)
 	(bus)
 )
 (connector
-	(text "PSW[7..0]" (rect 168 2461 180 2511)(font "Arial" )(vertical))
-	(pt 184 2480)
-	(pt 184 2520)
+	(pt 1280 1760)
+	(pt 1280 1840)
+	(bus)
+)
+(connector
+	(text "B[15..0]" (rect 1094 1824 1132 1836)(font "Arial" ))
+	(pt 984 1840)
+	(pt 1280 1840)
 	(bus)
 )
 (connector
@@ -7704,6 +7629,116 @@ applicable agreement for further details.
 	(pt 376 2408)
 )
 (connector
+	(text "0,0" (rect 328 2408 343 2420)(font "Arial" ))
+	(pt 320 2424)
+	(pt 376 2424)
+	(bus)
+)
+(connector
+	(text "PSW[7..0]" (rect 168 2493 180 2543)(font "Arial" )(vertical))
+	(pt 184 2480)
+	(pt 184 2552)
+	(bus)
+)
+(connector
+	(text "PSW[1]" (rect 328 2672 365 2684)(font "Arial" ))
+	(pt 376 2688)
+	(pt 320 2688)
+)
+(connector
+	(text "PSW[0]" (rect 341 2688 378 2700)(font "Arial" ))
+	(pt 376 2704)
+	(pt 320 2704)
+)
+(connector
+	(text "PSW[2]" (rect 320 2704 357 2716)(font "Arial" ))
+	(pt 376 2720)
+	(pt 312 2720)
+)
+(connector
+	(text "PSW[3]" (rect 328 2720 365 2732)(font "Arial" ))
+	(pt 376 2736)
+	(pt 320 2736)
+)
+(connector
+	(text "IR[27..24]" (rect 312 2736 361 2748)(font "Arial" ))
+	(pt 376 2752)
+	(pt 304 2752)
+	(bus)
+)
+(connector
+	(pt 544 2688)
+	(pt 520 2688)
+)
+(connector
+	(text "TEMP[15..0]" (rect 744 1285 756 1345)(font "Arial" )(vertical))
+	(pt 760 1272)
+	(pt 760 1352)
+	(bus)
+)
+(connector
+	(text "addALU" (rect 768 2304 806 2316)(font "Arial" ))
+	(pt 760 2320)
+	(pt 808 2320)
+)
+(connector
+	(text "incALU" (rect 768 2320 803 2332)(font "Arial" ))
+	(pt 760 2336)
+	(pt 808 2336)
+)
+(connector
+	(text "subALU" (rect 768 2336 806 2348)(font "Arial" ))
+	(pt 760 2352)
+	(pt 808 2352)
+)
+(connector
+	(text "decALU" (rect 761 2352 799 2364)(font "Arial" ))
+	(pt 760 2368)
+	(pt 808 2368)
+)
+(connector
+	(pt 840 2104)
+	(pt 840 2384)
+)
+(connector
+	(pt 840 2384)
+	(pt 760 2384)
+)
+(connector
+	(text "slA" (rect 768 2384 784 2396)(font "Arial" ))
+	(pt 760 2400)
+	(pt 840 2400)
+)
+(connector
+	(text "srA" (rect 768 2400 785 2412)(font "Arial" ))
+	(pt 760 2416)
+	(pt 840 2416)
+)
+(connector
+	(text "GPRIN[15..0]" (rect 536 2207 548 2274)(font "Arial" )(vertical))
+	(pt 552 2280)
+	(pt 552 2208)
+	(bus)
+)
+(connector
+	(text "ALU[15..0]" (rect 584 2219 596 2272)(font "Arial" )(vertical))
+	(pt 600 2280)
+	(pt 600 2208)
+	(bus)
+)
+(connector
+	(text "A[15..0]" (rect 632 2231 644 2269)(font "Arial" )(vertical))
+	(pt 648 2280)
+	(pt 648 2208)
+	(bus)
+)
+(connector
+	(text "B[15..0]" (rect 680 2231 692 2269)(font "Arial" )(vertical))
+	(pt 696 2280)
+	(pt 696 2208)
+	(bus)
+)
+(connector
 	(pt 320 2344)
 	(pt 472 2344)
 )
@@ -7734,41 +7769,6 @@ applicable agreement for further details.
 (connector
 	(pt 424 2392)
 	(pt 488 2392)
-)
-(connector
-	(text "PSW[2]" (rect 152 1856 189 1868)(font "Arial" ))
-	(pt 184 1872)
-	(pt 144 1872)
-)
-(connector
-	(text "PSW[2]" (rect 112 1432 149 1444)(font "Arial" ))
-	(pt 144 1448)
-	(pt 104 1448)
-)
-(connector
-	(text "SIGNALS[40]" (rect -376 864 -310 876)(font "Arial" ))
-	(pt -296 880)
-	(pt -384 880)
-)
-(connector
-	(text "rstPRINTR2" (rect 1713 2424 1773 2436)(font "Arial" ))
-	(pt 1712 2440)
-	(pt 1784 2440)
-)
-(connector
-	(text "IRQ0" (rect 2648 2656 2673 2668)(font "Arial" ))
-	(pt 2696 2672)
-	(pt 2640 2672)
-)
-(connector
-	(text "IRQ1" (rect 2648 2688 2673 2700)(font "Arial" ))
-	(pt 2696 2704)
-	(pt 2640 2704)
-)
-(connector
-	(text "IRQ2" (rect 2648 2720 2673 2732)(font "Arial" ))
-	(pt 2696 2736)
-	(pt 2640 2736)
 )
 (junction (pt 472 2344))
 (junction (pt 456 2360))

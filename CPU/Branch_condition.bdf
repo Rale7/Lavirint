@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect 88 336 256 352)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "IR[27..24]" (rect 5 0 55 12)(font "Arial" ))
+	(text "IR[27..24]" (rect 5 0 54 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -39,7 +39,7 @@ applicable agreement for further details.
 	(input)
 	(rect 88 144 256 160)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "PSWN" (rect 5 0 39 12)(font "Arial" ))
+	(text "PSWN" (rect 5 0 38 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -55,7 +55,7 @@ applicable agreement for further details.
 	(input)
 	(rect 88 184 256 200)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "PSWZ" (rect 5 0 37 12)(font "Arial" ))
+	(text "PSWZ" (rect 5 0 36 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -71,7 +71,7 @@ applicable agreement for further details.
 	(input)
 	(rect 88 232 256 248)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "PSWC" (rect 5 0 39 12)(font "Arial" ))
+	(text "PSWC" (rect 5 0 38 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -87,7 +87,7 @@ applicable agreement for further details.
 	(input)
 	(rect 88 280 256 296)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "PSWV" (rect 5 0 39 12)(font "Arial" ))
+	(text "PSWV" (rect 5 0 38 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -1053,11 +1053,6 @@ applicable agreement for further details.
 	(pt 536 712)
 )
 (connector
-	(text "1" (rect 616 802 628 807)(font "Arial" )(vertical))
-	(pt 631 784)
-	(pt 631 824)
-)
-(connector
 	(text "IR[24]" (rect 592 486 604 516)(font "Arial" )(vertical))
 	(pt 608 528)
 	(pt 608 480)
@@ -1133,14 +1128,6 @@ applicable agreement for further details.
 	(pt 792 704)
 )
 (connector
-	(pt 816 880)
-	(pt 952 880)
-)
-(connector
-	(pt 952 880)
-	(pt 952 688)
-)
-(connector
 	(pt 680 656)
 	(pt 952 656)
 )
@@ -1150,13 +1137,30 @@ applicable agreement for further details.
 	(pt 1000 776)
 )
 (connector
-	(text "IR[26]" (rect 984 566 996 596)(font "Arial" )(vertical))
+	(pt 1048 672)
+	(pt 1080 672)
+)
+(connector
+	(text "1" (rect 616 802 628 807)(font "Arial" )(vertical))
+	(pt 632 784)
+	(pt 631 792)
+)
+(connector
+	(text "IR[27]" (rect 984 566 996 596)(font "Arial" )(vertical))
 	(pt 1000 608)
 	(pt 1000 544)
 )
 (connector
-	(pt 1048 672)
-	(pt 1080 672)
+	(pt 816 880)
+	(pt 912 880)
+)
+(connector
+	(pt 952 688)
+	(pt 912 688)
+)
+(connector
+	(pt 912 688)
+	(pt 912 880)
 )
 (junction (pt 464 64))
 (junction (pt 600 184))

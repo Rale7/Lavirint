@@ -50,6 +50,7 @@ void popuni_instrukcije(std::unordered_map<std::string, Instrukcija*>& inst) {
 	inst["inte"] = new BezadresneInst<0x42>();
 	inst["intd"] = new BezadresneInst<0x43>();
 	inst["srand"] = new BezadresneInst<0x44>();
+	inst["halt"] = new BezadresneInst<0x45>();
 	inst["inc"] = new JedanOpInst<0x63>();
 	inst["dec"] = new JedanOpInst<0x64>();
 	inst["cl"] = new JedanOpInst<0x65>();
@@ -169,7 +170,7 @@ int main()
 				red = m[3];
 			}
 			if (std::regex_match(red.c_str(), m,
-				std::regex("^([A-Za-z]+) (.*)"))) {
+				std::regex("^([A-Za-z]+)\\s*(.*)"))) {
 				if (ti.find(m[1]) != ti.end()) {
 					Red::povecaj_pc(ti[m[1]]->dohvati_duzinu_instrukcije(m[2]));
 				}
@@ -196,7 +197,7 @@ int main()
 				red = skloni_komentare_razmake(red);
 			}
 			if (std::regex_match(red.c_str(), m,
-				std::regex("^([A-Za-z]+)\\s+(.*)"))) {
+				std::regex("^([A-Za-z]+)\\s*(.*)"))) {
 				if (ti.find(m[1]) == ti.end()) {
 					throw GreskaNepostojecaInstrukcija(red);
 				}

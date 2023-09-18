@@ -293,7 +293,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 1352 576 1528 592)
+	(rect 1376 576 1552 592)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "PSW[7..0]" (rect 90 0 140 12)(font "Arial" ))
 	(pt 0 8)
@@ -2048,11 +2048,6 @@ applicable agreement for further details.
 	(pt 416 496)
 )
 (connector
-	(text "D[2]" (rect 416 496 437 508)(font "Arial" ))
-	(pt 464 512)
-	(pt 408 512)
-)
-(connector
 	(text "ldPSWC" (rect 424 552 465 564)(font "Arial" ))
 	(pt 464 568)
 	(pt 416 568)
@@ -2442,4 +2437,15 @@ applicable agreement for further details.
 (connector
 	(pt 1120 816)
 	(pt 1120 800)
+)
+(connector
+	(text "PSWSTART,PSWL[1..0],PSWI,PSWV,PSWC,PSWN,PSWZ" (rect 1194 560 1489 572)(font "Arial" ))
+	(pt 1376 584)
+	(pt 1168 584)
+	(bus)
+)
+(connector
+	(text "DI[2]" (rect 416 496 440 508)(font "Arial" ))
+	(pt 464 512)
+	(pt 408 512)
 )

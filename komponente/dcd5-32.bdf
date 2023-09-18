@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 104 192 120)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "E" (rect 5 0 13 12)(font "Arial" ))
+	(text "E" (rect 5 0 12 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -39,7 +39,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 120 192 136)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "S0" (rect 5 0 18 12)(font "Arial" ))
+	(text "S0" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -55,7 +55,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 136 192 152)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "S1" (rect 5 0 18 12)(font "Arial" ))
+	(text "S1" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -71,7 +71,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 152 192 168)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "S2" (rect 5 0 18 12)(font "Arial" ))
+	(text "S2" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -87,7 +87,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 168 192 184)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "S3" (rect 5 0 18 12)(font "Arial" ))
+	(text "S3" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -103,7 +103,7 @@ applicable agreement for further details.
 	(input)
 	(rect 24 184 192 200)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "S4" (rect 5 0 18 12)(font "Arial" ))
+	(text "S4" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -1045,4 +1045,9 @@ applicable agreement for further details.
 	(text "S3" (rect 504 648 516 660)(font "Arial" ))
 	(pt 496 664)
 	(pt 568 664)
+)
+(connector
+	(text "E" (rect 336 546 348 553)(font "Arial" )(vertical))
+	(pt 352 568)
+	(pt 352 520)
 )

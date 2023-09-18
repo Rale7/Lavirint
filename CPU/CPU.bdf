@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect 112 32 280 48)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "FCBUS" (rect 5 0 43 12)(font "Arial" ))
+	(text "FCBUS" (rect 5 0 42 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -39,7 +39,7 @@ applicable agreement for further details.
 	(input)
 	(rect 112 16 280 32)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "CLK" (rect 5 0 27 12)(font "Arial" ))
+	(text "CLK" (rect 5 0 26 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -55,7 +55,7 @@ applicable agreement for further details.
 	(input)
 	(rect 112 48 280 64)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "IRQ0" (rect 5 0 31 12)(font "Arial" ))
+	(text "IRQ0" (rect 5 0 30 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -71,7 +71,7 @@ applicable agreement for further details.
 	(input)
 	(rect 112 64 280 80)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "IRQ1" (rect 5 0 31 12)(font "Arial" ))
+	(text "IRQ1" (rect 5 0 30 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -87,7 +87,7 @@ applicable agreement for further details.
 	(input)
 	(rect 112 80 280 96)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "IRQ2" (rect 5 0 31 12)(font "Arial" ))
+	(text "IRQ2" (rect 5 0 30 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -148,8 +148,24 @@ applicable agreement for further details.
 	)
 )
 (pin
+	(output)
+	(rect 1176 440 1352 456)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "PSW[7..0]" (rect 90 0 140 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
 	(bidir)
-	(rect 944 208 1120 224)
+	(rect 1096 208 1272 224)
 	(text "BIDIR" (rect 1 0 25 10)(font "Arial" (font_size 6)))
 	(text "DIN[7..0]" (rect 90 0 136 12)(font "Arial" ))
 	(pt 0 8)
@@ -351,7 +367,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 352 152 584 472)
+	(rect 344 152 576 472)
 	(text "Control_unit" (rect 5 0 72 14)(font "Arial" (font_size 8)))
 	(text "inst" (rect 8 304 25 316)(font "Arial" ))
 	(port
@@ -490,84 +506,6 @@ applicable agreement for further details.
 	(pt 120 128)
 )
 (connector
-	(text "addrMode[7..0]" (rect 264 200 337 212)(font "Arial" ))
-	(pt 352 216)
-	(pt 256 216)
-	(bus)
-)
-(connector
-	(text "INSTR[45..0]" (rect 264 184 328 196)(font "Arial" ))
-	(pt 352 200)
-	(pt 256 200)
-	(bus)
-)
-(connector
-	(text "PSW[7..0]" (rect 297 216 347 228)(font "Arial" ))
-	(pt 296 232)
-	(pt 352 232)
-	(bus)
-)
-(connector
-	(text "PRCOD" (rect 297 232 337 244)(font "Arial" ))
-	(pt 296 248)
-	(pt 352 248)
-)
-(connector
-	(text "FCBUS" (rect 304 248 341 260)(font "Arial" ))
-	(pt 352 264)
-	(pt 296 264)
-)
-(connector
-	(text "TEMP[0]" (rect 304 264 345 276)(font "Arial" ))
-	(pt 296 280)
-	(pt 352 280)
-)
-(connector
-	(text "zeroTEMP" (rect 297 280 345 292)(font "Arial" ))
-	(pt 296 296)
-	(pt 352 296)
-)
-(connector
-	(text "zeroCNT" (rect 297 296 339 308)(font "Arial" ))
-	(pt 296 312)
-	(pt 352 312)
-)
-(connector
-	(text "Z" (rect 304 328 311 340)(font "Arial" ))
-	(pt 296 344)
-	(pt 352 344)
-)
-(connector
-	(text "N" (rect 304 312 312 324)(font "Arial" ))
-	(pt 296 328)
-	(pt 352 328)
-)
-(connector
-	(text "C" (rect 304 344 312 356)(font "Arial" ))
-	(pt 296 360)
-	(pt 352 360)
-)
-(connector
-	(text "V" (rect 304 360 312 372)(font "Arial" ))
-	(pt 296 376)
-	(pt 352 376)
-)
-(connector
-	(text "prekid" (rect 304 376 333 388)(font "Arial" ))
-	(pt 296 392)
-	(pt 352 392)
-)
-(connector
-	(text "PRCOD" (rect 297 392 337 404)(font "Arial" ))
-	(pt 296 408)
-	(pt 352 408)
-)
-(connector
-	(text "PRINTR" (rect 304 408 345 420)(font "Arial" ))
-	(pt 296 424)
-	(pt 352 424)
-)
-(connector
 	(text "SIGNALS[73]" (rect 1096 376 1162 388)(font "Arial" ))
 	(pt 1176 392)
 	(pt 1088 392)
@@ -576,12 +514,6 @@ applicable agreement for further details.
 	(text "SIGNALS[74]" (rect 1096 400 1162 412)(font "Arial" ))
 	(pt 1176 416)
 	(pt 1088 416)
-)
-(connector
-	(text "SIGNALS[114..0]" (rect 612 168 696 180)(font "Arial" ))
-	(pt 584 184)
-	(pt 656 184)
-	(bus)
 )
 (connector
 	(text "0" (rect 704 216 709 228)(font "Arial" ))
@@ -676,15 +608,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 584 200)
-	(pt 728 200)
-)
-(connector
-	(text "CLK" (rect 264 168 285 180)(font "Arial" ))
-	(pt 352 184)
-	(pt 256 184)
-)
-(connector
 	(text "INSTR[45..0]" (rect 960 216 1024 228)(font "Arial" ))
 	(pt 952 232)
 	(pt 1048 232)
@@ -694,5 +617,104 @@ applicable agreement for further details.
 	(text "addrMode[7..0]" (rect 960 232 1033 244)(font "Arial" ))
 	(pt 1048 248)
 	(pt 952 248)
+	(bus)
+)
+(connector
+	(text "addrMode[7..0]" (rect 256 200 329 212)(font "Arial" ))
+	(pt 344 216)
+	(pt 248 216)
+	(bus)
+)
+(connector
+	(text "INSTR[45..0]" (rect 256 184 320 196)(font "Arial" ))
+	(pt 344 200)
+	(pt 248 200)
+	(bus)
+)
+(connector
+	(text "PSW[7..0]" (rect 289 216 339 228)(font "Arial" ))
+	(pt 288 232)
+	(pt 344 232)
+	(bus)
+)
+(connector
+	(text "PRCOD" (rect 289 232 329 244)(font "Arial" ))
+	(pt 288 248)
+	(pt 344 248)
+)
+(connector
+	(text "FCBUS" (rect 296 248 333 260)(font "Arial" ))
+	(pt 344 264)
+	(pt 288 264)
+)
+(connector
+	(text "TEMP[0]" (rect 296 264 337 276)(font "Arial" ))
+	(pt 288 280)
+	(pt 344 280)
+)
+(connector
+	(text "zeroTEMP" (rect 289 280 337 292)(font "Arial" ))
+	(pt 288 296)
+	(pt 344 296)
+)
+(connector
+	(text "zeroCNT" (rect 289 296 331 308)(font "Arial" ))
+	(pt 288 312)
+	(pt 344 312)
+)
+(connector
+	(text "Z" (rect 296 328 303 340)(font "Arial" ))
+	(pt 288 344)
+	(pt 344 344)
+)
+(connector
+	(text "N" (rect 296 312 304 324)(font "Arial" ))
+	(pt 288 328)
+	(pt 344 328)
+)
+(connector
+	(text "C" (rect 296 344 304 356)(font "Arial" ))
+	(pt 288 360)
+	(pt 344 360)
+)
+(connector
+	(text "V" (rect 296 360 304 372)(font "Arial" ))
+	(pt 288 376)
+	(pt 344 376)
+)
+(connector
+	(text "prekid" (rect 296 376 325 388)(font "Arial" ))
+	(pt 288 392)
+	(pt 344 392)
+)
+(connector
+	(text "CLK" (rect 256 168 277 180)(font "Arial" ))
+	(pt 344 184)
+	(pt 248 184)
+)
+(connector
+	(text "SIGNALS[114..0]" (rect 604 168 688 180)(font "Arial" ))
+	(pt 576 184)
+	(pt 648 184)
+	(bus)
+)
+(connector
+	(text "CLK" (rect 689 184 710 196)(font "Arial" ))
+	(pt 624 200)
+	(pt 728 200)
+)
+(connector
+	(text "PRINTR" (rect 289 392 330 404)(font "Arial" ))
+	(pt 288 408)
+	(pt 344 408)
+)
+(connector
+	(text "brpom" (rect 296 408 326 420)(font "Arial" ))
+	(pt 288 424)
+	(pt 344 424)
+)
+(connector
+	(pt 952 216)
+	(pt 1096 216)
 	(bus)
 )
