@@ -91,5 +91,6 @@ Release
 *.suo
 *.csproj.user
 *.vbproj.user
+*.vsidx
 ipch
 *sdf

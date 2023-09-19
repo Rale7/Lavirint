@@ -10,10 +10,14 @@
 .define YL E006h
 .define XR E008h
 .define YH E00Ah 
-.define height 9750h
-.define width 974Eh
+.define height 74FAh
+.define width 74F8h
+.define xCoveculjak 74F6h
+.define yCoveculjak 74F4h
+.define xKucica 74F2h
+.define yKucica 7420h
 .define FIELD_SIZE 4800
-.define USER_STACK 9752h
+.define USER_STACK 74FCh
 .define MAX_HEIGHT 60
 .define MAX_WIDTH 80
 
@@ -21,11 +25,11 @@
 main:
 	li r0, #4
 	sb r0, CONTROL_GPU
-	li sp, #9000h
+	li sp, #7000h
 	mv bp, sp
-	li r0, #15
+	li r0, #30
 	sw r0, height
-	li r0, #20
+	li r0, #40
 	sw r0, width
 	subi sp, #FIELD_SIZE
 	
@@ -51,8 +55,8 @@ main:
 	;li r0, #f0h
 	;cl r1
 	;cl r2
-	;li r3, #799 
-	;li r4, #599
+	;li r3, #799
+	;mv r4, r8
 	;call draw_line
 	
 	;mv r0, bp
@@ -67,9 +71,22 @@ main:
 	li r1, #USER_STACK
 	call generate_maze
 	
+	call generate_cubes
+
 	mv r0, bp
 	subi r0, #FIELD_SIZE
 	call draw_maze
+	
+	li r0, #01CFh
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	li r0, #f00h
+	lw r1, xKucica
+	lw r2, yKucica
+	call draw_cube
+	
 	
 	halt
 draw_maze:
@@ -315,7 +332,7 @@ push_stack:
     ;s->sp++;
 	
 	lw r6, (r0)offset_sp
-	addi r6, #2
+	inc r6
 	sw r6, (r0)offset_sp
 	
 ;}
@@ -333,7 +350,7 @@ pop_stack:
     ;s->sp--;
 	
 	lw r5, (r0)offset_sp
-	subi r5, #2
+	dec r5
 	sw r5, (r0)offset_sp
 	
 ;}
@@ -497,7 +514,6 @@ generate_maze:
 	rand r8
 	mod r8, r7
 	inc r8
-	li r8, #5
 	
     ;int starting_width = 1 + (rand() % (width - 2));
 	mv r7, r6
@@ -505,7 +521,6 @@ generate_maze:
 	rand r9
 	mod r9, r7
 	inc r9
-	li r9, #9
 
 	push r0
 	push r1
@@ -795,8 +810,8 @@ generate_maze_else_grana:
             ;pop_stack(s);
         ;}
 generate_maze_common:
-		lw r0, (bp)offset_fields
-		call draw_maze
+		;lw r0, (bp)offset_fields
+		;call draw_maze
 		jmp generate_maze_continue_stack_loop
     ;}
 generate_maze_end:	
@@ -816,3 +831,79 @@ generate_maze_end:
 	pop r0
 	pop bp
 	ret
+	
+generate_cubes:
+	push bp
+	mv bp, sp
+	push r5
+	push r6
+	push r7
+	push r8
+	push r9
+	push ra
+	
+	lw r9, height
+	lw ra, width
+	
+	rand r5
+	mod r5, ra
+	sw r5, xCoveculjak
+	rand r6
+	mod r6, r9
+	sw r6, yCoveculjak
+	
+generate_cubes_loop:
+	rand r7
+	mod r7, ra
+	rand r8
+	mod r8, r9
+	cmp r5, r7
+	bneql generate_cubes_else
+	cmp r6, r8
+	beql generate_cubes_loop
+generate_cubes_else:
+	sw r7, xKucica
+	sw r8, yKucica
+	
+	pop ra
+	pop r9
+	pop r8
+	pop r7
+	pop r6
+	pop r5
+	pop bp
+	ret
+
+draw_cube:
+	push bp
+	push r5
+	push r6
+	push r7
+	push r8
+	
+	lw r5, height
+	lw r6, width
+	li r7, #600
+	li r8, #800
+	div r7, r5
+	div r8, r6
+	
+	mul r1, r8
+	inc r1
+	mul r2, r7
+	inc r2
+	mv r3, r1
+	add r3, r8
+	subi r3, #2
+	mv r4, r2
+	add r4, r7
+	subi r4, #2
+	call draw_rectangle
+	
+	pop r8
+	pop r7
+	pop r6
+	pop r5
+	pop bp
+	ret
+	
