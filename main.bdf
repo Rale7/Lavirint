@@ -37,6 +37,38 @@ applicable agreement for further details.
 	(annotation_block (location)(rect -80 160 -24 176))
 )
 (pin
+	(input)
+	(rect -16 648 152 664)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "PS2_CLK" (rect 5 0 53 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect -16 664 152 680)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "PS2_DATA" (rect 5 0 61 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
 	(output)
 	(rect 936 384 1112 400)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
@@ -649,9 +681,9 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 160 200 320 336)
+	(rect 160 200 320 384)
 	(text "CPU" (rect 5 0 28 14)(font "Arial" (font_size 8)))
-	(text "inst3" (rect 8 120 31 132)(font "Arial" ))
+	(text "inst3" (rect 8 168 31 180)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -667,25 +699,25 @@ applicable agreement for further details.
 		(line (pt 144 96)(pt 160 96))
 	)
 	(port
-		(pt 0 48)
+		(pt 128 184)
 		(input)
 		(text "IRQ0" (rect 0 0 27 14)(font "Arial" (font_size 8)))
-		(text "IRQ0" (rect 21 43 48 57)(font "Arial" (font_size 8)))
-		(line (pt 0 48)(pt 16 48))
+		(text "IRQ0" (rect 118 155 145 169)(font "Arial" (font_size 8)))
+		(line (pt 128 184)(pt 128 167))
 	)
 	(port
-		(pt 0 64)
+		(pt 80 184)
 		(input)
 		(text "IRQ1" (rect 0 0 27 14)(font "Arial" (font_size 8)))
-		(text "IRQ1" (rect 21 59 48 73)(font "Arial" (font_size 8)))
-		(line (pt 0 64)(pt 16 64))
+		(text "IRQ1" (rect 70 155 97 169)(font "Arial" (font_size 8)))
+		(line (pt 80 184)(pt 80 168))
 	)
 	(port
-		(pt 0 80)
+		(pt 32 184)
 		(input)
 		(text "IRQ2" (rect 0 0 27 14)(font "Arial" (font_size 8)))
-		(text "IRQ2" (rect 21 75 48 89)(font "Arial" (font_size 8)))
-		(line (pt 0 80)(pt 16 80))
+		(text "IRQ2" (rect 22 155 49 169)(font "Arial" (font_size 8)))
+		(line (pt 32 184)(pt 32 168))
 	)
 	(port
 		(pt 160 32)
@@ -723,7 +755,95 @@ applicable agreement for further details.
 		(line (pt 160 48)(pt 144 48)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 144 120))
+		(rectangle (rect 16 16 144 168))
+	)
+)
+(symbol
+	(rect 176 384 208 416)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "inst4" (rect 3 21 26 33)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
+	(rect 184 576 368 736)
+	(text "PS2_Controller" (rect 5 0 88 14)(font "Arial" (font_size 8)))
+	(text "inst2" (rect 8 144 31 156)(font "Arial" ))
+	(port
+		(pt 0 64)
+		(input)
+		(text "CLK" (rect 0 0 23 14)(font "Arial" (font_size 8)))
+		(text "CLK" (rect 21 59 44 73)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "PS2_CLK" (rect 0 0 53 14)(font "Arial" (font_size 8)))
+		(text "PS2_CLK" (rect 21 75 74 89)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "PS2_DATA" (rect 0 0 63 14)(font "Arial" (font_size 8)))
+		(text "PS2_DATA" (rect 21 91 84 105)(font "Arial" (font_size 8)))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 184 32)
+		(input)
+		(text "ADDR[15..0]" (rect 0 0 69 14)(font "Arial" (font_size 8)))
+		(text "ADDR[15..0]" (rect 90 24 159 38)(font "Arial" (font_size 8)))
+		(line (pt 168 32)(pt 184 32)(line_width 3))
+	)
+	(port
+		(pt 184 64)
+		(input)
+		(text "RDBUS" (rect 0 0 41 14)(font "Arial" (font_size 8)))
+		(text "RDBUS" (rect 118 56 159 70)(font "Arial" (font_size 8)))
+		(line (pt 168 64)(pt 184 64))
+	)
+	(port
+		(pt 184 80)
+		(input)
+		(text "WRBUS" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "WRBUS" (rect 115 72 159 86)(font "Arial" (font_size 8)))
+		(line (pt 168 80)(pt 184 80))
+	)
+	(port
+		(pt 184 96)
+		(output)
+		(text "FCBUS" (rect 0 0 40 14)(font "Arial" (font_size 8)))
+		(text "FCBUS" (rect 123 91 163 105)(font "Arial" (font_size 8)))
+		(line (pt 184 96)(pt 168 96))
+	)
+	(port
+		(pt 56 0)
+		(output)
+		(text "IRQ" (rect 0 0 20 14)(font "Arial" (font_size 8)))
+		(text "IRQ" (rect 48 15 68 29)(font "Arial" (font_size 8)))
+		(line (pt 56 0)(pt 56 16))
+	)
+	(port
+		(pt 184 48)
+		(bidir)
+		(text "DATA[7..0]" (rect 0 0 62 14)(font "Arial" (font_size 8)))
+		(text "DATA[7..0]" (rect 101 43 163 57)(font "Arial" (font_size 8)))
+		(line (pt 184 48)(pt 168 48)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 168 144))
 	)
 )
 (connector
@@ -763,24 +883,6 @@ applicable agreement for further details.
 (connector
 	(pt 488 392)
 	(pt 488 736)
-)
-(connector
-	(pt 504 408)
-	(pt 504 736)
-	(bus)
-)
-(connector
-	(pt 520 424)
-	(pt 520 736)
-	(bus)
-)
-(connector
-	(pt 536 440)
-	(pt 536 736)
-)
-(connector
-	(pt 552 456)
-	(pt 552 736)
 )
 (connector
 	(pt 864 392)
@@ -891,11 +993,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 520 248)
-	(pt 520 424)
-	(bus)
-)
-(connector
 	(pt 504 40)
 	(pt 720 40)
 	(bus)
@@ -921,22 +1018,6 @@ applicable agreement for further details.
 (connector
 	(pt 568 296)
 	(pt 568 472)
-)
-(connector
-	(pt 568 472)
-	(pt 568 736)
-)
-(connector
-	(pt 160 152)
-	(pt 160 232)
-)
-(connector
-	(pt 144 152)
-	(pt 160 152)
-)
-(connector
-	(pt 160 152)
-	(pt 488 152)
 )
 (connector
 	(pt 504 232)
@@ -999,6 +1080,121 @@ applicable agreement for further details.
 	(pt 1008 696)
 	(bus)
 )
+(connector
+	(pt 144 152)
+	(pt 152 152)
+)
+(connector
+	(pt 152 152)
+	(pt 488 152)
+)
+(connector
+	(pt 520 248)
+	(pt 520 424)
+	(bus)
+)
+(connector
+	(pt 672 488)
+	(pt 288 488)
+)
+(connector
+	(pt 288 488)
+	(pt 288 384)
+)
+(connector
+	(pt 240 576)
+	(pt 240 384)
+)
+(connector
+	(pt 184 656)
+	(pt 152 656)
+)
+(connector
+	(pt 184 672)
+	(pt 152 672)
+)
+(connector
+	(pt 152 232)
+	(pt 160 232)
+)
+(connector
+	(pt 184 640)
+	(pt 152 640)
+)
+(connector
+	(pt 152 152)
+	(pt 152 232)
+)
+(connector
+	(pt 152 232)
+	(pt 152 640)
+)
+(connector
+	(pt 368 624)
+	(pt 520 624)
+	(bus)
+)
+(connector
+	(pt 520 424)
+	(pt 520 624)
+	(bus)
+)
+(connector
+	(pt 520 624)
+	(pt 520 736)
+	(bus)
+)
+(connector
+	(pt 368 608)
+	(pt 504 608)
+	(bus)
+)
+(connector
+	(pt 504 408)
+	(pt 504 608)
+	(bus)
+)
+(connector
+	(pt 504 608)
+	(pt 504 736)
+	(bus)
+)
+(connector
+	(pt 536 640)
+	(pt 368 640)
+)
+(connector
+	(pt 536 440)
+	(pt 536 640)
+)
+(connector
+	(pt 536 640)
+	(pt 536 736)
+)
+(connector
+	(pt 552 656)
+	(pt 368 656)
+)
+(connector
+	(pt 552 456)
+	(pt 552 656)
+)
+(connector
+	(pt 552 656)
+	(pt 552 736)
+)
+(connector
+	(pt 368 672)
+	(pt 568 672)
+)
+(connector
+	(pt 568 472)
+	(pt 568 672)
+)
+(connector
+	(pt 568 672)
+	(pt 568 736)
+)
 (junction (pt 488 216))
 (junction (pt 488 392))
 (junction (pt 504 408))
@@ -1011,4 +1207,10 @@ applicable agreement for further details.
 (junction (pt 552 456))
 (junction (pt 568 296))
 (junction (pt 568 472))
-(junction (pt 160 152))
+(junction (pt 152 152))
+(junction (pt 152 232))
+(junction (pt 520 624))
+(junction (pt 504 608))
+(junction (pt 536 640))
+(junction (pt 552 656))
+(junction (pt 568 672))

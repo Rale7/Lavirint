@@ -136,18 +136,18 @@ applicable agreement for further details.
 		(line (pt 0 272)(pt 16 272))
 	)
 	(port
+		(pt 0 288)
+		(input)
+		(text "gropr" (rect 0 0 30 14)(font "Arial" (font_size 8)))
+		(text "gropr" (rect 21 283 51 297)(font "Arial" (font_size 8)))
+		(line (pt 0 288)(pt 16 288))
+	)
+	(port
 		(pt 232 32)
 		(output)
 		(text "SIGNALS[114..0]" (rect 0 0 95 14)(font "Arial" (font_size 8)))
 		(text "SIGNALS[114..0]" (rect 116 27 211 41)(font "Arial" (font_size 8)))
 		(line (pt 232 32)(pt 216 32)(line_width 3))
-	)
-	(port
-		(pt 232 48)
-		(output)
-		(text "myCLK" (rect 0 0 40 14)(font "Arial" (font_size 8)))
-		(text "myCLK" (rect 171 43 211 57)(font "Arial" (font_size 8)))
-		(line (pt 232 48)(pt 216 48))
 	)
 	(drawing
 		(rectangle (rect 16 16 216 304))

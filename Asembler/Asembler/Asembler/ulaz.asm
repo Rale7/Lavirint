@@ -10,12 +10,16 @@
 .define YL E006h
 .define XR E008h
 .define YH E00Ah 
+.define CONTROL_PS2 FFFCh
+.define STATUS_PS2 FFFDh
+.define DATA_PS2 FFFEh
 .define height 74FAh
 .define width 74F8h
 .define xCoveculjak 74F6h
 .define yCoveculjak 74F4h
 .define xKucica 74F2h
 .define yKucica 7420h
+.define MemSem0 741Eh
 .define FIELD_SIZE 4800
 .define USER_STACK 74FCh
 .define MAX_HEIGHT 60
@@ -66,29 +70,58 @@ main:
 	;subi r1, #9600
 	;call init_maze
 	
-	mv r0, bp
-	subi r0, #FIELD_SIZE
-	li r1, #USER_STACK
-	call generate_maze
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;li r1, #USER_STACK
+	;call generate_maze
 	
-	call generate_cubes
+	;call generate_cubes
 
-	mv r0, bp
-	subi r0, #FIELD_SIZE
-	call draw_maze
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;call draw_maze
 	
-	li r0, #01CFh
-	lw r1, xCoveculjak
-	lw r2, yCoveculjak
-	call draw_cube
+	;li r0, #01CFh
+	;lw r1, xCoveculjak
+	;lw r2, yCoveculjak
+	;call draw_cube
 	
-	li r0, #f00h
-	lw r1, xKucica
-	lw r2, yKucica
-	call draw_cube
+	;li r0, #f00h
+	;lw r1, xKucica
+	;lw r2, yKucica
+	;call draw_cube
 	
+	li r0, #ps2_interrupt
+	sw r0, 4h
+	cl r0
+	sw r0, MemSem0
+	inte
+	
+main_loop:
+	li r0, #3h
+	sb r0, CONTROL_PS2
+main_wait:
+	lw r0, MemSem0
+	bz main_wait
+	
+	lw r0, DATA_PS2
+	cl r1
+	cl r2
+	li r3, #799
+	li r4, #599
+	call draw_rectangle
+	cl r0
+	sw r0, MemSem0
+	jmp main_wait
 	
 	halt
+	
+ps2_interrupt:
+	push r0
+	li r0, #1h
+	sw r0, MemSem0
+	pop r0
+	sret
 draw_maze:
 	push bp
 	mv bp, sp

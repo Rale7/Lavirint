@@ -118,6 +118,13 @@ set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "E:/faks/4_semestar/AR/projekat/projekat_git/simulation/qsim/" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name BDF_FILE Tastatura/REG1_INC_CL.bdf
+set_global_assignment -name QIP_FILE mikroProgram.qip
+set_global_assignment -name QIP_FILE mem32kb.qip
+set_global_assignment -name BDF_FILE Tastatura/KeyboardInterface.bdf
+set_global_assignment -name BDF_FILE Tastatura/Debouncer.bdf
 set_global_assignment -name BDF_FILE "komponente/dcd5-32.bdf"
 set_global_assignment -name BDF_FILE CPU/PSW_init.bdf
 set_global_assignment -name BDF_FILE CPU/PSW.bdf
@@ -198,8 +205,6 @@ set_global_assignment -name QIP_FILE CPU/mikroProgram.qip
 set_global_assignment -name BDF_FILE CPU/myCLK.bdf
 set_global_assignment -name BDF_FILE CPU/CPU.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
-set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "E:/faks/4_semestar/AR/projekat/projekat_git/simulation/qsim/" -section_id eda_simulation
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/output_files/output_files/Waveform.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/output_files/output_files/output_files/Waveform.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/output_files/output_files/output_files/Waveform1.vwf
@@ -209,4 +214,9 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform1.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform2.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform3.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform4.vwf
+set_global_assignment -name BDF_FILE Tastatura/PS2_Controller.bdf
+set_global_assignment -name BDF_FILE komponente/cmp8_eq.bdf
+set_global_assignment -name BDF_FILE komponente/REG8_LD_CL.bdf
+set_location_assignment PIN_P22 -to PS2_CLK
+set_location_assignment PIN_P21 -to PS2_DATA
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
