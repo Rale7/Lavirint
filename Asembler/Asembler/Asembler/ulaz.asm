@@ -36,6 +36,8 @@ main:
 	li r0, #40
 	sw r0, width
 	subi sp, #FIELD_SIZE
+	li r0, #ps2_interrupt
+	sw r0, 4h
 	
 	;li r0, #273
 	;muli r0, #15
@@ -62,57 +64,32 @@ main:
 	;li r3, #799
 	;mv r4, r8
 	;call draw_line
-	
-	;mv r0, bp
-	;subi r0, #FIELD_SIZE
-	;subi sp, #4800
-	;mv r1, bp
-	;subi r1, #9600
-	;call init_maze
-	
-	;mv r0, bp
-	;subi r0, #FIELD_SIZE
-	;li r1, #USER_STACK
-	;call generate_maze
-	
-	;call generate_cubes
 
-	;mv r0, bp
-	;subi r0, #FIELD_SIZE
-	;call draw_maze
 	
-	;li r0, #01CFh
-	;lw r1, xCoveculjak
-	;lw r2, yCoveculjak
-	;call draw_cube
+	mv r0, bp
+	subi r0, #FIELD_SIZE
+	li r1, #USER_STACK
+	call generate_maze
 	
-	;li r0, #f00h
-	;lw r1, xKucica
-	;lw r2, yKucica
-	;call draw_cube
+	call generate_cubes
+
+	mv r0, bp
+	subi r0, #FIELD_SIZE
+	call draw_maze
 	
-	li r0, #ps2_interrupt
-	sw r0, 4h
-	cl r0
-	sw r0, MemSem0
-	inte
+	li r0, #01CFh
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
 	
-main_loop:
-	li r0, #3h
-	sb r0, CONTROL_PS2
-main_wait:
-	lw r0, MemSem0
-	bz main_wait
-	
-	lw r0, DATA_PS2
-	cl r1
-	cl r2
-	li r3, #799
-	li r4, #599
-	call draw_rectangle
-	cl r0
-	sw r0, MemSem0
-	jmp main_wait
+	li r0, #f00h
+	lw r1, xKucica
+	lw r2, yKucica
+	call draw_cube
+
+	mv r0, bp
+	subi r0, #FIELD_SIZE
+	call igra
 	
 	halt
 	
@@ -939,4 +916,138 @@ draw_cube:
 	pop r5
 	pop bp
 	ret
+
+.define UP_ARROW E075h
+.define LEFT_ARROW E06Bh
+.define DOWN_ARROW E072h
+.define RIGHT_ARROW E074h
+
+igra:
+	push bp
+	mv bp, sp
+	push r0
+	push r5
+	push r6
+	push r7
+	push r8
+	push r9
+	push ra
+	
+	lw r5, height
+	lw r6, width
+	li r7, #3h
+	sw r7, CONTROL_PS2
+	cl r7
+	sw r7, MemSem0
+	
+	inte
+igra_wait:
+	lw r7, MemSem0
+	bz igra_wait
+	lw r7, STATUS_PS2
+	tsti r7, #2h
+	bz igra_not_break_code
+	cl r7
+	sw r7, MemSem0
+	jmp igra_wait
+	
+igra_not_break_code:
+	lw r7, DATA_PS2
+	lw r8, xCoveculjak
+	lw r9, yCoveculjak
+	lw ra, (bp)FFFEh
+	mul r9, r6
+	add ra, r9
+	add ra, r8
+	lb ra, (ra)
+	cmpi r7, #UP_ARROW
+	bneql igra_next_if1
+	tsti ra, #NORTH
+	bz igra_next_if1
+	cl r0
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	lw r8, yCoveculjak
+	dec r8
+	sw r8, yCoveculjak
+	
+	jmp igra_continue
+igra_next_if1:
+	cmpi r7, #DOWN_ARROW
+	bneql igra_next_if2
+	tsti ra, #SOUTH
+	bz igra_next_if2
+	cl r0
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	lw r8, yCoveculjak
+	inc r8
+	sw r8, yCoveculjak
+	
+	jmp igra_continue
+igra_next_if2:
+	cmpi r7, #LEFT_ARROW
+	bneql igra_next_if3
+	tsti ra, #WEST
+	bz igra_next_if3
+	cl r0
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	lw r8, xCoveculjak
+	dec r8
+	sw r8, xCoveculjak
+	
+	jmp igra_continue
+igra_next_if3:
+	cmpi r7, #RIGHT_ARROW
+	bneql igra_continue
+	tsti ra, #EAST
+	bz igra_continue
+	cl r0
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	lw r8, xCoveculjak
+	inc r8
+	sw r8, xCoveculjak
+igra_continue:
+	li r0, #1CFh
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	lw r7, MemSem0
+	cl r7
+	sw r7, MemSem0
+	
+	lw r7, xCoveculjak
+	lw r8, xKucica
+	cmp r7, r8
+	bneql igra_wait
+	lw r7, yCoveculjak
+	lw r8, yKucica
+	cmp r7, r8
+	bneql igra_wait
+	
+igra_kraj:
+	pop ra
+	pop r9
+	pop r8
+	pop r7
+	pop r6
+	pop r5
+	pop r0
+	pop bp
+	ret
+	
+	
+	
+
 	
