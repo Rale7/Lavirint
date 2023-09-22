@@ -18,12 +18,19 @@
 .define xCoveculjak 74F6h
 .define yCoveculjak 74F4h
 .define xKucica 74F2h
-.define yKucica 7420h
-.define MemSem0 741Eh
+.define yKucica 74F0h
+.define MemSem0 74FEh
+.define tezina 74FCh
 .define FIELD_SIZE 4800
 .define USER_STACK 74FCh
 .define MAX_HEIGHT 60
 .define MAX_WIDTH 80
+.define UP_ARROW E075h
+.define LEFT_ARROW E06Bh
+.define DOWN_ARROW E072h
+.define RIGHT_ARROW E074h
+.define ESC_KEY 76h
+.define ENTER_KEY 5Ah
 
 .org 100h
 main:
@@ -31,22 +38,21 @@ main:
 	sb r0, CONTROL_GPU
 	li sp, #7000h
 	mv bp, sp
-	li r0, #30
+	li r0, #15
 	sw r0, height
-	li r0, #40
+	li r0, #20
 	sw r0, width
+	li r0, #1h
+	sw r0, tezina
 	subi sp, #FIELD_SIZE
 	li r0, #ps2_interrupt
 	sw r0, 4h
+	li r5, #3h
+	sw r5, CONTROL_PS2
+	cl r5
+	sw r5, MemSem0
 	
-	;li r0, #273
-	;muli r0, #15
-	;muli r0, #0
-	;cl r1
-	;cl r2
-	;li r3, #799
-	;li r4, #599
-	;call draw_rectangle
+	inte
 	
 	;li r5, #f0h
 	;sw r5, 2h
@@ -64,32 +70,63 @@ main:
 	;li r3, #799
 	;mv r4, r8
 	;call draw_line
+	
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;li r1, #USER_STACK
+	;call generate_maze
+	
+	;call generate_cubes
 
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;call draw_maze
+	
+	;li r0, #01CFh
+	;lw r1, xCoveculjak
+	;lw r2, yCoveculjak
+	;call draw_cube
+	
+	;li r0, #f00h
+	;lw r1, xKucica
+	;lw r2, yKucica
+	;call draw_cube
+
+	;mv r0, bp
+	;subi r0, #FIELD_SIZE
+	;call igra
+main_loop:
+	cl r0
+	cl r1
+	cl r2
+	li r3, #799
+	li r4, #599
+	call draw_rectangle
+
+main_loop2:
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_igraj
+	
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_tezina
 	
 	mv r0, bp
 	subi r0, #FIELD_SIZE
-	li r1, #USER_STACK
-	call generate_maze
+	call dugme_igraj
+	cmpi r0, #1h
+	beql main_loop
 	
-	call generate_cubes
-
-	mv r0, bp
-	subi r0, #FIELD_SIZE
-	call draw_maze
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_igraj
 	
-	li r0, #01CFh
-	lw r1, xCoveculjak
-	lw r2, yCoveculjak
-	call draw_cube
-	
-	li r0, #f00h
-	lw r1, xKucica
-	lw r2, yKucica
-	call draw_cube
-
-	mv r0, bp
-	subi r0, #FIELD_SIZE
-	call igra
+	call dugme_tezina
+	jmp main_loop2
 	
 	halt
 	
@@ -917,11 +954,6 @@ draw_cube:
 	pop bp
 	ret
 
-.define UP_ARROW E075h
-.define LEFT_ARROW E06Bh
-.define DOWN_ARROW E072h
-.define RIGHT_ARROW E074h
-
 igra:
 	push bp
 	mv bp, sp
@@ -935,10 +967,6 @@ igra:
 	
 	lw r5, height
 	lw r6, width
-	li r7, #3h
-	sw r7, CONTROL_PS2
-	cl r7
-	sw r7, MemSem0
 	
 	inte
 igra_wait:
@@ -1006,7 +1034,7 @@ igra_next_if2:
 	jmp igra_continue
 igra_next_if3:
 	cmpi r7, #RIGHT_ARROW
-	bneql igra_continue
+	bneql igra_next_if4
 	tsti ra, #EAST
 	bz igra_continue
 	cl r0
@@ -1017,6 +1045,25 @@ igra_next_if3:
 	lw r8, xCoveculjak
 	inc r8
 	sw r8, xCoveculjak
+igra_next_if4:
+	cmpi r7, #ESC_KEY
+	bneql igra_continue
+	call pauza
+	cmpi r0, #1h
+	beql igra_kraj
+	lw r0, (bp)FFFEh
+	call draw_maze
+	
+	li r0, #1CFh
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	li r0, #F00h
+	lw r1, xKucica
+	lw r2, yKucica
+	call draw_cube
+	jmp igra_wait
 igra_continue:
 	li r0, #1CFh
 	lw r1, xCoveculjak
@@ -1046,6 +1093,470 @@ igra_kraj:
 	pop r0
 	pop bp
 	ret
+
+crtaj_dugme_igraj:
+	push bp
+	mv bp, sp
+	push r0
+	push r1
+	push r2
+	push r5
+	push r6
+	push r7
+	
+	
+	lw r0, (bp)FFFEh
+	li r1, #300
+	li r2, #150
+	li r3, #500
+	li r4, #230
+	call draw_rectangle
+	
+	lw r0, (BP)FFFCh
+	li r1, #305
+	li r2, #155
+	li r3, #495
+	li r4, #225
+	call draw_rectangle
+	
+	;int k = 1;
+	li r5, #1h
+	li r6, #170
+crtaj_dugme_igraj_loop1:
+	cmpi r6, #190
+	bgrte crtaj_dugme_igraj_loop2
+	;for (int i = 170; i < 190; i++) {
+		cl r7
+crtaj_dugme_igraj_outter_loop1:
+		cmp r7, r5
+		bgrte crtaj_dugme_igraj_inner_loop1
+		;for (int j = 0; j < k; j++) {
+			;draw_pixel(boja, i, 380 + j);
+			lw r0, (bp)FFFAh
+			mv r1, r7
+			addi r1, #380
+			mv r2, r6
+			call draw_pixel
+			inc r7
+			jmp crtaj_dugme_igraj_outter_loop1
+		;}
+		;k++
+crtaj_dugme_igraj_inner_loop1:
+		addi r5, #2
+		inc r6
+		jmp crtaj_dugme_igraj_loop1
+	;}
+crtaj_dugme_igraj_loop2:
+	cmpi r6, #211
+	bgrte crtaj_dugme_igraj_kraj
+	;for (; i < 210; i++) {
+		cl r7
+crtaj_dugme_igraj_outter_loop2:
+		cmp r7, r5
+		bgrte crtaj_dugme_igraj_inner_loop2
+		;for (int j = 0; j < k; j++) {
+			lw r0, (bp)FFFAh
+			mv r1, r7
+			addi r1, #380
+			mv r2, r6
+			call draw_pixel
+			inc r7
+			jmp crtaj_dugme_igraj_outter_loop2
+			;draw_pixel(boja, i, 380 + j);
+		;}
+		;k--
+crtaj_dugme_igraj_inner_loop2:
+		subi r5, #2h
+		inc r6
+		jmp crtaj_dugme_igraj_loop2
+	;}
+crtaj_dugme_igraj_kraj:
+	pop r7
+	pop r6
+	pop r5
+	pop r2
+	pop r1
+	pop r0
+	pop bp
+	ret
+dugme_igraj:
+	push bp
+	mv bp, sp
+	push r0
+	push r5
+	push r6
+	push r7
+	push r8
+	
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_igraj
+	
+dugme_igra_wait:
+	lw r5, MemSem0
+	bz dugme_igra_wait
+	lw r5, STATUS_PS2
+	tsti r5, #2h
+	bz dugme_igra_not_break_code
+	cl r5
+	sw r5, MemSem0
+	jmp dugme_igra_wait
+
+dugme_igra_not_break_code:
+	lw r6, DATA_PS2
+	cmpi r6, #ENTER_KEY
+	beql dugme_igra_generisi
+	cmpi r6, #DOWN_ARROW
+	bneql dugme_igra_wait
+	cl r0
+	jmp dugme_igraj_kraj
+	cl r5
+	sw r5, MemSem0
+	jmp dugme_igra_wait
+	
+dugme_igra_generisi:
+	cl r5
+	sw r5, MemSem0
+	lw r0, (bp)FFFEh
+	li r1, #USER_STACK
+	call generate_maze
+	
+	lw r0, (bp)FFFEh
+	call generate_cubes
+	
+	lw r0, (bp)FFFEh
+	call draw_maze
+	
+	li r0, #01CFh
+	lw r1, xCoveculjak
+	lw r2, yCoveculjak
+	call draw_cube
+	
+	li r0, #f00h
+	lw r1, xKucica
+	lw r2, yKucica
+	call draw_cube
+	
+	lw r0, (bp)FFFEh
+	call igra
+	li r0, #1h
+	
+dugme_igraj_kraj:
+	pop r8
+	pop r7
+	pop r6
+	pop r5
+	addi sp, #2h
+	pop bp
+	ret
+
+crtaj_dugme_tezina:
+	push bp
+	mv bp, sp
+	push r0
+	push r1
+	push r2
+	
+	lw r0, (bp)FFFEh
+	li r1, #300
+	li r2, #250
+	li r3, #500
+	li r4, #330
+	call draw_rectangle
+	
+	lw r0, (BP)FFFCh
+	li r1, #305
+	li r2, #255
+	li r3, #495
+	li r4, #325
+	call draw_rectangle
+
+	pop r2
+	pop r1
+	pop r0
+	pop bp
+	ret
+	
+dugme_tezina:
+	push bp
+	mv bp, sp
+	push r5
+	push r6
+	push r7
+	
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_tezina
+	
+	cl r5
+	lw r5, MemSem0
+	
+dugme_tezina_wait:
+	lw r5, MemSem0
+	bz dugme_tezina_wait
+	lw r5, STATUS_PS2
+	tsti r5, #2h
+	bz dugme_tezina_not_break_code
+	cl r5
+	sw r5, MemSem0
+	jmp dugme_tezina_wait
+dugme_tezina_not_break_code:
+	cl r5
+	sw r5, MemSem0
+
+	lw r5, DATA_PS2
+	cmpi r5, #UP_ARROW
+	beql dugme_tezina_kraj
+	cmpi r5, #LEFT_ARROW
+	bneql dugme_tezina_next_if1
+	lw r6, tezina
+	cmpi r6, #4
+	beql dugme_tezina_wait
+	inc r6
+	sw r6, tezina
+	jmp dugme_tezina_wait
+dugme_tezina_next_if1:
+	cmpi r5, #RIGHT_ARROW
+	bneql dugme_tezina_wait
+	lw r6, tezina
+	cmpi r6, #1
+	beql dugme_tezina_wait
+	dec r6
+	sw r6, tezina
+	jmp dugme_tezina_wait
+dugme_tezina_kraj:
+	lw r5, tezina
+	cmpi r5, #1
+	bneql dugme_tezina_next_if2
+	li r6, #15
+	li r7, #20
+	sw r6, height
+	sw r7, width
+	jmp dugme_tezina_pop_stack
+dugme_tezina_next_if2:
+	cmpi r5, #2
+	bneql dugme_tezina_next_if3
+	li r6, #24
+	li r7, #32
+	sw r6, height
+	sw r7, width
+	jmp dugme_tezina_pop_stack
+dugme_tezina_next_if3:
+	cmpi r5, #3
+	bneql dugme_tezina_next_if4
+	li r6, #30
+	li r7, #40
+	sw r6, height
+	sw r7, width
+	jmp dugme_tezina_pop_stack
+dugme_tezina_next_if4:
+	li r6, #60
+	li r7, #80
+	sw r6, height
+	sw r7, width
+dugme_tezina_pop_stack:
+	pop r7
+	pop r6
+	pop r5
+	pop bp
+	ret
+
+crtaj_dugme_nastavi:
+	push bp
+	mv bp, sp
+	push r0
+	push r1
+	push r2
+	
+	lw r0, (bp)FFFEh
+	li r1, #300
+	li r2, #150
+	li r3, #500
+	li r4, #230
+	call draw_rectangle
+	
+	lw r0, (BP)FFFCh
+	li r1, #305
+	li r2, #155
+	li r3, #495
+	li r4, #225
+	call draw_rectangle
+	
+		;int k = 1;
+	li r5, #1h
+	li r6, #170
+crtaj_dugme_nastavi_loop1:
+	cmpi r6, #190
+	bgrte crtaj_dugme_nastavi_loop2
+	;for (int i = 170; i < 190; i++) {
+		cl r7
+crtaj_dugme_nastavi_outter_loop1:
+		cmp r7, r5
+		bgrte crtaj_dugme_nastavi_inner_loop1
+		;for (int j = 0; j < k; j++) {
+			;draw_pixel(boja, i, 380 + j);
+			lw r0, (bp)FFFAh
+			mv r1, r7
+			addi r1, #380
+			mv r2, r6
+			call draw_pixel
+			inc r7
+			jmp crtaj_dugme_nastavi_outter_loop1
+		;}
+		;k++
+crtaj_dugme_nastavi_inner_loop1:
+		addi r5, #2
+		inc r6
+		jmp crtaj_dugme_nastavi_loop1
+	;}
+crtaj_dugme_nastavi_loop2:
+	cmpi r6, #211
+	bgrte crtaj_dugme_nastavi_kraj
+	;for (; i < 210; i++) {
+		cl r7
+crtaj_dugme_nastavi_outter_loop2:
+		cmp r7, r5
+		bgrte crtaj_dugme_nastavi_inner_loop2
+		;for (int j = 0; j < k; j++) {
+			lw r0, (bp)FFFAh
+			mv r1, r7
+			addi r1, #380
+			mv r2, r6
+			call draw_pixel
+			inc r7
+			jmp crtaj_dugme_nastavi_outter_loop2
+			;draw_pixel(boja, i, 380 + j);
+		;}
+		;k--
+crtaj_dugme_nastavi_inner_loop2:
+		subi r5, #2h
+		inc r6
+		jmp crtaj_dugme_nastavi_loop2
+	;}
+crtaj_dugme_nastavi_kraj:
+
+	pop r2
+	pop r1
+	pop r0
+	pop bp
+	ret
+	
+crtaj_dugme_nazad:
+	push bp
+	mv bp, sp
+	push r0
+	push r1
+	push r2
+	
+	lw r0, (bp)FFFEh
+	li r1, #300
+	li r2, #250
+	li r3, #500
+	li r4, #330
+	call draw_rectangle
+	
+	lw r0, (BP)FFFCh
+	li r1, #305
+	li r2, #255
+	li r3, #495
+	li r4, #325
+	call draw_rectangle
+
+	pop r2
+	pop r1
+	pop r0
+	pop bp
+	ret
+
+
+pauza:
+	push bp
+	mv bp, sp
+	push r5
+	push r6
+	push r7
+	subi sp, #2
+	
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_nastavi
+	
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_nazad
+	
+	cl r5
+	sw r5, MemSem0
+	sw r5, (bp)fff8h
+	
+pauza_wait:
+	lw r5, MemSem0
+	bz pauza_wait
+	lw r5, STATUS_PS2
+	tsti r5, #2
+	bz pauza_not_break_code
+	cl r5
+	sw r5, MemSem0
+	jmp pauza_wait
+	
+pauza_not_break_code:
+	cl r5
+	sw r5, MemSem0
+	lw r5, DATA_PS2
+	cmpi r5, #UP_ARROW
+	bneql pauza_next_if1
+	lw r6, (bp)FFF8h
+	bz pauza_wait
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_nastavi
+	
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_nazad
+	cl r7
+	sw r7, (bp)FFF8h
+	jmp pauza_wait
+pauza_next_if1:
+	cmpi r5, #DOWN_ARROW
+	bneql pauza_next_if2
+	lw r6, (bp)FFF8h
+	bnz pauza_wait
+	li r0, #f0h
+	cl r1
+	li r2, #f0h
+	call crtaj_dugme_nastavi
+	
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_nazad
+	li r7, #1
+	sw r7, (bp)FFF8h
+	jmp pauza_wait
+pauza_next_if2:
+	cmpi r5, #ENTER_KEY
+	bneql pauza_wait
+	lw r0, (bp)FFF8h
+	
+	addi sp, #2h
+	pop r7
+	pop r6
+	pop r5
+	pop bp
+	ret
+
+	
+	
+	
+	
+	
 	
 	
 	
