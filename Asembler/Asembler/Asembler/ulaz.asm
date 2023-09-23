@@ -20,7 +20,7 @@
 .define xKucica 74F2h
 .define yKucica 74F0h
 .define MemSem0 74FEh
-.define tezina 74FCh
+.define tezina 74EEh
 .define FIELD_SIZE 4800
 .define USER_STACK 74FCh
 .define MAX_HEIGHT 60
@@ -1257,6 +1257,7 @@ crtaj_dugme_tezina:
 	push r0
 	push r1
 	push r2
+	push r5
 	
 	lw r0, (bp)FFFEh
 	li r1, #300
@@ -1271,7 +1272,28 @@ crtaj_dugme_tezina:
 	li r3, #495
 	li r4, #325
 	call draw_rectangle
-
+	
+	lw r0, (bp)FFFAh
+	lw r5, tezina
+	cmpi r5, #1
+	bneql crtaj_dugme_tezina_next_if1
+	call crtaj_tezina_jedan
+	jmp crtaj_dugme_tezina_kraj
+crtaj_dugme_tezina_next_if1:
+	cmpi r5, #2
+	bneql crtaj_dugme_tezina_next_if2
+	call crtaj_tezina_dva
+	jmp crtaj_dugme_tezina_kraj
+crtaj_dugme_tezina_next_if2:
+	cmpi r5, #3
+	bneql crtaj_dugme_tezina_next_if3
+	call crtaj_tezina_tri
+	jmp crtaj_dugme_tezina_kraj
+crtaj_dugme_tezina_next_if3:
+	lw r1, (bp)FFFCh
+	call crtaj_tezina_cetiri
+crtaj_dugme_tezina_kraj:
+	pop r5
 	pop r2
 	pop r1
 	pop r0
@@ -1309,22 +1331,30 @@ dugme_tezina_not_break_code:
 	lw r5, DATA_PS2
 	cmpi r5, #UP_ARROW
 	beql dugme_tezina_kraj
-	cmpi r5, #LEFT_ARROW
+	cmpi r5, #RIGHT_ARROW
 	bneql dugme_tezina_next_if1
 	lw r6, tezina
 	cmpi r6, #4
 	beql dugme_tezina_wait
 	inc r6
 	sw r6, tezina
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_tezina
 	jmp dugme_tezina_wait
 dugme_tezina_next_if1:
-	cmpi r5, #RIGHT_ARROW
+	cmpi r5, #LEFT_ARROW
 	bneql dugme_tezina_wait
 	lw r6, tezina
 	cmpi r6, #1
 	beql dugme_tezina_wait
 	dec r6
 	sw r6, tezina
+	li r0, #f0h
+	li r1, #f0h
+	cl r2
+	call crtaj_dugme_tezina
 	jmp dugme_tezina_wait
 dugme_tezina_kraj:
 	lw r5, tezina
@@ -1449,6 +1479,11 @@ crtaj_dugme_nazad:
 	push r0
 	push r1
 	push r2
+	push r5
+	push r6
+	push r7
+	push r8
+	push r9
 	
 	lw r0, (bp)FFFEh
 	li r1, #300
@@ -1456,14 +1491,60 @@ crtaj_dugme_nazad:
 	li r3, #500
 	li r4, #330
 	call draw_rectangle
-	
-	lw r0, (BP)FFFCh
+
+	lw r0, (bp)FFFCh
 	li r1, #305
 	li r2, #255
 	li r3, #495
 	li r4, #325
 	call draw_rectangle
+	
+	li r6, #377
+	li r7, #273
+	li r8, #417
+	li r9, #313
 
+	li r5, #6
+crtaj_dugme_nazad_loop1:
+	lw r0, (bp)FFFAh
+	mv r1, r6
+	mv r2, r7
+	mv r3, r8
+	mv r4, r9
+	call draw_line
+	inc r6
+	dec r7
+	inc r8
+	dec r9
+	dec r5
+	bnz crtaj_dugme_nazad_loop1
+	
+	li r6, #377
+	li r7, #267
+	li r8, #417
+	li r9, #307
+
+	li r5, #6
+crtaj_dugme_nazad_loop2:
+	lw r0, (bp)FFFAh
+	mv r1, r6
+	mv r2, r9
+	mv r3, r8
+	mv r4, r7
+	call draw_line
+	inc r6
+	inc r7
+	inc r8
+	inc r9
+	dec r5
+	bnz crtaj_dugme_nazad_loop2
+	
+	
+	pop r9
+	pop r8
+	pop r7
+	pop r6
+	pop r5
 	pop r2
 	pop r1
 	pop r0
@@ -1541,14 +1622,191 @@ pauza_next_if1:
 	sw r7, (bp)FFF8h
 	jmp pauza_wait
 pauza_next_if2:
+	cmpi r5, #ESC_KEY
+	bneql pauza_next_if3
+	cl r7
+	sw r7, (bp)FFF8h
+	jmp pauza_kraj
+pauza_next_if3:
 	cmpi r5, #ENTER_KEY
 	bneql pauza_wait
 	lw r0, (bp)FFF8h
-	
+pauza_kraj:
 	addi sp, #2h
 	pop r7
 	pop r6
 	pop r5
+	pop bp
+	ret
+	
+crtaj_tezina_jedan:
+	push bp
+	mv bp, sp
+	push r0
+	
+	lw r0, (bp)FFFEh
+	li r1, #375
+	li r2, #270
+	li r3, #380
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #420
+	li r2, #270
+	li r3, #425
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #370
+	li r2, #305
+	li r3, #375
+	li r4, #315
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #425
+	li r2, #305
+	li r3, #430
+	li r4, #315
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #370
+	li r2, #310
+	li r3, #430
+	li r4, #315
+	call draw_rectangle
+	
+	pop r0
+	pop bp
+	ret
+
+crtaj_tezina_dva:
+	push bp
+	mv bp, sp
+	push r0
+	
+	lw r0, (bp)FFFEh
+	li r1, #375
+	li r2, #270
+	li r3, #380
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #420
+	li r2, #270
+	li r3, #425
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #370
+	li r2, #310
+	li r3, #430
+	li r4, #315
+	call draw_rectangle
+	
+	pop r0
+	pop bp
+	ret
+
+crtaj_tezina_tri:
+	push bp
+	mv bp, sp
+	push r0
+	
+	lw r0, (bp)FFFEh
+	li r1, #375
+	li r2, #270
+	li r3, #380
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #420
+	li r2, #270
+	li r3, #425
+	li r4, #275
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #370
+	li r2, #305
+	li r3, #375
+	li r4, #315
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #425
+	li r2, #305
+	li r3, #430
+	li r4, #315
+	call draw_rectangle
+	
+	lw r0, (bp)FFFEh
+	li r1, #370
+	li r2, #305
+	li r3, #430
+	li r4, #310
+	call draw_rectangle
+	
+	pop r0
+	pop bp
+	ret
+	
+crtaj_tezina_cetiri:
+	push bp
+	mv bp, sp
+	push r0
+	push r1
+	
+	lw r0, (bp)FFFEh
+	li r1, #375
+	li r2, #270
+	li r3, #380
+	li r4, #275
+	call draw_line
+	
+	lw r0, (bp)FFFEh
+	li r1, #375
+	li r2, #275
+	li r3, #380
+	li r4, #270
+	call draw_line
+	
+	lw r0, (bp)FFFEh
+	li r1, #420
+	li r2, #270
+	li r3, #425
+	li r4, #275
+	call draw_line
+	
+	lw r0, (bp)FFFEh
+	li r1, #420
+	li r2, #275
+	li r3, #425
+	li r4, #270
+	call draw_line
+	
+	lw r0, (bp)FFFEh
+	li r1, #380
+	li r2, #300
+	li r3, #420
+	li r4, #320
+	call draw_rectangle
+	
+	lw r0, (bp)FFFCh
+	li r1, #382
+	li r2, #302
+	li r3, #418
+	li r4, #318
+	call draw_rectangle
+	
+	pop r1
+	pop r0
 	pop bp
 	ret
 
