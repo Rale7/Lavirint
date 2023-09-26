@@ -1,0 +1,309 @@
+.signal ldMAR;
+.signal incMAR;
+.signal mxMAR0;
+.signal mxMAR1;
+.signal mxMAR2;
+.signal disp;
+.signal eMAR;
+.signal ldMDR;
+.signal mxMDR0;
+.signal mxMDR1;
+.signal mxMDR2;
+.signal ldDWL;
+.signal ldDWH;
+.signal mxDW;
+.signal ldPC;
+.signal incPC;
+.signal mxPC0;
+.signal mxPC1;
+.signal ldIR0;
+.signal ldIR1;
+.signal ldIR2;
+.signal ldIR3;
+.signal ldGPRAR;
+.signal mxGPRAR0;
+.signal mxGPRAR1;
+.signal ldTEMP;
+.signal slTEMP;
+.signal srTEMP;
+.signal mxTEMP;
+.signal ilTEMP;
+.signal rand;
+.signal srand;
+.signal ldA;
+.signal clA;
+.signal slA;
+.signal srA;
+.signal mxA0;
+.signal mxA1;
+.signal ilA;
+.signal mxIL;
+.signal ldB;
+.signal slB;
+.signal mxB0;
+.signal mxB1;
+.signal ldCNT;
+.signal decCNT;
+.signal mxCNT0;
+.signal mxCNT1;
+.signal addALU;
+.signal subALU;
+.signal incALU;
+.signal decALU;
+.signal orALU;
+.signal andALU;
+.signal xorALU;
+.signal notALU;
+.signal ldPSW;
+.signal ldN;
+.signal ldZ;
+.signal ldC;
+.signal ldV;
+.signal ldSTART;
+.signal ldI;
+.signal ldL;
+.signal II;
+.signal STARTI;
+.signal clINTR;
+.signal stPRCOD;
+.signal rstPRCOD;
+.signal eMDR;
+.signal ldGPR;
+.signal mxGPR0;
+.signal mxGPR1;
+.signal RDBUS;
+.signal WRBUS;
+.signal bradr;
+.signal bropr;
+.signal ldBr;
+
+.condition Start;
+.condition FCBUS;
+.condition PRCOD;
+.condition 0ADDR;
+.condition 2INST;
+.condition BRANCH;
+.condition LD;
+.condition zeroCNT;
+.condition TEMP0;
+.condition zeroTEMP;
+.condition C;
+.condition div;
+.condition prekid;
+.condition PRINTR;
+.condition brpom;
+.condition notZeroCNT;
+.condition gropr;
+
+madr00 br (if START then madr00);
+madr01 mxMAR0, mxMAR1, ldMAR;
+madr02 eMAR, ldMDR, RDBUS, br (if FCBUS then madr02);
+madr03 ldIR0;
+madr04 br (if gropr then madr06);
+madr05 stPRCOD, br madr88; /skoci na prekid
+madr06 incPC, br (if 0ADDR then madr26); /skoci na exec
+madr07 ldMAR, mxMAR0, mxMAR1, incPC;
+madr08 eMAR, ldMDR, RDBUS, br (if FCBUS then madr08);
+madr09 ldIR1;
+madr0A br (if 2INST then madr12); /skoci na adresiranja
+madr0B incPC, mxMAR0, mxMAR1, ldMAR;
+madr0C eMAR, ldMDR, RDBUS, br (if FCBUS then madr0C);
+madr0D ldIR2;
+madr0E br (if BRANCH then madr26); / skoci na exec
+madr0F incPC, mxMAR0, mxMAR1, ldMAR;
+madr10 eMAR, ldMDR, RDBUS, br (if FCBUS then madr10);
+madr11 ldIR3;
+!addr!
+madr12 bradr;
+!regdir!
+madr13 ldGPRAR, mxGPRAR0;
+madr14 ldB;
+!reg1dir!
+madr15 ldGPRAR, br (if LD then madr26); /skoci na exec
+madr16 ldA, br madr26; /skoci na exec
+!aimm!
+madr17 ldB, mxB0, br madr15;
+!memdir!
+madr18 ldMAR, mxMAR1, br madr15;
+!memind!
+madr19 ldMAR, mxMAR1;
+madr1A eMAR, ldMDR, RDBUS, br (if FCBUS then madr1A);
+madr1B incMAR, ldDWL;
+madr1C eMAR, ldMDR, RDBUS, br (if FCBUS then madr1C);
+madr1D ldDWH;
+madr1E ldMAR, mxMAR0, br madr15;
+!reginddisp!
+madr1F ldGPRAR, mxGPRAR0;
+madr20 ldMAR, disp, br madr15;
+!regind!
+madr21 ldGPRAR, mxGPRAR0;
+madr22 ldMAR, br madr15;
+!simm!
+madr23 ldCNT, br madr15;
+!sregdir!
+madr24 ldGPRAR, mxGPRAR0;
+madr25 ldCNT, mxCNT0, br madr15;
+!exec!
+madr26 bropr;
+!sl!
+madr27 br (if zeroCNT then madr29);
+madr28 slA, decCNT, ldC, br madr27;
+madr29 ldGPR, mxGPR0, br madr88; /skoci na interrrupt
+!sr!
+madr2A br (if zeroCNT then madr2C);
+madr2B srA, decCNT, ldC, br madr2A;
+madr2C ldGPR, mxGPR0, br madr88; /skoci na interrrupt
+!sw!
+madr2D ldMDR, mxMDR0;
+madr2E WRBUS, eMAR, eMDR, br (if FCBUS then madr2E);
+madr2F ldMDR, mxMDR1, incMAR;
+madr30 WRBUS, eMAR, eMDR, br (if FCBUS then madr30);
+madr31 br madr88; / idi na interrupt
+!sb!
+madr32 ldMDR, mxMDR0;
+madr33 WRBUS, eMAR, eMDR, br (if FCBUS then madr33);
+madr34 br madr88; / idi na interrupt
+!lw!
+madr35 eMAR, RDBUS, ldMDR, br (if FCBUS then madr35);
+madr36 ldDWL, incMAR;
+madr37 eMAR, RDBUS, ldMDR, br (if FCBUS then madr37);
+madr38 ldDWH;
+madr39 ldGPR, mxGPR1, ldN, ldZ, br madr88; / idi na interrrupt
+!lb!
+madr3A eMAR, RDBUS, ldMDR, br (if FCBUS then madr3A);
+madr3B ldGPR, mxGPR1, mxGPR0, ldN, ldZ, br madr88; / idi na interrrupt
+!mvli!
+madr3C ldA, mxA0;
+madr3D ldGPR, mxGPR0, ldN, ldZ, br madr88; /idi na interrrupt
+!tst!
+madr3E andALU, ldN, ldZ, br madr88; /idi na interrrupt
+!xor!
+madr3F xorALU, ldN, ldZ, ldGPR, br madr88; /idi na interrrupt
+!or!
+madr40 orALU, ldN, ldZ, ldGPR, br madr88; /idi na interrrupt
+!and!
+madr41 andALU, ldN, ldZ, ldGPR, br madr88; /idi na interrrupt
+!cmp!
+madr42 subALU, ldN, ldZ, ldC, ldV, br madr88; /idi na interrrupt
+!sub!
+madr43 subALU, ldN, ldZ, ldC, ldV, ldGPR, br madr88; /idi na interrrupt
+!add!
+madr44 addALU, ldN, ldZ, ldC, ldV, ldGPR, br madr88; /idi na interrrupt
+!comp!
+madr45 notALU, ldA, mxA1; /idi na interrrupt
+madr46 incALU, ldN, ldZ, ldN, ldV, br madr88; /idi na interrupt
+!not!
+madr47 notALU, ldN, ldZ, ldGPR, br madr88; /idi na interrrupt
+!cl!
+madr48 clA;
+madr49 ldGPR, mxGPR0, ldN, ldZ, br madr88; / idi na interrupt
+!dec!
+madr4A decALU, ldN, ldZ, ldC, ldV, ldGPR, br madr88; /idi na interrrupt
+!inc!
+madr4B incALU, ldN, ldZ, ldC, ldV, ldGPR, br madr88; /idi na interrrupt
+!mul!
+madr4C ldTEMP, clA;
+madr4D br (if zeroTEMP then madr51);
+madr4E br (if TEMP0 then madr50);
+madr4F ldA, addALU, mxA1, ldN, ldZ, ldV, ldC;
+madr50 slB, srTEMP, br madr4D;
+madr51 ldGPR, mxGPR0, ldN, ldZ, br madr88; / idi na interrupt
+!mod/div!
+madr52 ldTEMP, clA, ldCNT, mxCNT1;
+madr53 slA, mxIL, br (if C then madr55);
+madr54 subALU, ldA, mxA1, slTEMP;
+madr55 decCNT, br (if zeroCNT then madr53);
+madr56 br (if div then madr58);
+madr57 ldA, mxA1, mxA0;
+madr58 ldGPR, mxGPR0, ldN, ldZ, br madr88; /skoci na interrupt
+!rand!
+madr59 ldB, mxB0, mxB1, rand;
+madr5A ldA, mxA0;
+madr5B ldGPR, mxGPR0, ldN, ldZ, br madr88; /interrrupt
+!pop!
+madr5C ldGPRAR, mxGPRAR1;
+madr5D ldA;
+madr5E ldMAR, mxMAR2, incALU, ldA, mxA1;
+madr5F RDBUS, ldMDR, eMAR, br (if FCBUS then madr5F);
+madr60 ldMAR, mxMAR2, incALU, ldA, mxA1, ldDWL;
+madr61 RDBUS, ldMDR, eMAR, br (if FCBUS then madr61);
+madr62 ldGPR, mxGPR0, ldDWH, ldGPRAR;
+madr63 ldGPR, mxGPR1, ldN, ldZ, br madr88; / idi na interr
+!push!
+madr64 ldGPRAR, mxGPRAR1, ldDWH, ldDWL, mxDW;
+madr65 ldA;
+madr66 ldA, decALU, mxA1;
+madr67 ldMAR, mxMAR2, ldA, decALU, mxA1, ldMDR, mxMDR0, mxMDR1, mxMDR2;
+madr68 WRBUS, eMAR, eMDR, br (if FCBUS then madr68);
+madr69 ldMAR, mxMAR2, ldGPR, mxGPR0, ldMDR, mxMDR1, mxMDR2;
+madr6A WRBUS, eMAR, eMDR, br (if FCBUS then madr6A);
+madr6B br madr88; /skoci na interr
+!halt!
+madr6C ldSTART, br madr00; / skoci na interr
+!srand!
+madr6D srand, br madr88; / skoci na interr
+!intd!
+madr6E ldI, br madr00; / skoci na interr
+!inte!
+madr6F ldI, II, br madr00; / skoci na interr
+!ret!
+madr70 ldGPRAR, mxGPRAR1;
+madr71 ldA;
+madr72 incALU, ldA, mxA1, ldMAR, mxMAR2;
+madr73 RDBUS, ldMDR, eMAR, br (if FCBUS then madr73);
+madr74 ldMAR, mxMAR2, ldDWL, incALU, ldA, mxA1;
+madr75 RDBUS, ldMDR, eMAR, br (if FCBUS then madr75);
+madr76 ldDWH, ldGPR, mxGPR0;
+madr77 ldPC, mxPC1, br madr88; /skoci na prekid;
+!sret!
+madr78 ldGPRAR, mxGPRAR1;
+madr79 ldA;
+madr7A incALU, ldA, mxA1, ldMAR, mxMAR2;
+madr7B RDBUS, ldMDR, eMAR, br (if FCBUS then madr7B);
+madr7C ldPSW, br madr72;
+!call!
+madr7D ldGPRAR, mxGPRAR1;
+madr7E ldA;
+madr7F decALU, ldA, mxA1;
+madr80 ldMAR, mxMAR2, ldA, decALU, mxA1, ldMDR, mxMDR2;
+madr81 WRBUS, eMAR, eMDR, br (if FCBUS then madr81);
+madr82 ldMAR, mxMAR2, ldGPR, mxGPR0, ldMDR, mxMDR0, mxMDR1;
+madr83 WRBUS, eMAR, eMDR, br (if FCBUS then madr83);
+madr84 ldPC, mxPC0, br madr88; / skoci na interr
+!jmp!
+madr85 ldPC, mxPC0, br madr88; /skoci na interr
+!branch!
+madr86 br (if brpom then madr88); /skoci na interr
+madr87 ldPC, br madr88; /skoci na interr
+!prekid!
+madr88 br (if prekid then madr00);
+madr89 mxMAR0; 
+madr8A ldGPRAR, mxGPRAR1;
+madr8B ldA;
+madr8C decALU, ldA, mxA1;
+madr8D ldMAR, mxMAR2, ldA, decALU, mxA1, ldMDR, mxMDR2;
+madr8E WRBUS, eMAR, eMDR, br (if FCBUS then madr8E);
+madr8F ldMAR, mxMAR2, ldGPR, mxGPR0, ldMDR, mxMDR0, mxMDR1, ldA, decALU, mxA1;
+madr90 WRBUS, eMAR, eMDR, br (if FCBUS then madr90);
+madr91 ldMAR, mxMAR2, ldGPR, mxGPR0, ldMDR, mxMDR0, mxMDR2;
+madr92 WRBUS, eMAR, eMDR, br (if FCBUS then madr92);
+madr93 br (if PRCOD then madr95);
+madr94 rstPRCOD, ldBr, br madr97;
+madr95 br (if PRINTR then madr 97);
+madr96 clINTR, ldL, ldBr;
+madr97 ldMAR, mxMAR2, mxMAR0;
+madr98 RDBUS, eMAR, ldMDR, br (if FCBUS then madr98);
+madr99 incMAR, ldDWL;
+madr9A RDBUS, eMAR, ldMDR, br (if FCBUS then madr9A);
+madr9B ldDWH;
+madr9C ldPC, mxPC1, br madr00;
+!mod/div!
+madr9D clA, ldTEMP, ldCNT, mxCNT1;
+madr9E slA, mxIL;
+madr9F subALU, br(if C then madrA1);
+madrA0 ldA, mxA1, subALU, slTEMP, ilTEMP, br madrA2;
+madrA1 slTEMP;
+madrA2 decCNT, br (if notZeroCNT then madr9E);
+madrA3 br (if div then madrA5);
+madrA4 ldA, mxA0, mxA1;
+madrA5 ldGPR, mxGPR0, br madr88;

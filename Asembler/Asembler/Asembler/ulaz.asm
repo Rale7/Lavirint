@@ -1809,14 +1809,3 @@ crtaj_tezina_cetiri:
 	pop r0
 	pop bp
 	ret
-
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
