@@ -8,5 +8,5 @@ public:
 	void obradi(std::string, IzlazniFile&) override;
 	int dohvati_duzinu_instrukcije(std::string s) const override;
 private:
-	const int duzina_instrukcije = 2;
+	static const int duzina_instrukcije = 2;
 };
