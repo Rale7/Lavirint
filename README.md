@@ -26,6 +26,7 @@ draw
 - pixel
 - line
 - rectangle
+
 where GPU actually just store different colors in memory, which the user sees as a picture.
 
 ## RAM
