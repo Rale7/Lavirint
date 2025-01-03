@@ -1,5 +1,4 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 #include <regex>
 #include <unordered_map>
 #include <fstream>
