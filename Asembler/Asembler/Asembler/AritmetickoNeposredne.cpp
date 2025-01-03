@@ -21,7 +21,6 @@ void AritmetickoNeposredne::obradi(std::string s, IzlazniFile& it)
 		else {
 			throw GreskaLoseDefinisanaInstrukcija(s);
 		}
-
 		it.upisiLokaciju(pc++, op2);
 		it.upisiLokaciju(pc++, op2 >> 8);
 	}
