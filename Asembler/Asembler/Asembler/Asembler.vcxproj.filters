@@ -33,6 +33,30 @@
     <ClCompile Include="Define.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AritmetickoNeposredne.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtimetickoRegistarske.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BezadresneInst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BezuslovniSkok.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JedanOpInst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadStoreInst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PomerackeInstrukcije.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UslovniSkok.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Red.h">
@@ -78,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LoadStoreInst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PomerackeInstrukcije.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

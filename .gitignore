@@ -68,7 +68,7 @@ incremental_db/
 db/
 _output_files/
 PLLJ_PLLSPE_INFO.txt
-
+output_files/
 # Visual Studio C++ projekat gitignore
 # gitignore for C++
 # Compiled Object files
@@ -94,3 +94,4 @@ Release
 *.vsidx
 ipch
 *sdf
+Asembler/Asembler/.vs/

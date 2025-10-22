@@ -127,12 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AritmetickoNeposredne.cpp" />
+    <ClCompile Include="ArtimetickoRegistarske.cpp" />
     <ClCompile Include="Asembler.cpp" />
+    <ClCompile Include="BezadresneInst.cpp" />
+    <ClCompile Include="BezuslovniSkok.cpp" />
     <ClCompile Include="Define.cpp" />
     <ClCompile Include="IzlazniFile.cpp" />
+    <ClCompile Include="JedanOpInst.cpp" />
     <ClCompile Include="Labela.cpp" />
+    <ClCompile Include="LoadStoreInst.cpp" />
     <ClCompile Include="Org.cpp" />
+    <ClCompile Include="PomerackeInstrukcije.cpp" />
     <ClCompile Include="Red.cpp" />
+    <ClCompile Include="UslovniSkok.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AritmetickoNeposredne.h" />

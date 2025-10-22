@@ -19,10 +19,13 @@
 .define yCoveculjak 74F4h
 .define xKucica 74F2h
 .define yKucica 74F0h
+.define xCoveculjak2 7500h
+.define yCoveculjak2 7502h
+.define bojaPobednika 7504h
 .define MemSem0 74FEh
 .define tezina 74EEh
 .define FIELD_SIZE 4800
-.define USER_STACK 74FCh
+.define USER_STACK 7506h
 .define MAX_HEIGHT 60
 .define MAX_WIDTH 80
 .define UP_ARROW E075h
@@ -31,6 +34,10 @@
 .define RIGHT_ARROW E074h
 .define ESC_KEY 76h
 .define ENTER_KEY 5Ah
+.define W_KEY 1Dh
+.define A_KEY 1Ch
+.define S_KEY 1Bh
+.define D_KEY 23h
 
 .org 100h
 main:
@@ -51,6 +58,9 @@ main:
 	sw r5, CONTROL_PS2
 	cl r5
 	sw r5, MemSem0
+	
+	li r0, #f0h
+	sw r0, bojaPobednika
 	
 	inte
 	
@@ -104,14 +114,14 @@ main_loop:
 	call draw_rectangle
 
 main_loop2:
-	li r0, #f0h
+	lw r0, bojaPobednika
 	cl r1
-	li r2, #f0h
+	lw r2, bojaPobednika
 	call crtaj_dugme_igraj
 	
-	li r0, #f0h
+	lw r0, bojaPobednika
 	cl r1
-	li r2, #f0h
+	lw r2, bojaPobednika
 	call crtaj_dugme_tezina
 	
 	mv r0, bp
@@ -120,9 +130,9 @@ main_loop2:
 	cmpi r0, #1h
 	beql main_loop
 	
-	li r0, #f0h
+	lw r0, bojaPobednika
 	cl r1
-	li r2, #f0h
+	lw r2, bojaPobednika
 	call crtaj_dugme_igraj
 	
 	call dugme_tezina
@@ -888,6 +898,8 @@ generate_cubes:
 	push r8
 	push r9
 	push ra
+	push rb
+	push rc
 	
 	lw r9, height
 	lw ra, width
@@ -899,19 +911,36 @@ generate_cubes:
 	mod r6, r9
 	sw r6, yCoveculjak
 	
+	rand rb
+	mod rb, ra
+	sw rb, xCoveculjak2
+	rand rc
+	mod rc, r9
+	sw rc, yCoveculjak2
+	
 generate_cubes_loop:
 	rand r7
 	mod r7, ra
 	rand r8
 	mod r8, r9
 	cmp r5, r7
-	bneql generate_cubes_else
+	bneql check_other
 	cmp r6, r8
 	beql generate_cubes_loop
+check_other:
+	cmp rb, r7
+	bneql generate_cubes_else
+	cmp rc, r8
+	beql generate_cubes_loop
+	
 generate_cubes_else:
+
+
 	sw r7, xKucica
 	sw r8, yKucica
 	
+	pop rc
+	pop rb
 	pop ra
 	pop r9
 	pop r8
@@ -980,6 +1009,7 @@ igra_wait:
 	jmp igra_wait
 	
 igra_not_break_code:
+	intd
 	lw r7, DATA_PS2
 	lw r8, xCoveculjak
 	lw r9, yCoveculjak
@@ -992,6 +1022,7 @@ igra_not_break_code:
 	bneql igra_next_if1
 	tsti ra, #NORTH
 	bz igra_next_if1
+	
 	cl r0
 	lw r1, xCoveculjak
 	lw r2, yCoveculjak
@@ -1007,6 +1038,7 @@ igra_next_if1:
 	bneql igra_next_if2
 	tsti ra, #SOUTH
 	bz igra_next_if2
+	
 	cl r0
 	lw r1, xCoveculjak
 	lw r2, yCoveculjak
@@ -1022,6 +1054,7 @@ igra_next_if2:
 	bneql igra_next_if3
 	tsti ra, #WEST
 	bz igra_next_if3
+	
 	cl r0
 	lw r1, xCoveculjak
 	lw r2, yCoveculjak
@@ -1036,7 +1069,8 @@ igra_next_if3:
 	cmpi r7, #RIGHT_ARROW
 	bneql igra_next_if4
 	tsti ra, #EAST
-	bz igra_continue
+	bz igra_next_if4
+	
 	cl r0
 	lw r1, xCoveculjak
 	lw r2, yCoveculjak
@@ -1045,14 +1079,93 @@ igra_next_if3:
 	lw r8, xCoveculjak
 	inc r8
 	sw r8, xCoveculjak
+	
+	jmp igra_continue
 igra_next_if4:
+	lw r8, xCoveculjak2
+	lw r9, yCoveculjak2
+	lw ra, (bp)FFFEh
+	mul r9, r6
+	add ra, r9
+	add ra, r8
+	lb ra, (ra)
+	cmpi r7, #W_KEY
+	bneql igra_next_if5
+	tsti ra, #NORTH
+	bz igra_next_if5
+	
+	cl r0
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
+	
+	lw r8, yCoveculjak2
+	dec r8
+	sw r8, yCoveculjak2
+	
+	jmp igra_continue
+igra_next_if5:
+	cmpi r7, #S_KEY
+	bneql igra_next_if6
+	tsti ra, #SOUTH
+	bz igra_next_if6
+	
+	cl r0
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
+	
+	lw r8, yCoveculjak2
+	inc r8
+	sw r8, yCoveculjak2
+	
+	jmp igra_continue
+igra_next_if6:
+	cmpi r7, #A_KEY
+	bneql igra_next_if7
+	tsti ra, #WEST
+	bz igra_next_if7
+	
+	cl r0
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
+	
+	lw r8, xCoveculjak2
+	dec r8
+	sw r8, xCoveculjak2
+	
+	jmp igra_continue
+igra_next_if7:
+	cmpi r7, #D_KEY
+	bneql igra_next_if8
+	tsti ra, #EAST
+	bz igra_continue
+	
+	cl r0
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
+	
+	lw r8, xCoveculjak2
+	inc r8
+	sw r8, xCoveculjak2
+	
+	jmp igra_continue
+igra_next_if8:
 	cmpi r7, #ESC_KEY
 	bneql igra_continue
+	inte
 	call pauza
 	cmpi r0, #1h
 	beql igra_kraj
 	lw r0, (bp)FFFEh
 	call draw_maze
+	
+	li r0, #0df5h
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
 	
 	li r0, #1CFh
 	lw r1, xCoveculjak
@@ -1065,6 +1178,11 @@ igra_next_if4:
 	call draw_cube
 	jmp igra_wait
 igra_continue:
+	li r0, #0df5h
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
+
 	li r0, #1CFh
 	lw r1, xCoveculjak
 	lw r2, yCoveculjak
@@ -1077,11 +1195,35 @@ igra_continue:
 	lw r7, xCoveculjak
 	lw r8, xKucica
 	cmp r7, r8
-	bneql igra_wait
+	inte
+	bneql proveri_drugog_igraca
+	
 	lw r7, yCoveculjak
 	lw r8, yKucica
 	cmp r7, r8
+	inte
 	bneql igra_wait
+	
+	li r7, #01CFh
+	sw r7, bojaPobednika
+	jmp igra_kraj
+	
+	
+proveri_drugog_igraca:
+	lw r7, xCoveculjak2
+	lw r8, xKucica
+	cmp r7, r8
+	inte
+	bneql igra_wait
+	
+	lw r7, yCoveculjak2
+	lw r8, yKucica
+	cmp r7, r8
+	inte
+	bneql igra_wait
+	
+	li r7, #0df5h
+	sw r7, bojaPobednika
 	
 igra_kraj:
 	pop ra
@@ -1188,8 +1330,8 @@ dugme_igraj:
 	push r7
 	push r8
 	
-	li r0, #f0h
-	li r1, #f0h
+	lw r0, bojaPobednika
+	lw r1, bojaPobednika
 	cl r2
 	call crtaj_dugme_igraj
 	
@@ -1227,6 +1369,11 @@ dugme_igra_generisi:
 	
 	lw r0, (bp)FFFEh
 	call draw_maze
+	
+	li r0, #0df5h
+	lw r1, xCoveculjak2
+	lw r2, yCoveculjak2
+	call draw_cube
 	
 	li r0, #01CFh
 	lw r1, xCoveculjak
@@ -1307,8 +1454,8 @@ dugme_tezina:
 	push r6
 	push r7
 	
-	li r0, #f0h
-	li r1, #f0h
+	lw r0, bojaPobednika
+	lw r1, bojaPobednika
 	cl r2
 	call crtaj_dugme_tezina
 	
@@ -1338,8 +1485,8 @@ dugme_tezina_not_break_code:
 	beql dugme_tezina_wait
 	inc r6
 	sw r6, tezina
-	li r0, #f0h
-	li r1, #f0h
+	lw r0, bojaPobednika
+	lw r1, bojaPobednika
 	cl r2
 	call crtaj_dugme_tezina
 	jmp dugme_tezina_wait
@@ -1351,8 +1498,8 @@ dugme_tezina_next_if1:
 	beql dugme_tezina_wait
 	dec r6
 	sw r6, tezina
-	li r0, #f0h
-	li r1, #f0h
+	lw r0, bojaPobednika
+	lw r1, bojaPobednika
 	cl r2
 	call crtaj_dugme_tezina
 	jmp dugme_tezina_wait
